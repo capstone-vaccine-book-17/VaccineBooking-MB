@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/index_navigation.dart';
+import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/styles/theme.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'WVaccine',
       debugShowCheckedModeBanner: true,
       theme: lightTheme,
-      home: const IndexNavigation(),
+      home: const SplashScreen(),
     );
   }
 }
