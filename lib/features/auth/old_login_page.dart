@@ -1,23 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class OldLoginPage extends StatefulWidget {
+  const OldLoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<OldLoginPage> createState() => _OldLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _OldLoginPageState extends State<OldLoginPage> {
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             const SizedBox(height: 62),
@@ -38,14 +35,14 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
                 height: 375,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.5),
                       spreadRadius: 0,
                       blurRadius: 2,
-                      offset: Offset(0, 0),
+                      offset: const Offset(0, 0),
                     )
                   ],
                 ),
@@ -54,8 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   key: formKey,
                   children: [
                     const Padding(
-                      padding:
-                          const EdgeInsets.only(left: 14, right: 14, top: 8),
+                      padding: EdgeInsets.only(left: 14, right: 14, top: 8),
                       child: Text(
                         "Email",
                         style: TextStyle(
@@ -90,8 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     const Padding(
-                      padding:
-                          const EdgeInsets.only(left: 14, right: 14, top: 8),
+                      padding: EdgeInsets.only(left: 14, right: 14, top: 8),
                       child: Text(
                         "Password",
                         style: TextStyle(
