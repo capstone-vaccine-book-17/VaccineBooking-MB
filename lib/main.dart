@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'WVaccine',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       theme: lightTheme,
       home: const IndexNavigation(),
     );
