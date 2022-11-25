@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AnggotaKeluarga extends StatelessWidget {
@@ -12,8 +11,20 @@ class AnggotaKeluarga extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 0,
+                    blurRadius: 6,
+                    offset: const Offset(4, 4),
+                  )
+                ],
+              ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 13, horizontal: 10),
                 child: Row(
                   children: [
                     IconButton(
@@ -36,29 +47,20 @@ class AnggotaKeluarga extends StatelessWidget {
                   ],
                 ),
               ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 0,
-                    blurRadius: 6,
-                    offset: const Offset(4, 4),
-                  )
-                ],
-              ),
             ),
             const SizedBox(height: 20),
             Center(
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                     child: Container(
                       width: double.infinity,
                       height: 100,
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -70,16 +72,21 @@ class AnggotaKeluarga extends StatelessWidget {
                         ],
                       ),
                       child: Padding(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 12),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
-                                Text('Afifah Cahyaningsih'),
-                                Text('Pribadi'),
+                                Text(
+                                  'Afifah Cahyaningsih',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text('Pribadi',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               ],
                             ),
                             const SizedBox(
@@ -88,8 +95,12 @@ class AnggotaKeluarga extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
-                                Text('NIK: 1231432424'),
-                                Text('Jawa Barat'),
+                                Text(
+                                  'NIK: 1231432424',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                Text('Jawa Barat',
+                                    style: TextStyle(color: Colors.grey)),
                               ],
                             ),
                           ],
@@ -98,12 +109,14 @@ class AnggotaKeluarga extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                     child: Container(
                       width: double.infinity,
                       height: 100,
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -115,16 +128,20 @@ class AnggotaKeluarga extends StatelessWidget {
                         ],
                       ),
                       child: Padding(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 12),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
-                                Text('Afifah Cahyaningsih'),
-                                Text('Pribadi'),
+                                Text('Afifah Cahyaningsih',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text('Pribadi',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               ],
                             ),
                             const SizedBox(
@@ -133,8 +150,10 @@ class AnggotaKeluarga extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
-                                Text('NIK: 1231432424'),
-                                Text('Jawa Barat'),
+                                Text('NIK: 1231432424',
+                                    style: TextStyle(color: Colors.grey)),
+                                Text('Jawa Barat',
+                                    style: TextStyle(color: Colors.grey)),
                               ],
                             ),
                           ],
@@ -143,12 +162,14 @@ class AnggotaKeluarga extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                     child: Container(
                       width: double.infinity,
                       height: 100,
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -160,16 +181,20 @@ class AnggotaKeluarga extends StatelessWidget {
                         ],
                       ),
                       child: Padding(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 12),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
-                                Text('Afifah Cahyaningsih'),
-                                Text('Pribadi'),
+                                Text('Afifah Cahyaningsih',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text('Pribadi',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               ],
                             ),
                             const SizedBox(
@@ -178,8 +203,10 @@ class AnggotaKeluarga extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
-                                Text('NIK: 1231432424'),
-                                Text('Jawa Barat'),
+                                Text('NIK: 1231432424',
+                                    style: TextStyle(color: Colors.grey)),
+                                Text('Jawa Barat',
+                                    style: TextStyle(color: Colors.grey)),
                               ],
                             ),
                           ],
@@ -195,11 +222,14 @@ class AnggotaKeluarga extends StatelessWidget {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xff3366FF),
+                backgroundColor: const Color(0xff3366FF),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 145, vertical: 15),
                 textStyle:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12), // <-- Radius
+                ),
               ),
               onPressed: () {},
               child: const Text(
