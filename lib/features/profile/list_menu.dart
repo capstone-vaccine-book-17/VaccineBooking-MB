@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -15,21 +14,20 @@ class ListMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 6, horizontal: 24),
-        child: ListTile(
-          leading: Icon(
-            icon,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 24),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: Colors.black,
+        ),
+        title: Text(name),
+        trailing: IconButton(
+          onPressed: func,
+          icon: const Icon(
+            Icons.arrow_right,
             color: Colors.black,
-          ),
-          title: Text(name),
-          trailing: IconButton(
-            onPressed: func,
-            icon: Icon(
-              Icons.arrow_right,
-              color: Colors.black,
-            ),
+            size: 40,
           ),
         ),
       ),
