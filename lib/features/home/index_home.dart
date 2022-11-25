@@ -8,7 +8,7 @@ class IndexHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: const Center(
-        child: Text('Home'),
+        child: Text('Home Alelilooooo'),
       ),
     );
   }
