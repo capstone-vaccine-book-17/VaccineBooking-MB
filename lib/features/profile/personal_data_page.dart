@@ -53,6 +53,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const Text('Nama Lengkap'),
             const SizedBox(height: 12.0),
             const TextField(
+              enabled: false,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
@@ -67,6 +68,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const Text('NIK'),
             const SizedBox(height: 12.0),
             const TextField(
+              enabled: false,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
@@ -117,6 +119,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const Text('Jenis Kelamin'),
             const SizedBox(height: 12.0),
             const TextField(
+              enabled: false,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
