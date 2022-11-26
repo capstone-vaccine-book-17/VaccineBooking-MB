@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
               builder: (context, value, child) {
                 return TextFormField(
                   obscureText: _isShowPass.value,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                     hintText: 'Masukan Password',
                     border: const OutlineInputBorder(

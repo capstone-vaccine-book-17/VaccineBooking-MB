@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/auth/old_login_page.dart';
-import 'package:w_vaccine/features/auth/register_page.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/styles/theme.dart';
-
-import 'features/auth/login_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'WVaccine',
       debugShowCheckedModeBanner: true,
       theme: lightTheme,
-      // home: const IndexNavigation(),
-      // home: const LoginPage(),
-      // home: const OldLoginPage(),
-      home: const RegisterPage(),
+      home: const IndexNavigation(),
     );
   }
 }
