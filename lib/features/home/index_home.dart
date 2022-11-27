@@ -7,46 +7,57 @@ class IndexHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      body: Stack(children: [
+      body: Stack(
+        children: [
+          _body(),
+        ],
+      ),
+    );
+  }
+
+  Widget _stack() {
+    return Stack(
+      children: [
         Container(
-          height: 150,
-          decoration: const BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+          height: 200,
+        ),
+        Positioned(
+          right: 0,
+          left: 0,
+          top: 0,
+          child: Container(
+            height: 150,
+            decoration: const BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
             ),
           ),
         ),
-        _body(),
-      ]),
+        _customAppBar(),
+      ],
     );
   }
 
   /// Body Safe Area
   Widget _body() {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              /// Custom App Bar
-              _customAppBar(),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            _stack(),
 
-              /// Card Header
-              _cardHeader(),
+            /// Menu
+            _menu(),
 
-              /// Menu
-              _menu(),
+            /// List of Health Workers / Daftar Tenaga Kesehatan
+            _listOfHealthWorkers(),
 
-              /// List of Health Workers / Daftar Tenaga Kesehatan
-              _listOfHealthWorkers(),
-
-              /// Health News / Berita Kesehatan
-              _healthNews()
-            ],
-          ),
+            /// Health News / Berita Kesehatan
+            _healthNews()
+          ],
         ),
       ),
     );
@@ -55,23 +66,31 @@ class IndexHome extends StatelessWidget {
   /// Custom App bar
   Widget _customAppBar() {
     String temp1 = 'Hai Namamu';
-    return Row(
-      children: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.person, color: Colors.white),
-        ),
-        Text(
-          temp1,
-          style: const TextStyle(color: Colors.white),
-        ),
-        const Spacer(),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.ring_volume),
-          color: Colors.white,
-        )
-      ],
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.person, color: Colors.white),
+              ),
+              Text(
+                temp1,
+                style: const TextStyle(color: Colors.white),
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.ring_volume),
+                color: Colors.white,
+              )
+            ],
+          ),
+          _cardHeader(),
+        ],
+      ),
     );
   }
 
@@ -189,80 +208,83 @@ class IndexHome extends StatelessWidget {
         'desc': 'Dokter Huluk gemar menyuntik orang dengan suntikan cinta'
       },
     ];
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Text(
-              'Daftar Tenaga Kesehatan',
-              style: TextStyle(fontSize: 18),
-            ),
-            const Spacer(),
-            TextButton(
-              onPressed: () {},
-              child: const Text('Lihat Semua'),
-            )
-          ],
-        ),
-        for (var data in datas)
-          Card(
-            elevation: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Text(
+                'Daftar Tenaga Kesehatan',
+                style: TextStyle(fontSize: 18),
+              ),
+              const Spacer(),
+              TextButton(
+                onPressed: () {},
+                child: const Text('Lihat Semua'),
+              )
+            ],
+          ),
+          for (var data in datas)
+            Card(
+              elevation: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const FlutterLogo(size: 56),
                     ),
-                    child: const FlutterLogo(size: 56),
-                  ),
-                  const SizedBox(width: 8.0),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          data['name']!,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          data['specialist']!,
-                          style: const TextStyle(
-                            color: Colors.blue,
-                            fontSize: 14,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          '${data['desc']!.substring(0, 45 - 3)}...',
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text('Selengkapnya'),
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data['name']!,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            data['specialist']!,
+                            style: const TextStyle(
+                              color: Colors.blue,
+                              fontSize: 14,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '${data['desc']!.substring(0, 45 - 3)}...',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.black54,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text('Selengkapnya'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -275,77 +297,86 @@ class IndexHome extends StatelessWidget {
         'author': 'Kobo Kanaeru',
         'date': '12/09/2022 09:31',
         'views': '23',
+      },
+      {
+        'title': 'Ini hal penting yang wajib kamu ketahui',
+        'author': 'Kobo Kanaeru',
+        'date': '12/09/2022 09:31',
+        'views': '23',
       }
     ];
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Text(
-              'Berita Kesehatan',
-              style: TextStyle(fontSize: 18),
-            ),
-            const Spacer(),
-            TextButton(
-              onPressed: () {},
-              child: const Text('Lihat Semua'),
-            ),
-          ],
-        ),
-        for (var data in datas)
-          Card(
-            elevation: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      // image: DecorationImage(image: )
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Text(
+                'Berita Kesehatan',
+                style: TextStyle(fontSize: 18),
+              ),
+              const Spacer(),
+              TextButton(
+                onPressed: () {},
+                child: const Text('Lihat Semua'),
+              ),
+            ],
+          ),
+          for (var data in datas)
+            Card(
+              elevation: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        // image: DecorationImage(image: )
+                      ),
+                      child: const FlutterLogo(
+                        size: 76,
+                        style: FlutterLogoStyle.stacked,
+                      ),
                     ),
-                    child: const FlutterLogo(
-                      size: 76,
-                      style: FlutterLogoStyle.stacked,
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data['title']!,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '${data['author']!} - ${data['date']!}',
+                            style: const TextStyle(color: Colors.black54),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.remove_red_eye_outlined,
+                                color: Colors.blue,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                '${data['views']!} views',
+                                style: const TextStyle(color: Colors.blue),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 8.0),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          data['title']!,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          '${data['author']!} - ${data['date']!}',
-                          style: const TextStyle(color: Colors.black54),
-                        ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.remove_red_eye_outlined,
-                              color: Colors.blue,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              '${data['views']!} views',
-                              style: const TextStyle(color: Colors.blue),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
