@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/features/vaccine/faskes.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
 class IndexVaccine extends StatelessWidget {
@@ -30,7 +31,7 @@ class IndexVaccine extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "\t\tCari Lokasi Faskes",
                       suffixIcon: Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(right: 20),
                         child: Image(
                           width: 3,
                           height: 3,
@@ -103,165 +104,183 @@ class IndexVaccine extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/vaccine/faskes2.png",
-                          width: 100,
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FaskesPage(),
                         ),
-                        const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "Rs. Abdi Waluyo",
-                              style: TextStyle(
-                                color: deepBlackColor,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
-                              ),
+                      );
+                    },
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/vaccine/faskes2.png",
+                                  width: 100,
+                                ),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Rs. Abdi Waluyo",
+                                      style: TextStyle(
+                                        color: deepBlackColor,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Jl. HOS. Cokroaminoto No.31-33, \nRT.1/RW.3, Gondangdia, Kec.......",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: greyColor,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Jl. HOS. Cokroaminoto No.31-33, \nRT.1/RW.3, Gondangdia, Kec.......",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: greyColor,
-                                fontWeight: FontWeight.w400,
-                              ),
+                            const SizedBox(height: 8.5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text(
+                                  "Dosis Pertama dan Kedua",
+                                  style: TextStyle(
+                                    color: deepBlackColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  "Tersedia",
+                                  style: TextStyle(
+                                    color: greenColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8.5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Dosis Pertama dan Kedua",
-                          style: TextStyle(
-                            color: deepBlackColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Text(
-                          "Tersedia",
-                          style: TextStyle(
-                            color: greenColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/vaccine/ic_loc.png",
-                          width: 25,
-                          height: 25,
-                        ),
-                        const SizedBox(width: 12),
-                        const Text(
-                          "1.2 km dari rumah",
-                          style: TextStyle(
-                            color: greyColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/vaccine/faskes1.png",
-                          width: 100,
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "Rsud Mattaher",
-                              style: TextStyle(
-                                color: deepBlackColor,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Text(
-                              "Jl. HOS. Cokroaminoto No.31-33, \nRT.1/RW.3, Gondangdia, Kec.......",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: greyColor,
-                                fontWeight: FontWeight.w400,
-                              ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/vaccine/ic_loc.png",
+                                  width: 25,
+                                  height: 25,
+                                ),
+                                const SizedBox(width: 12),
+                                const Text(
+                                  "1.2 km dari rumah",
+                                  style: TextStyle(
+                                    color: greyColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 8.5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Dosis Kedua",
-                          style: TextStyle(
-                            color: deepBlackColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                  ),
+                  const SizedBox(height: 16),
+                  InkWell(
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/vaccine/faskes1.png",
+                                  width: 100,
+                                ),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "Rsud Mattaher",
+                                      style: TextStyle(
+                                        color: deepBlackColor,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Jl. HOS. Cokroaminoto No.31-33, \nRT.1/RW.3, Gondangdia, Kec.......",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: greyColor,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8.5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text(
+                                  "Dosis Kedua",
+                                  style: TextStyle(
+                                    color: deepBlackColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  "Tersedia",
+                                  style: TextStyle(
+                                    color: greenColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/vaccine/ic_loc.png",
+                                  width: 25,
+                                  height: 25,
+                                ),
+                                const SizedBox(width: 12),
+                                const Text(
+                                  "1.2 km dari rumah",
+                                  style: TextStyle(
+                                    color: greyColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        Text(
-                          "Tersedia",
-                          style: TextStyle(
-                            color: greenColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/vaccine/ic_loc.png",
-                          width: 25,
-                          height: 25,
-                        ),
-                        const SizedBox(width: 12),
-                        const Text(
-                          "1.2 km dari rumah",
-                          style: TextStyle(
-                            color: greyColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
