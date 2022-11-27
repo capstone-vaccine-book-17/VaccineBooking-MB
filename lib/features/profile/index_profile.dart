@@ -3,7 +3,7 @@ import 'package:w_vaccine/features/profile/family_group.dart';
 
 import 'package:w_vaccine/features/profile/list_menu.dart';
 import 'package:w_vaccine/features/profile/personal_data_page.dart';
-import 'package:w_vaccine/features/profile/ubah_password.dart';
+import 'package:w_vaccine/features/profile/change_password.dart';
 
 class IndexProfile extends StatelessWidget {
   const IndexProfile({super.key});

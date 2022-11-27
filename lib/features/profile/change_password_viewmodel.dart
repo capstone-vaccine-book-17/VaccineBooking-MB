@@ -1,44 +1,44 @@
 import 'package:flutter/material.dart';
 
 class ObscureSwitcher with ChangeNotifier {
-  bool _pwdlama = true;
-  bool _pwdbaru = true;
-  bool _pwdkonfirm = true;
+  bool _oldpwd = true;
+  bool _newpwd = true;
+  bool _pwdconfirm = true;
 
-  bool get pwdlama => _pwdlama;
-  bool get pwdbaru => _pwdbaru;
-  bool get pwdkonfirm => _pwdkonfirm;
+  bool get oldpwd => _oldpwd;
+  bool get newpwd => _newpwd;
+  bool get pwdconfirm => _pwdconfirm;
 
-  set pwdlama(bool value) {
-    _pwdlama = value;
+  set oldpwd(bool value) {
+    _oldpwd = value;
     notifyListeners();
   }
 
-  set pwdbaru(bool value) {
-    _pwdbaru = value;
+  set newpwd(bool value) {
+    _newpwd = value;
     notifyListeners();
   }
 
-  set pwdkonfirm(bool value) {
-    _pwdkonfirm = value;
+  set pwdconfirm(bool value) {
+    _pwdconfirm = value;
     notifyListeners();
   }
 
-  Icon get pwdlamaIcn => (_pwdlama)
+  Icon get oldpwdIcn => (_oldpwd)
       ? const Icon(
           Icons.visibility_off,
         )
       : const Icon(
           Icons.visibility,
         );
-  Icon get pwdbruIcn => (_pwdbaru)
+  Icon get newpwdIcn => (_newpwd)
       ? const Icon(
           Icons.visibility_off,
         )
       : const Icon(
           Icons.visibility,
         );
-  Icon get pwdknfrmIcn => (_pwdkonfirm)
+  Icon get pwdcnfrmIcn => (_pwdconfirm)
       ? const Icon(
           Icons.visibility_off,
         )

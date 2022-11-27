@@ -18,7 +18,7 @@ class AnggotaKeluarga extends StatelessWidget {
       {
         'nama': 'AfGGGifah Cahyani',
         'nik': '1312432423423',
-        'hub': 'Pribadi',
+        'hub': 'Bapak',
         'dom': 'JWakarta',
         'gender': 'Wanita',
         'age': '212'
@@ -26,7 +26,7 @@ class AnggotaKeluarga extends StatelessWidget {
       {
         'nama': 'AWAfifah Cah',
         'nik': '12432423423',
-        'hub': 'Pribadi',
+        'hub': 'Ibu',
         'dom': 'Jakarta',
         'gender': 'Wanita',
         'age': '22'
@@ -34,7 +34,7 @@ class AnggotaKeluarga extends StatelessWidget {
       {
         'nama': 'Afifah C',
         'nik': '1312432423423',
-        'hub': 'Pr23ibadi',
+        'hub': 'Kakak',
         'dom': 'Jak32arta',
         'gender': 'Wanita',
         'age': '29'
@@ -99,11 +99,12 @@ class AnggotaKeluarga extends StatelessWidget {
                               children: [
                                 Text(
                                   data['nama']!,
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(data['hub']!,
-                                    style:
-                                        const TextStyle(fontWeight: FontWeight.bold)),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold)),
                               ],
                             ),
                             const SizedBox(

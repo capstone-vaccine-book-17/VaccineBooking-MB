@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/profile/ubah_password_viewmodel.dart';
+import 'package:w_vaccine/features/profile/change_password_viewmodel.dart';
 
 class UbahPassword extends StatelessWidget {
   const UbahPassword({super.key});
@@ -9,49 +9,19 @@ class UbahPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Ubah Password',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 0,
-                      blurRadius: 6,
-                      offset: const Offset(4, 4),
-                    )
-                  ],
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 13, horizontal: 10),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          size: 32,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Text(
-                        'Ubah Password',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               Form(
                 child: Padding(
                   padding: const EdgeInsets.all(30),
@@ -75,8 +45,7 @@ class UbahPassword extends StatelessWidget {
                       key: formKey,
                       children: [
                         const Padding(
-                          padding: EdgeInsets.only(
-                              left: 14, right: 14, top: 8),
+                          padding: EdgeInsets.only(left: 14, right: 14, top: 8),
                           child: Text(
                             "Password lama",
                             style: TextStyle(
@@ -90,14 +59,14 @@ class UbahPassword extends StatelessWidget {
                               left: 14, right: 14, top: 8),
                           child: Consumer<ObscureSwitcher>(
                             builder: (context, provider, _) => TextFormField(
-                              obscureText: provider.pwdlama,
+                              obscureText: provider.oldpwd,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                   onPressed: () {
-                                    provider.pwdlama = !provider.pwdlama;
+                                    provider.oldpwd = !provider.oldpwd;
                                   },
-                                  icon: provider.pwdlamaIcn,
+                                  icon: provider.oldpwdIcn,
                                 ),
                                 hintText: "\tabcd1234",
                                 hintStyle: const TextStyle(
@@ -120,8 +89,7 @@ class UbahPassword extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(
-                              left: 14, right: 14, top: 8),
+                          padding: EdgeInsets.only(left: 14, right: 14, top: 8),
                           child: Text(
                             "Password baru",
                             style: TextStyle(
@@ -136,14 +104,14 @@ class UbahPassword extends StatelessWidget {
                           child: Consumer<ObscureSwitcher>(
                             builder: (context, provider, child) =>
                                 TextFormField(
-                              obscureText: provider.pwdbaru,
+                              obscureText: provider.newpwd,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                   onPressed: () {
-                                    provider.pwdbaru = !provider.pwdbaru;
+                                    provider.newpwd = !provider.newpwd;
                                   },
-                                  icon: provider.pwdbruIcn,
+                                  icon: provider.newpwdIcn,
                                 ),
                                 hintText: "\tabcd0000",
                                 hintStyle: const TextStyle(
@@ -166,8 +134,7 @@ class UbahPassword extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(
-                              left: 14, right: 14, top: 8),
+                          padding: EdgeInsets.only(left: 14, right: 14, top: 8),
                           child: Text(
                             "Konfirmasi password baru",
                             style: TextStyle(
@@ -182,15 +149,15 @@ class UbahPassword extends StatelessWidget {
                           child: Consumer<ObscureSwitcher>(
                             builder: (context, provider, child) =>
                                 TextFormField(
-                              obscureText: provider.pwdkonfirm,
+                              obscureText: provider.pwdconfirm,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                     onPressed: () {
-                                      provider.pwdkonfirm =
-                                          !provider.pwdkonfirm;
+                                      provider.pwdconfirm =
+                                          !provider.pwdconfirm;
                                     },
-                                    icon: provider.pwdknfrmIcn),
+                                    icon: provider.pwdcnfrmIcn),
                                 hintText: "\tabcd0000",
                                 hintStyle: const TextStyle(
                                   fontSize: 16,
