@@ -26,23 +26,23 @@ class ObscureSwitcher with ChangeNotifier {
 
   Icon get pwdlamaIcn => (_pwdlama)
       ? const Icon(
-          Icons.visibility,
+          Icons.visibility_off,
         )
       : const Icon(
-          Icons.visibility_off,
+          Icons.visibility,
         );
   Icon get pwdbruIcn => (_pwdbaru)
       ? const Icon(
-          Icons.visibility,
+          Icons.visibility_off,
         )
       : const Icon(
-          Icons.visibility_off,
+          Icons.visibility,
         );
   Icon get pwdknfrmIcn => (_pwdkonfirm)
       ? const Icon(
-          Icons.visibility,
+          Icons.visibility_off,
         )
       : const Icon(
-          Icons.visibility_off,
+          Icons.visibility,
         );
 }

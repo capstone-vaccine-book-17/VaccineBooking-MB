@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/profile/anggota_keluarga.dart';
 
 import 'package:w_vaccine/features/profile/list_menu.dart';
+import 'package:w_vaccine/features/profile/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/ubah_password.dart';
 
 class IndexProfile extends StatelessWidget {
@@ -74,6 +75,10 @@ class IndexProfile extends StatelessWidget {
                 name: 'Data Diri',
                 func: (() {
                   print('data diri ter click');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PersonalDataPage()));
                 }),
               ),
               ListMenu(
