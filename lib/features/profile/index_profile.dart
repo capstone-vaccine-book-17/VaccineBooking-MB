@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/anggota_keluarga.dart';
+import 'package:w_vaccine/features/profile/family_group.dart';
 
 import 'package:w_vaccine/features/profile/list_menu.dart';
 import 'package:w_vaccine/features/profile/personal_data_page.dart';

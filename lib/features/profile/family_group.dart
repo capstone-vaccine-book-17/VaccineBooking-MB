@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/detail_anggota_keluarga.dart';
+import 'package:w_vaccine/features/profile/detail_family_group.dart';
 
 class AnggotaKeluarga extends StatelessWidget {
   const AnggotaKeluarga({super.key});
