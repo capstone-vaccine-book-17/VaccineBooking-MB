@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class ListMenu extends StatelessWidget {
@@ -20,12 +19,13 @@ class ListMenu extends StatelessWidget {
         leading: Icon(
           icon,
           color: Colors.black,
+          size: 31,
         ),
         title: Text(name),
         trailing: IconButton(
           onPressed: func,
           icon: const Icon(
-            Icons.arrow_right,
+            Icons.keyboard_arrow_right,
             color: Colors.black,
             size: 40,
           ),

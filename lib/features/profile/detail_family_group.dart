@@ -19,7 +19,7 @@ class DetailFamily extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         title: const Text(
           'Anggota Keluarga',
@@ -49,7 +49,7 @@ class DetailFamily extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 14, right: 14, top: 15),
                     child: Text(
                       "Nama Lengkap",
@@ -65,7 +65,7 @@ class DetailFamily extends StatelessWidget {
                       readOnly: true,
                       decoration: InputDecoration(
                         hintText: name,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
                       ),
@@ -76,7 +76,7 @@ class DetailFamily extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 14, right: 14, top: 15),
                     child: Text(
                       "NIK",
@@ -92,7 +92,7 @@ class DetailFamily extends StatelessWidget {
                       readOnly: true,
                       decoration: InputDecoration(
                         hintText: nik,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
                       ),
@@ -103,7 +103,7 @@ class DetailFamily extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 14, right: 14, top: 15),
                     child: Text(
                       "Umur",
@@ -119,7 +119,7 @@ class DetailFamily extends StatelessWidget {
                       readOnly: true,
                       decoration: InputDecoration(
                         hintText: age,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
                       ),
@@ -130,7 +130,7 @@ class DetailFamily extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 14, right: 14, top: 15),
                     child: Text(
                       "Jenis Kelamin",
@@ -146,7 +146,7 @@ class DetailFamily extends StatelessWidget {
                       readOnly: true,
                       decoration: InputDecoration(
                         hintText: gender,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
                       ),
@@ -157,7 +157,7 @@ class DetailFamily extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 14, right: 14, top: 15),
                     child: Text(
                       "Hubungan",
@@ -173,7 +173,7 @@ class DetailFamily extends StatelessWidget {
                       readOnly: true,
                       decoration: InputDecoration(
                         hintText: hub,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
                       ),

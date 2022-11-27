@@ -71,7 +71,7 @@ class IndexProfile extends StatelessWidget {
               ),
               const SizedBox(height: 35),
               ListMenu(
-                icon: Icons.people,
+                icon: Icons.person,
                 name: 'Data Diri',
                 func: (() {
                   print('data diri ter click');
@@ -82,7 +82,7 @@ class IndexProfile extends StatelessWidget {
                 }),
               ),
               ListMenu(
-                icon: Icons.people_outline_outlined,
+                icon: Icons.people_sharp,
                 name: 'Anggota Keluarga',
                 func: (() {
                   print('Anggota Keluarga ter click');
@@ -104,7 +104,7 @@ class IndexProfile extends StatelessWidget {
                 }),
               ),
               ListMenu(
-                icon: Icons.exit_to_app,
+                icon: Icons.exit_to_app_sharp,
                 name: 'Keluar Akun',
                 func: (() {
                   print('Keluar Akun ter click');

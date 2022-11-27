@@ -44,7 +44,7 @@ class AnggotaKeluarga extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         title: const Text(
           'Anggota Keluarga',
@@ -99,11 +99,11 @@ class AnggotaKeluarga extends StatelessWidget {
                               children: [
                                 Text(
                                   data['nama']!,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 Text(data['hub']!,
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
+                                        const TextStyle(fontWeight: FontWeight.bold)),
                               ],
                             ),
                             const SizedBox(
@@ -113,11 +113,11 @@ class AnggotaKeluarga extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'NIK: ' + data['nik']!,
-                                  style: TextStyle(color: Colors.grey),
+                                  'NIK: ${data['nik']!}',
+                                  style: const TextStyle(color: Colors.grey),
                                 ),
                                 Text(data['dom']!,
-                                    style: TextStyle(color: Colors.grey)),
+                                    style: const TextStyle(color: Colors.grey)),
                               ],
                             ),
                           ],
