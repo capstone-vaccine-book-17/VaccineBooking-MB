@@ -146,8 +146,8 @@ class _LoginPageState extends State<LoginPage> {
                         _isShowPass.value = !_isShowPass.value;
                       },
                       icon: Icon(_isShowPass.value
-                          ? Icons.enhanced_encryption_outlined
-                          : Icons.no_encryption_gmailerrorred_outlined),
+                          ? Icons.visibility_off
+                          : Icons.visibility),
                     ),
                   ),
                   onFieldSubmitted: (_) => login(),

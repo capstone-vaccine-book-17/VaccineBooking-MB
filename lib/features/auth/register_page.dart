@@ -274,8 +274,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         _isShowPass.value = !_isShowPass.value;
                       },
                       icon: Icon(_isShowPass.value
-                          ? Icons.enhanced_encryption_outlined
-                          : Icons.no_encryption_gmailerrorred_outlined),
+                          ? Icons.visibility_off
+                          : Icons.visibility),
                     ),
                   ),
                   onFieldSubmitted: (_) => register(),
