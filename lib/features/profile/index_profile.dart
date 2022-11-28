@@ -1,12 +1,39 @@
+import 'dart:ffi';
+import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:w_vaccine/features/profile/family_group.dart';
 
 import 'package:w_vaccine/features/profile/list_menu.dart';
 import 'package:w_vaccine/features/profile/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/change_password.dart';
+import 'package:image_picker/image_picker.dart';
 
-class IndexProfile extends StatelessWidget {
+class IndexProfile extends StatefulWidget {
   const IndexProfile({super.key});
+
+  @override
+  State<IndexProfile> createState() => _IndexProfileState();
+}
+
+class _IndexProfileState extends State<IndexProfile> {
+  File? _image;
+
+  Future _pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+      File? img = File(image.path);
+      setState(() {
+        _image = img;
+        Navigator.pop(context);
+      });
+    } on PlatformException catch (e) {
+      print(e);
+      Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +70,35 @@ class IndexProfile extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      const CircleAvatar(
-                        radius: 55,
-                        backgroundColor: Colors.grey,
+                      Stack(
+                        children: [
+                          Container(
+                            height: 120,
+                            width: 120,
+                            color: Colors.white,
+                          ),
+                          _image == null
+                              ? CircleAvatar(
+                                  radius: 55,
+                                  backgroundColor: Colors.blue,
+                                )
+                              : CircleAvatar(
+                                  radius: 55,
+                                  backgroundImage: FileImage(_image!),
+                                ),
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: SizedBox(
+                              height: 65,
+                              width: 65,
+                              child: GestureDetector(
+                                onTap: () => _pickImage(ImageSource.gallery),
+                                child: Image.asset('assets/addimage.png'),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
