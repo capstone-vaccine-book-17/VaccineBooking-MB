@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/features/vaccine/loading_page.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
 class FaskesPage extends StatelessWidget {
@@ -368,6 +369,7 @@ class FaskesPage extends StatelessWidget {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 10),
                           Card(
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -477,7 +479,15 @@ class FaskesPage extends StatelessWidget {
                                 textStyle: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w500),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LoadingPageBookingVaccine(),
+                                  ),
+                                );
+                              },
                               child: const Text(
                                 "Pesan Vaksin",
                                 style: TextStyle(
