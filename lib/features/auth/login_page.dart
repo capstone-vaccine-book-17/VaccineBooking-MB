@@ -1,7 +1,8 @@
 import 'package:email_validator/email_validator.dart';
-
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/features/auth/login_view_model.dart';
 import 'package:w_vaccine/features/auth/register_page.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,11 +12,44 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late LoginViewModel vm;
+
+  // Form and Text Controller
+  final _loginFormKey = GlobalKey<FormState>();
+  final _emailCtl = TextEditingController();
+  final _passwordCtl = TextEditingController();
+
+  final _initialFocus = FocusNode();
+
+  /// Obsure Password hide and show
   final ValueNotifier<bool> _isShowPass = ValueNotifier(true);
+
+  void login() {
+    if (!_loginFormKey.currentState!.validate()) {
+      return;
+    }
+    vm.submit(
+      email: _emailCtl.text.trim(),
+      pass: _passwordCtl.text.trim(),
+    );
+  }
 
   @override
   void initState() {
     super.initState();
+    vm = Provider.of<LoginViewModel>(context, listen: false);
+
+    /// Run method on Widget build complete
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FocusScope.of(context).requestFocus(_initialFocus);
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailCtl.dispose();
+    _passwordCtl.dispose();
+    super.dispose();
   }
 
   @override
@@ -46,6 +80,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _form() {
     return Form(
+      key: _loginFormKey,
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
@@ -67,7 +102,10 @@ class _LoginPageState extends State<LoginPage> {
             const Text('Email'),
             const SizedBox(height: 12.0),
             TextFormField(
+              controller: _emailCtl,
+              focusNode: _initialFocus,
               keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
               decoration: const InputDecoration(
                 hintText: 'Masukan Alamat Email',
                 border: OutlineInputBorder(
@@ -77,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               validator: (value) {
-                if (value == null || EmailValidator.validate(value)) {
+                if (value == null || !EmailValidator.validate(value)) {
                   return "Silahkan masukan alamat email dengan benar";
                 }
                 return null;
@@ -92,7 +130,9 @@ class _LoginPageState extends State<LoginPage> {
               valueListenable: _isShowPass,
               builder: (context, value, child) {
                 return TextFormField(
+                  controller: _passwordCtl,
                   obscureText: _isShowPass.value,
+                  textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                     hintText: 'Masukan Password',
@@ -110,6 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                           : Icons.no_encryption_gmailerrorred_outlined),
                     ),
                   ),
+                  onFieldSubmitted: (_) => login(),
                   validator: (value) {
                     if (value == null || value.length < 6) {
                       return "Silahkan masukan password lebih dari 6";
@@ -124,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
 
             /// Login Button
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => login(),
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(48),
                 shape: RoundedRectangleBorder(
