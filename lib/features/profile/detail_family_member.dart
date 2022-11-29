@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/features/profile/detail_family_model.dart';
 
 class DetailFamily extends StatelessWidget {
-  const DetailFamily(
-      {super.key,
-      required this.name,
-      required this.nik,
-      required this.age,
-      required this.gender,
-      required this.hub});
+  const DetailFamily({super.key, required this.data});
 
-  final String name;
-  final String nik;
-  final String age;
-  final String gender;
-  final String hub;
+  final ModelDetailFamily data;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: (hub == 'Pribadi')
+      appBar: (data.relationship == 'Pribadi')
           ? AppBar(
               iconTheme: const IconThemeData(color: Colors.black),
               backgroundColor: Colors.white,
@@ -61,7 +53,9 @@ class DetailFamily extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 12),
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(500, 40),
                                     backgroundColor: const Color(0xff3366FF),
@@ -141,7 +135,7 @@ class DetailFamily extends StatelessWidget {
                     child: TextField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: name,
+                        hintText: data.name,
                         hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
@@ -168,7 +162,7 @@ class DetailFamily extends StatelessWidget {
                     child: TextField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: nik,
+                        hintText: data.nik,
                         hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
@@ -195,7 +189,7 @@ class DetailFamily extends StatelessWidget {
                     child: TextField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: age,
+                        hintText: data.age,
                         hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
@@ -222,7 +216,7 @@ class DetailFamily extends StatelessWidget {
                     child: TextField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: gender,
+                        hintText: data.gender,
                         hintStyle: const TextStyle(
                           color: Colors.black,
                         ),
@@ -249,7 +243,7 @@ class DetailFamily extends StatelessWidget {
                     child: TextField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: hub,
+                        hintText: data.relationship,
                         hintStyle: const TextStyle(
                           color: Colors.black,
                         ),

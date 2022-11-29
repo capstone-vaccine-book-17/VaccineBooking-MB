@@ -6,7 +6,9 @@ class ModelDetailFamily {
   final String relationship;
 
   const ModelDetailFamily(
-      this.name, this.nik, this.age, this.gender, this.relationship);
+      {required this.name,
+      required this.nik,
+      required this.age,
+      required this.gender,
+      required this.relationship});
 }
-
-

@@ -4,6 +4,8 @@ import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/features/profile/change_address_view_model.dart';
 import 'package:w_vaccine/features/profile/change_email_view_model.dart';
 import 'package:w_vaccine/features/profile/change_password_viewmodel.dart';
+import 'package:w_vaccine/features/profile/familydata_viewmodel.dart';
+import 'package:w_vaccine/features/profile/profile_image_viewmodel.dart';
 import 'package:w_vaccine/styles/theme.dart';
 
 void main() {
@@ -19,6 +21,12 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => ChangeAddressViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProfileImage(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FamilyData(),
         ),
       ],
       child: const MyApp(),
