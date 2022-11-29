@@ -9,8 +9,8 @@ class ProfileImage with ChangeNotifier {
   Future openGallery() async {
     final imageGallery =
         await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    image = File(imageGallery!.path);
+    if (imageGallery == null) return;
+    image = File(imageGallery.path);
     notifyListeners();
   }
 }
