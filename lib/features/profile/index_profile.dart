@@ -1,15 +1,10 @@
-import 'dart:ffi';
-import 'dart:io';
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:w_vaccine/features/profile/family_members_page.dart';
 import 'package:w_vaccine/features/profile/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/change_password_page.dart';
 import 'package:w_vaccine/features/profile/profile_image_viewmodel.dart';
 
 import '../../widgets/profile/list_menu.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class IndexProfile extends StatefulWidget {
@@ -66,7 +61,7 @@ class _IndexProfileState extends State<IndexProfile> {
                           Consumer(
                             builder: (context, proider, _) =>
                                 (provider.image == null)
-                                    ? CircleAvatar(
+                                    ? const CircleAvatar(
                                         radius: 55,
                                         backgroundColor: Colors.blue,
                                       )

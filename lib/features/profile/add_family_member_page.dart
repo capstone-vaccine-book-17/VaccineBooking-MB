@@ -53,7 +53,7 @@ class _AddFamilyMemberPageState extends State<AddFamilyMemberPage> {
                         const SizedBox(height: 12.0),
                         TextField(
                           controller: nameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(8),
@@ -68,7 +68,7 @@ class _AddFamilyMemberPageState extends State<AddFamilyMemberPage> {
                         const SizedBox(height: 12.0),
                         TextField(
                           controller: nikController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(8),

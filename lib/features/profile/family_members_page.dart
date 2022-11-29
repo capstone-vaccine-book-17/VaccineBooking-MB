@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/profile/add_family_member_page.dart';
 import 'package:w_vaccine/features/profile/detail_family_member.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/profile/detail_family_model.dart';
 import 'package:w_vaccine/features/profile/familydata_viewmodel.dart';
 
 class FamilyMembersPage extends StatefulWidget {
@@ -13,6 +12,7 @@ class FamilyMembersPage extends StatefulWidget {
 }
 
 class _FamilyMembersPageState extends State<FamilyMembersPage> {
+  @override
   Widget build(BuildContext context) {
     final provider = Provider.of<FamilyData>(context);
 
@@ -115,7 +115,7 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => AddFamilyMemberPage()));
+                      builder: (context) => const AddFamilyMemberPage()));
             },
             child: const Text(
               "Tambah",
