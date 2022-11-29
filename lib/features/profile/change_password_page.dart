@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/profile/change_password_viewmodel.dart';
 
-class UbahPassword extends StatelessWidget {
-  const UbahPassword({super.key});
+class ChangePasswordPage extends StatelessWidget {
+  const ChangePasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {

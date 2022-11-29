@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/features/profile/change_address_page.dart';
+import 'package:w_vaccine/features/profile/change_email_page.dart';
 
 class PersonalDataPage extends StatefulWidget {
   const PersonalDataPage({super.key});
@@ -49,7 +51,6 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Nama lengkap
-
             const Text('Nama Lengkap'),
             const SizedBox(height: 12.0),
             const TextField(
@@ -83,9 +84,16 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const Text('Alamat'),
             const SizedBox(height: 12.0),
             TextField(
+              // enabled: false,
               decoration: InputDecoration(
                 suffixIcon: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ChangeAddressPage(),
+                      ),
+                    );
+                  },
                   child: const Text('Ubah'),
                 ),
                 border: const OutlineInputBorder(
@@ -101,9 +109,16 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const Text('Email'),
             const SizedBox(height: 12.0),
             TextField(
+              // enabled: false,
               decoration: InputDecoration(
                 suffixIcon: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ChangeEmailPage(),
+                      ),
+                    );
+                  },
                   child: const Text('Ubah'),
                 ),
                 border: const OutlineInputBorder(
@@ -128,18 +143,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
                 ),
               ),
             ),
-
-            /// Save Button
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text('Simpan'),
-            ),
+            const SizedBox(height: 12.0),
           ],
         ),
       ),

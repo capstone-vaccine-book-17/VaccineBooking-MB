@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/profile/detail_family_group.dart';
 
-class AnggotaKeluarga extends StatelessWidget {
-  const AnggotaKeluarga({super.key});
+class FamilyMembersPage extends StatelessWidget {
+  const FamilyMembersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
