@@ -67,7 +67,7 @@ class IndexHome extends StatelessWidget {
   Widget _customAppBar() {
     String temp1 = 'Hai Namamu';
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Column(
         children: [
           Row(
@@ -209,7 +209,7 @@ class IndexHome extends StatelessWidget {
       },
     ];
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Column(
         children: [
           Row(
@@ -306,7 +306,7 @@ class IndexHome extends StatelessWidget {
       }
     ];
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Column(
         children: [
           Row(
