@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:w_vaccine/features/auth/login_page.dart';
+import 'package:w_vaccine/features/auth/login_view_model.dart';
+import 'package:w_vaccine/features/auth/register_page.dart';
+import 'package:w_vaccine/features/auth/register_view_model.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/styles/theme.dart';
 
@@ -12,11 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'WVaccine',
-      debugShowCheckedModeBanner: true,
-      theme: lightTheme,
-      home: const IndexNavigation(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => RegisterViewModel()),
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+      ],
+      child: MaterialApp(
+        title: 'WVaccine',
+        debugShowCheckedModeBanner: true,
+        theme: lightTheme,
+        home: const RegisterPage(),
+      ),
     );
   }
 }
