@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
+import 'package:w_vaccine/styles/icons.dart';
 
 class DetailFamily extends StatelessWidget {
   const DetailFamily({super.key, required this.data});
@@ -28,7 +29,7 @@ class DetailFamily extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.delete_forever_outlined),
+                  icon: const Icon(WvaccineIcons.delete),
                   color: Colors.red,
                   onPressed: () {
                     showModalBottomSheet(

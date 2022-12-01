@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
-import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
 
 class AddFamilyMemberViewModel with ChangeNotifier {
   

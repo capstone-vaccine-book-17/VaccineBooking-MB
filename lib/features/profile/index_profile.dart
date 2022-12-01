@@ -3,9 +3,9 @@ import 'package:w_vaccine/features/profile/page/family_members_page.dart';
 import 'package:w_vaccine/features/profile/page/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/page/change_password_page.dart';
 import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
-
 import '../../widgets/profile/list_menu.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/styles/icons.dart';
 
 class IndexProfile extends StatefulWidget {
   const IndexProfile({super.key});
@@ -20,7 +20,7 @@ class _IndexProfileState extends State<IndexProfile> {
     final provider = Provider.of<ProfileImage>(context);
     return Scaffold(
         appBar: AppBar(
-          title: Text('Profile'),
+          title: const Text('Profile'),
           elevation: 0,
           toolbarHeight: 80,
         ),
@@ -50,7 +50,7 @@ class _IndexProfileState extends State<IndexProfile> {
                     //mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 16),
                         child: Stack(
                           children: [
                             Consumer(
@@ -77,7 +77,7 @@ class _IndexProfileState extends State<IndexProfile> {
                                 width: 65,
                                 child: GestureDetector(
                                   onTap: () => provider.openGallery(),
-                                  child: Image.asset('assets/addimage.png'),
+                                  child: Image.asset('assets/png/addimage.png'),
                                 ),
                               ),
                             ),
@@ -85,7 +85,7 @@ class _IndexProfileState extends State<IndexProfile> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
@@ -111,7 +111,7 @@ class _IndexProfileState extends State<IndexProfile> {
               ),
               const SizedBox(height: 35),
               ListMenu(
-                icon: Icons.person,
+                icon: WvaccineIcons.people,
                 name: 'Data Diri',
                 func: (() {
                   Navigator.push(
@@ -121,8 +121,9 @@ class _IndexProfileState extends State<IndexProfile> {
                 }),
               ),
               ListMenu(
-                icon: Icons.people_sharp,
+                icon: WvaccineIcons.peoples,
                 name: 'Anggota Keluarga',
+                size: 18,
                 func: (() {
                   Navigator.push(
                       context,
@@ -131,7 +132,7 @@ class _IndexProfileState extends State<IndexProfile> {
                 }),
               ),
               ListMenu(
-                icon: Icons.lock,
+                icon: WvaccineIcons.lock,
                 name: 'Ubah Password',
                 func: (() {
                   Navigator.push(
@@ -141,7 +142,7 @@ class _IndexProfileState extends State<IndexProfile> {
                 }),
               ),
               ListMenu(
-                icon: Icons.exit_to_app_sharp,
+                icon: WvaccineIcons.exit,
                 name: 'Keluar Akun',
                 func: (() {}),
               ),

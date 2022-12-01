@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData lightTheme = ThemeData.light().copyWith();
 
 ThemeData testTheme = ThemeData(
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     color: Colors.white,
     titleTextStyle: TextStyle(
       color: Colors.black,

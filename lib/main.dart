@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
-import 'package:w_vaccine/features/profile/page/add_family_member_page.dart';
-import 'package:w_vaccine/features/profile/page/change_address_page.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
