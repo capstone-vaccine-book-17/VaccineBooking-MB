@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/home/index_home.dart';
 import 'package:w_vaccine/features/profile/index_profile.dart';
+import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
 import 'package:w_vaccine/features/ticket/index_ticket.dart';
 import 'package:w_vaccine/features/vaccine/index_vaccine.dart';
 import 'package:provider/provider.dart';
@@ -15,11 +19,11 @@ class IndexNavigation extends StatefulWidget {
 class _IndexNavigationState extends State<IndexNavigation> {
   int _currentIndexNavigation = 0;
 
-  List<Widget> pages = const [
-    IndexHome(),
-    IndexVaccine(),
-    IndexTicket(),
-    IndexProfile(),
+  List<Widget> pages = [
+    const IndexHome(),
+    const IndexVaccine(),
+    const IndexTicket(),
+    const IndexProfile(),
   ];
 
   @override
