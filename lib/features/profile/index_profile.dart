@@ -19,18 +19,16 @@ class _IndexProfileState extends State<IndexProfile> {
   Widget build(BuildContext context) {
     final provider = Provider.of<ProfileImage>(context);
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Profile'),
+          elevation: 0,
+          toolbarHeight: 80,
+        ),
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
-                child: Text(
-                  'Profile',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -49,62 +47,63 @@ class _IndexProfileState extends State<IndexProfile> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 24),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Stack(
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 120,
-                            color: Colors.white,
-                          ),
-                          Consumer(
-                            builder: (context, proider, _) =>
-                                (provider.image == null)
-                                    ? const CircleAvatar(
-                                        radius: 55,
-                                        backgroundColor: Colors.blue,
-                                      )
-                                    : ClipOval(
-                                        child: Image.file(
-                                          provider.image!,
-                                          width: 100,
-                                          height: 100,
-                                          fit: BoxFit.cover,
+                      Padding(
+                        padding: EdgeInsets.only(left: 16),
+                        child: Stack(
+                          children: [
+                            Consumer(
+                              builder: (context, proider, _) =>
+                                  (provider.image == null)
+                                      ? const CircleAvatar(
+                                          radius: 55,
+                                          backgroundColor: Colors.blue,
+                                        )
+                                      : ClipOval(
+                                          child: Image.file(
+                                            provider.image!,
+                                            width: 110,
+                                            height: 110,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                          ),
-                          Positioned(
-                            right: 0,
-                            bottom: 0,
-                            child: SizedBox(
-                              height: 65,
-                              width: 65,
-                              child: GestureDetector(
-                                onTap: () => provider.openGallery(),
-                                child: Image.asset('assets/addimage.png'),
+                            ),
+                            Positioned(
+                              right: -12,
+                              bottom: -12,
+                              child: SizedBox(
+                                height: 65,
+                                width: 65,
+                                child: GestureDetector(
+                                  onTap: () => provider.openGallery(),
+                                  child: Image.asset('assets/addimage.png'),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Halo, Afifah Cahyaningsih',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 18),
-                          Text(
-                            'NIK: 153424982422',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey),
-                          ),
-                        ],
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Halo, Afifah Cahyaningsih',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 18),
+                            Text(
+                              'NIK: 153424982422',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),

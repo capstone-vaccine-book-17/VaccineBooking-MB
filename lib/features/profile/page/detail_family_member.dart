@@ -45,11 +45,16 @@ class DetailFamily extends StatelessWidget {
                             padding: const EdgeInsets.all(25),
                             child: Column(
                               children: [
-                                const Icon(Icons.line_axis_sharp),
+                                Image.asset(
+                                  'assets/draghandle.png',
+                                  cacheHeight: 6,
+                                  cacheWidth: 45,
+                                ),
                                 const SizedBox(height: 27),
                                 const Text(
                                   'Apa anda yakin ingin menghapus anggota keluarga?',
                                   style: TextStyle(fontSize: 20),
+                                  textAlign: TextAlign.center,
                                 ),
                                 const SizedBox(height: 12),
                                 ElevatedButton(

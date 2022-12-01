@@ -27,9 +27,4 @@ class FamilyData with ChangeNotifier {
   ];
 
   List<ModelDetailFamily> get datas => _datas;
-
-  void add(ModelDetailFamily data) {
-    _datas.add(data);
-    notifyListeners();
-  }
 }

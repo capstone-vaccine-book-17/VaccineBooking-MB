@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
+import 'package:w_vaccine/features/profile/page/family_members_page.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 import 'package:w_vaccine/widgets/dropdown_button_custom.dart';
 import 'package:w_vaccine/widgets/text_form_custom.dart';
@@ -64,7 +67,7 @@ class _AddFamilyMemberPageState extends State<AddFamilyMemberPage> {
     // final provider = Provider.of<FamilyData>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah Anggota'),
+        title: const Text('Tambah Anggotaa'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

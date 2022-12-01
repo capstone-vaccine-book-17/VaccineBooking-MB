@@ -21,7 +21,6 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
         title: const Text(
           'Anggota Keluarga',
           style: TextStyle(color: Colors.black),

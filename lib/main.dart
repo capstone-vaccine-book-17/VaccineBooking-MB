@@ -48,9 +48,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'WVaccine',
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
+      theme: testTheme,
       // home: const IndexNavigation(),
-      home: const ChangeAddressPage(),
+      home: const IndexNavigation(),
     );
   }
 }
