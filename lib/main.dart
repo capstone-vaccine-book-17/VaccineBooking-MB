@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
-import 'package:w_vaccine/features/profile/change_address_view_model.dart';
-import 'package:w_vaccine/features/profile/change_email_view_model.dart';
-import 'package:w_vaccine/features/profile/change_password_viewmodel.dart';
-import 'package:w_vaccine/features/profile/familydata_viewmodel.dart';
-import 'package:w_vaccine/features/profile/profile_image_viewmodel.dart';
+import 'package:w_vaccine/features/profile/page/add_family_member_page.dart';
+import 'package:w_vaccine/features/profile/page/change_address_page.dart';
+import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_password_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
 import 'package:w_vaccine/styles/theme.dart';
 
 void main() {
@@ -21,6 +24,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => ChangeAddressViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AddFamilyMemberViewModel(),
         ),
         ChangeNotifierProvider(
           create: (_) => ProfileImage(),
@@ -43,7 +49,8 @@ class MyApp extends StatelessWidget {
       title: 'WVaccine',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      home: const IndexNavigation(),
+      // home: const IndexNavigation(),
+      home: const ChangeAddressPage(),
     );
   }
 }

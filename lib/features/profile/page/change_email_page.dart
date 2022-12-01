@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/change_email_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/widgets/button_form_custom.dart';
+import 'package:w_vaccine/widgets/text_form_custom.dart';
 
 class ChangeEmailPage extends StatefulWidget {
   const ChangeEmailPage({super.key});
@@ -69,16 +71,10 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
           children: [
             const Text('Email'),
             const SizedBox(height: 12.0),
-            TextFormField(
+            TextFormCustom(
               controller: _emailCtl,
               textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
+              hintText: 'Masukan email baru',
               onFieldSubmitted: (_) => save(),
               validator: (value) {
                 if (value == null) {
@@ -90,16 +86,7 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
             const SizedBox(height: 12.0),
 
             /// Save Button
-            ElevatedButton(
-              onPressed: () => save(),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text('Simpan'),
-            ),
+            ButtonFormCustom(text: 'Simpan', onPressed: () => save()),
           ],
         ),
       ),

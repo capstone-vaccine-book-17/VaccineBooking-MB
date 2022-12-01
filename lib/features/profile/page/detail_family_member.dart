@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/detail_family_model.dart';
+import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
 
 class DetailFamily extends StatelessWidget {
   const DetailFamily({super.key, required this.data});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/profile/change_password_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/change_password_viewmodel.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});

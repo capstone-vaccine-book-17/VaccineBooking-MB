@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/change_address_page.dart';
-import 'package:w_vaccine/features/profile/change_email_page.dart';
+import 'package:w_vaccine/features/profile/page/change_address_page.dart';
+import 'package:w_vaccine/features/profile/page/change_email_page.dart';
 
 class PersonalDataPage extends StatefulWidget {
   const PersonalDataPage({super.key});

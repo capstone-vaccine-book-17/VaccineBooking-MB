@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/family_members_page.dart';
-import 'package:w_vaccine/features/profile/personal_data_page.dart';
-import 'package:w_vaccine/features/profile/change_password_page.dart';
-import 'package:w_vaccine/features/profile/profile_image_viewmodel.dart';
+import 'package:w_vaccine/features/profile/page/family_members_page.dart';
+import 'package:w_vaccine/features/profile/page/personal_data_page.dart';
+import 'package:w_vaccine/features/profile/page/change_password_page.dart';
+import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
 
 import '../../widgets/profile/list_menu.dart';
 import 'package:provider/provider.dart';
