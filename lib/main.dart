@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/auth/login_view_model.dart';
+import 'package:w_vaccine/features/auth/register_page.dart';
 import 'package:w_vaccine/features/auth/register_view_model.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/styles/theme.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         title: 'WVaccine',
         debugShowCheckedModeBanner: true,
         theme: lightTheme,
-        home: const IndexNavigation(),
+        // home: const IndexNavigation(),
+        home: const RegisterPage(),
       ),
     );
   }

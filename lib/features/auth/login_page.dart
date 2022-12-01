@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/auth/login_view_model.dart';
 import 'package:w_vaccine/features/auth/register_page.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/widgets/text_form_custom.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -101,19 +102,11 @@ class _LoginPageState extends State<LoginPage> {
             /// Email
             const Text('Email'),
             const SizedBox(height: 12.0),
-            TextFormField(
+            TextFormCustom(
               controller: _emailCtl,
               focusNode: _initialFocus,
               keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                hintText: 'Masukan Alamat Email',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
+              hintText: 'Masukan Alamat Email',
               validator: (value) {
                 if (value == null || !EmailValidator.validate(value)) {
                   return "Silahkan masukan alamat email dengan benar";
@@ -129,27 +122,12 @@ class _LoginPageState extends State<LoginPage> {
             ValueListenableBuilder(
               valueListenable: _isShowPass,
               builder: (context, value, child) {
-                return TextFormField(
+                return TextFormCustom(
                   controller: _passwordCtl,
-                  obscureText: _isShowPass.value,
+                  hintText: 'Masukan Password',
+                  valueListenablePass: _isShowPass,
                   textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    hintText: 'Masukan Password',
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        _isShowPass.value = !_isShowPass.value;
-                      },
-                      icon: Icon(_isShowPass.value
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                    ),
-                  ),
                   onFieldSubmitted: (_) => login(),
                   validator: (value) {
                     if (value == null || value.length < 6) {
@@ -160,7 +138,6 @@ class _LoginPageState extends State<LoginPage> {
                 );
               },
             ),
-
             const SizedBox(height: 12.0),
 
             /// Login Button

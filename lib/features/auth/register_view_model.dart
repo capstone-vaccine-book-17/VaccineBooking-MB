@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 class RegisterViewModel with ChangeNotifier {
-  final List<String> _genders = ['laki-laki', 'perempuan'];
-
-  List<String> get genders => List.unmodifiable(_genders);
+  List<String> get genders => List.unmodifiable(['laki-laki', 'perempuan']);
 
   void submit({
     required String fullName,
     required String nik,
     required String address,
-    required String email,
     required String gender,
+    required String dateOfBirth,
+    required String email,
     required String pass,
   }) {
     // Something to do
     print(fullName);
     print(nik);
     print(address);
-    print(email);
     print(gender);
+    print(dateOfBirth);
+    print(email);
     print(pass);
   }
 }
