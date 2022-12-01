@@ -3,6 +3,7 @@ import 'package:w_vaccine/features/home/index_home.dart';
 import 'package:w_vaccine/features/profile/index_profile.dart';
 import 'package:w_vaccine/features/ticket/index_ticket.dart';
 import 'package:w_vaccine/features/vaccine/index_vaccine.dart';
+import 'package:w_vaccine/styles/icons.dart';
 
 class IndexNavigation extends StatefulWidget {
   const IndexNavigation({super.key});
@@ -45,7 +46,7 @@ class _IndexNavigationState extends State<IndexNavigation> {
             tooltip: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.food_bank),
+            icon: Icon(WvaccineIcons.vaccine),
             label: 'Vaksin',
             tooltip: 'Vaksin',
           ),
