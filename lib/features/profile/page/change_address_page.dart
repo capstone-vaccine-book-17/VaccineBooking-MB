@@ -48,9 +48,9 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
     vm = Provider.of<ChangeAddressViewModel>(context, listen: false);
 
     /// Run method on Widget build complete
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   FocusScope.of(context).requestFocus(_initialFocus);
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FocusScope.of(context).requestFocus(_initialFocus);
+    });
     _selectedProvince.addListener(resetDropdownCity);
     super.initState();
   }
