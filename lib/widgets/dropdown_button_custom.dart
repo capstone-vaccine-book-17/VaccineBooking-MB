@@ -12,7 +12,7 @@ class DropdownButtonCustom extends StatelessWidget {
   final ValueNotifier<String> valueListenable;
   final String hintText;
   final String errorMsg;
-  final List<String>? items;
+  final List<String> items;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class DropdownButtonCustom extends StatelessWidget {
       valueListenable: valueListenable,
       builder: (context, value, child) {
         return DropdownButtonHideUnderline(
-          child: DropdownButtonFormField<String?>(
+          child: DropdownButtonFormField<String>(
             decoration: InputDecoration(
               hintText: hintText,
               border: const OutlineInputBorder(
@@ -29,11 +29,11 @@ class DropdownButtonCustom extends StatelessWidget {
                 ),
               ),
             ),
-            // value: valueListenable.value,
+            value: valueListenable.value == '' ? null : valueListenable.value,
             isDense: true,
             items: items
-                ?.map(
-                  (e) => DropdownMenuItem<String?>(
+                .map(
+                  (e) => DropdownMenuItem<String>(
                     value: e,
                     child: Text(e),
                   ),

@@ -11,13 +11,13 @@ class ChangeAddressViewModel with ChangeNotifier {
 
   void submit({
     required String newAddress,
-    required String city,
     required String province,
+    required String city,
     required String postalCode,
   }) {
     print(newAddress);
-    print(city);
     print(province);
+    print(city);
     print(postalCode);
   }
 

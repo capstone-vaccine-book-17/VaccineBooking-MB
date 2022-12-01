@@ -32,14 +32,15 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
     }
     vm.submit(
       newAddress: _newAddressCtl.text.trim(),
-      city: _selectedCity.value.trim(),
       province: _selectedProvince.value.trim(),
+      city: _selectedCity.value.trim(),
       postalCode: _postalCodeCtl.text.trim(),
     );
   }
 
-  void reset() {
-    // _selectedCity.value = '';
+  void resetDropdownCity() {
+    // https: //gist.github.com/dyegovieira/a2f78d241090a77939100e380987b8a1
+    _selectedCity.value = '';
   }
 
   @override
@@ -50,7 +51,7 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
     // WidgetsBinding.instance.addPostFrameCallback((_) {
     //   FocusScope.of(context).requestFocus(_initialFocus);
     // });
-    _selectedProvince.addListener(reset);
+    _selectedProvince.addListener(resetDropdownCity);
     super.initState();
   }
 
@@ -58,7 +59,7 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
   void dispose() {
     _newAddressCtl.dispose();
     _postalCodeCtl.dispose();
-    _selectedProvince.removeListener(reset);
+    _selectedProvince.removeListener(resetDropdownCity);
     super.dispose();
   }
 
