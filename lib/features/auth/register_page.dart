@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/auth/login_page.dart';
 import 'package:w_vaccine/features/auth/register_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/widgets/button_form_custom.dart';
+import 'package:w_vaccine/widgets/dropdown_button_custom.dart';
+import 'package:w_vaccine/widgets/text_form_custom.dart';
+import 'package:intl/intl.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -19,6 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _fullNameCtl = TextEditingController();
   final _nikCtl = TextEditingController();
   final _addressCtl = TextEditingController();
+  final _dateOfBirth = TextEditingController();
   final _emailCtl = TextEditingController();
   final _passwordCtl = TextEditingController();
 
@@ -30,6 +35,20 @@ class _RegisterPageState extends State<RegisterPage> {
   // Controller for dropdown genders
   final _selectedGender = ValueNotifier<String>('');
 
+  Future _selectDate() async {
+    DateTime? date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1980),
+      lastDate: DateTime.now(),
+    );
+    if (date == null) {
+      _dateOfBirth.text = '';
+      return;
+    }
+    _dateOfBirth.text = DateFormat('yyyy-MM-dd').format(date);
+  }
+
   void register() {
     if (!_registerFormKey.currentState!.validate()) {
       return;
@@ -38,8 +57,9 @@ class _RegisterPageState extends State<RegisterPage> {
       fullName: _fullNameCtl.text.trim(),
       nik: _nikCtl.text.trim(),
       address: _addressCtl.text.trim(),
-      email: _emailCtl.text.trim(),
       gender: _selectedGender.value,
+      dateOfBirth: _dateOfBirth.text.trim(),
+      email: _emailCtl.text.trim(),
       pass: _passwordCtl.text.trim(),
     );
   }
@@ -60,6 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
     _fullNameCtl.dispose();
     _nikCtl.dispose();
     _addressCtl.dispose();
+    _dateOfBirth.dispose();
     _emailCtl.dispose();
     _passwordCtl.dispose();
     super.dispose();
@@ -95,8 +116,6 @@ class _RegisterPageState extends State<RegisterPage> {
     return Form(
       key: _registerFormKey,
       child: Container(
-        // width: double.infinity,
-        // height: 375,
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -116,18 +135,10 @@ class _RegisterPageState extends State<RegisterPage> {
             /// Full Name
             const Text('Nama Lengkap'),
             const SizedBox(height: 12.0),
-            TextFormField(
+            TextFormCustom(
               focusNode: _initialFocus,
               controller: _fullNameCtl,
-              textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                hintText: 'Masukan Nama Lengkap',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
+              hintText: "Masukan Nama Lengkap",
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Silahkan masukan nama lengkap";
@@ -140,18 +151,10 @@ class _RegisterPageState extends State<RegisterPage> {
             /// NIK
             const Text('NIK'),
             const SizedBox(height: 12.0),
-            TextFormField(
+            TextFormCustom(
               controller: _nikCtl,
-              textInputAction: TextInputAction.next,
+              hintText: 'Masukan Nomor NIK',
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                hintText: 'Masukan Nomor NIK',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
               validator: (value) {
                 if (value == null || value.length != 16) {
                   return "Silahkan masukan 16 digit angka";
@@ -164,17 +167,9 @@ class _RegisterPageState extends State<RegisterPage> {
             /// Address / Alamat
             const Text('Alamat'),
             const SizedBox(height: 12.0),
-            TextFormField(
+            TextFormCustom(
               controller: _addressCtl,
-              textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                hintText: 'Masukan Alamat',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
+              hintText: 'Masukan Alamat',
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Silahkan masukan Alamat";
@@ -184,21 +179,43 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 12.0),
 
+            /// Gender / Jenis Kelamin
+            const Text('Jenis kelamin'),
+            const SizedBox(height: 12.0),
+            DropdownButtonCustom(
+              valueListenable: _selectedGender,
+              hintText: 'Pilih jenis kelamin',
+              errorMsg: "Silahkan pilih jenis kelamin",
+              items: vm.genders,
+            ),
+            const SizedBox(height: 12.0),
+
+            /// Date of birth
+            const Text('Tanggal lahir'),
+            const SizedBox(height: 12.0),
+            TextFormCustom(
+              controller: _dateOfBirth,
+              hintText: 'Silahkan pilih tanggal lahir',
+              onTap: () {
+                // FocusScope.of(context).requestFocus(FocusNode());
+                _selectDate();
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Silahkan pilih tanggal lahir';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 12.0),
+
             /// Email
             const Text('Email'),
             const SizedBox(height: 12.0),
-            TextFormField(
+            TextFormCustom(
               controller: _emailCtl,
-              textInputAction: TextInputAction.next,
+              hintText: 'Masukan Alamat Email',
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                hintText: 'Masukan Alamat Email',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
               validator: (value) {
                 if (value == null ||
                     value.isEmpty ||
@@ -210,78 +227,22 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 12.0),
 
-            /// Gender / Jenis Kelamin
-            const Text('Jenis kelamin'),
-            const SizedBox(height: 12.0),
-            ValueListenableBuilder(
-              valueListenable: _selectedGender,
-              builder: (context, value, child) {
-                return DropdownButtonHideUnderline(
-                  child: DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      hintText: 'Pilih jenis kelamin',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8),
-                        ),
-                      ),
-                    ),
-                    // value: vm.selectedGender.value,
-                    isDense: true,
-                    items: vm.genders
-                        .map(
-                          (e) => DropdownMenuItem<String>(
-                            value: e,
-                            child: Text(e),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (value) {
-                      _selectedGender.value = value!;
-                    },
-                    validator: (value) {
-                      if (value == null || value == '') {
-                        return "Silahkan pilih jenis kelamin";
-                      }
-                      return null;
-                    },
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 12.0),
-
             /// Password
             const Text('Password'),
             const SizedBox(height: 12.0),
             ValueListenableBuilder(
               valueListenable: _isShowPass,
-              builder: (context, value, child) {
-                return TextFormField(
+              builder: (_, __, ___) {
+                return TextFormCustom(
                   controller: _passwordCtl,
+                  hintText: 'Masukan Password',
+                  valueListenablePass: _isShowPass,
                   textInputAction: TextInputAction.done,
-                  obscureText: _isShowPass.value,
                   keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    hintText: 'Masukan Password',
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        _isShowPass.value = !_isShowPass.value;
-                      },
-                      icon: Icon(_isShowPass.value
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                    ),
-                  ),
                   onFieldSubmitted: (_) => register(),
                   validator: (value) {
-                    if (value == null || value.length < 6) {
-                      return "Silahkan masukan password lebih dari 6";
+                    if (value == null || value.length <= 6) {
+                      return "Silahkan masukan password min 6 digit";
                     }
                     return null;
                   },
@@ -291,16 +252,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
             /// Register Button
             const SizedBox(height: 12.0),
-            ElevatedButton(
-              onPressed: () => register(),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text('Daftar'),
-            ),
+            ButtonFormCustom(text: 'Daftar', onPressed: () => register()),
+
+            /// Go to Login Page
             const SizedBox(height: 12.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

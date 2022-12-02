@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
-class RegisterViewModel with ChangeNotifier {
+class AddFamilyMemberViewModel with ChangeNotifier {
+  
   List<String> get genders => List.unmodifiable(['laki-laki', 'perempuan']);
-
+  List<String> get relationships => List.unmodifiable(['ayah', 'ibu', 'anak']);
   void submit({
     required String fullName,
     required String nik,
-    required String address,
+    required String age,
     required String gender,
-    required String dateOfBirth,
-    required String email,
-    required String pass,
+    required String relationship,
   }) {
-    // Something to do
     print(fullName);
     print(nik);
-    print(address);
+    print(age);
     print(gender);
-    print(dateOfBirth);
-    print(email);
-    print(pass);
+    print(relationship);
   }
+
+  
 }
