@@ -1,14 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/auth/login_view_model.dart';
-import 'package:w_vaccine/features/auth/register_page.dart';
-import 'package:w_vaccine/features/auth/register_view_model.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
+import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
+import 'package:w_vaccine/features/profile/view_model/change_password_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
 import 'package:w_vaccine/styles/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ObscureSwitcher(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ChangeEmailViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ChangeAddressViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AddFamilyMemberViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProfileImage(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FamilyData(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,18 +43,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => RegisterViewModel()),
-        ChangeNotifierProvider(create: (_) => LoginViewModel()),
-      ],
-      child: MaterialApp(
-        title: 'WVaccine',
-        debugShowCheckedModeBanner: true,
-        theme: lightTheme,
-        // home: const IndexNavigation(),
-        home: const RegisterPage(),
-      ),
+    return MaterialApp(
+      title: 'WVaccine',
+      debugShowCheckedModeBanner: false,
+      theme: testTheme,
+      // home: const IndexNavigation(),
+      home: const IndexNavigation(),
     );
   }
 }
