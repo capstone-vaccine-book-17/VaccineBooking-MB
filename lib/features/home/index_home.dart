@@ -267,14 +267,12 @@ class IndexHome extends StatelessWidget {
                               color: Colors.black54,
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: const Text('Selengkapnya'),
-                              ),
-                            ],
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text('Selengkapnya'),
+                            ),
                           ),
                         ],
                       ),
