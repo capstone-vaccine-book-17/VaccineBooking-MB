@@ -47,7 +47,7 @@ class DetailFamily extends StatelessWidget {
                             child: Column(
                               children: [
                                 Image.asset(
-                                  'assets/draghandle.png',
+                                  'assets/png/draghandle.png',
                                   cacheHeight: 6,
                                   cacheWidth: 45,
                                 ),

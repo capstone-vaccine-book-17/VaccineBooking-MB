@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
 
 /// Light Theme and Dark Theme Toogle
 /// https://codeburst.io/managing-multiple-themes-in-flutter-application-37411adeb04c
@@ -44,5 +45,10 @@ ThemeData testTheme = ThemeData(
         fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
     overline: GoogleFonts.poppins(
         fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(btncolor),
+    ),
   ),
 );
