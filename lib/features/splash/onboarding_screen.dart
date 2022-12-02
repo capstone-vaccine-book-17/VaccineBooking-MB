@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -11,9 +10,10 @@ class OnboardingScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(30),
         child: SafeArea(
-          child: Center(
+          child: SingleChildScrollView(
             child: Column(
               children: [
+                /// Logo
                 Image.asset(
                   'assets/wvaccine.png',
                   width: 150,
@@ -23,19 +23,24 @@ class OnboardingScreen extends StatelessWidget {
                   'Kapan aja dan\n   Dimana aja',
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
-                const SizedBox(height: 30),
+
+                /// Onboarding Image
                 Image.asset('assets/pana.png'),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Text(
                   'AYO VAKSIN !',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
+
+                /// Slogan
                 const Text(
                   'Tak Kenal Maka Tak Kebal',
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
-                const SizedBox(height: 70),
+                const SizedBox(height: 30),
+
+                /// Button Register and Login
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -43,8 +48,8 @@ class OnboardingScreen extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff3366FF),
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 60, vertical: 17),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 60, vertical: 17),
                         textStyle: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                         shape: RoundedRectangleBorder(
@@ -53,13 +58,14 @@ class OnboardingScreen extends StatelessWidget {
                       ),
                       child: const Text('Daftar'),
                     ),
-                    const SizedBox(width: 17),
+                    const SizedBox(width: 16),
                     OutlinedButton(
                       onPressed: () {},
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(width: 1.5, color: Color(0xff3366FF)),
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 60, vertical: 17),
+                        side: const BorderSide(
+                            width: 1.5, color: Color(0xff3366FF)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 60, vertical: 17),
                         textStyle: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -72,9 +78,9 @@ class OnboardingScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 50,
-                ),
+
+                /// Term and Condition
+                const SizedBox(height: 25),
                 const Text(
                   '\t\t\t\t\t\tDengan menggunakan aplikasi WVaccine\n Kamu menyetujui segala peraturan yang berlaku',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
