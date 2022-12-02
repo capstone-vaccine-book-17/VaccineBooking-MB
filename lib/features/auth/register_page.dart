@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
       _dateOfBirth.text = '';
       return;
     }
-    _dateOfBirth.text = DateFormat('yyyy-MM-dd').format(date!);
+    _dateOfBirth.text = DateFormat('yyyy-MM-dd').format(date);
   }
 
   void register() {
@@ -232,7 +232,7 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(height: 12.0),
             ValueListenableBuilder(
               valueListenable: _isShowPass,
-              builder: (context, value, child) {
+              builder: (_, __, ___) {
                 return TextFormCustom(
                   controller: _passwordCtl,
                   hintText: 'Masukan Password',
@@ -241,8 +241,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.visiblePassword,
                   onFieldSubmitted: (_) => register(),
                   validator: (value) {
-                    if (value == null || value.length < 6) {
-                      return "Silahkan masukan password lebih dari 6";
+                    if (value == null || value.length <= 6) {
+                      return "Silahkan masukan password min 6 digit";
                     }
                     return null;
                   },

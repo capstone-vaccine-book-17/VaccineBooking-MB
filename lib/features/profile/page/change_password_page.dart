@@ -1,215 +1,183 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/profile/view_model/change_password_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/change_password_view_model.dart';
+import 'package:w_vaccine/widgets/button_form_custom.dart';
+import 'package:w_vaccine/widgets/text_form_custom.dart';
 
-class ChangePasswordPage extends StatelessWidget {
+class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});
 
   @override
+  State<ChangePasswordPage> createState() => _ChangePasswordPageState();
+}
+
+class _ChangePasswordPageState extends State<ChangePasswordPage> {
+  late ChangePasswordViewModel vm;
+
+  /// Form and Text Controller
+  final _formKey = GlobalKey<FormState>();
+  final _oldPass = TextEditingController();
+  final _newPass = TextEditingController();
+  final _confirmNewPass = TextEditingController();
+
+  /// Obsure Password hide and show
+  final _isShowOldPass = ValueNotifier<bool>(true);
+  final _isShowNewPass = ValueNotifier<bool>(true);
+  final _isShowConfirmNewPass = ValueNotifier<bool>(true);
+
+  final _initialFocus = FocusNode();
+
+  void save() {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+    vm.submit(
+      oldPass: _oldPass.text.trim(),
+      newPass: _newPass.text.trim(),
+      confirmNewPass: _confirmNewPass.text.trim(),
+    );
+  }
+
+  @override
+  void initState() {
+    vm = Provider.of<ChangePasswordViewModel>(context, listen: false);
+
+    /// Run method on Widget build complete
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FocusScope.of(context).requestFocus(_initialFocus);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _oldPass.dispose();
+    _newPass.dispose();
+    _confirmNewPass.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Ubah Password',
-          style: TextStyle(color: Colors.black),
-        ),
+        title: const Text('Ubah Password'),
       ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             children: [
-              Form(
-                child: Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: Container(
-                    width: double.infinity,
-                    height: 375,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 0,
-                          blurRadius: 6,
-                          offset: const Offset(0, 0),
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      key: formKey,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 14, right: 14, top: 8),
-                          child: Text(
-                            "Password lama",
-                            style: TextStyle(
-                              color: Color(0xff888888),
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 14, right: 14, top: 8),
-                          child: Consumer<ObscureSwitcher>(
-                            builder: (context, provider, _) => TextFormField(
-                              obscureText: provider.oldpwd,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    provider.oldpwd = !provider.oldpwd;
-                                  },
-                                  icon: provider.oldpwdIcn,
-                                ),
-                                hintText: "\tabcd1234",
-                                hintStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xff888888),
-                                ),
-                                border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.length < 2) {
-                                  return 'Silakan input nama yang valid';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 14, right: 14, top: 8),
-                          child: Text(
-                            "Password baru",
-                            style: TextStyle(
-                              color: Color(0xff888888),
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 14, right: 14, top: 8),
-                          child: Consumer<ObscureSwitcher>(
-                            builder: (context, provider, child) =>
-                                TextFormField(
-                              obscureText: provider.newpwd,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    provider.newpwd = !provider.newpwd;
-                                  },
-                                  icon: provider.newpwdIcn,
-                                ),
-                                hintText: "\tabcd0000",
-                                hintStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xff888888),
-                                ),
-                                border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.length < 2) {
-                                  return 'Silakan input nama yang valid';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 14, right: 14, top: 8),
-                          child: Text(
-                            "Konfirmasi password baru",
-                            style: TextStyle(
-                              color: Color(0xff888888),
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 14, right: 14, top: 8),
-                          child: Consumer<ObscureSwitcher>(
-                            builder: (context, provider, child) =>
-                                TextFormField(
-                              obscureText: provider.pwdconfirm,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    onPressed: () {
-                                      provider.pwdconfirm =
-                                          !provider.pwdconfirm;
-                                    },
-                                    icon: provider.pwdcnfrmIcn),
-                                hintText: "\tabcd0000",
-                                hintStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xff888888),
-                                ),
-                                border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.length < 2) {
-                                  return 'Silakan input nama yang valid';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 14, right: 14),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xff3366FF),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 12),
-                              textStyle: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(10), // <-- Radius
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: const Text(
-                              "Simpan",
-                              style: TextStyle(
-                                color: Color(0xffffffff),
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: _form(),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _form() {
+    return Form(
+      key: _formKey,
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 2,
+              offset: const Offset(0, 0),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// Old Password
+            const Text('Password Lama'),
+            const SizedBox(height: 12.0),
+            ValueListenableBuilder(
+              valueListenable: _isShowOldPass,
+              builder: (_, __, ___) {
+                return TextFormCustom(
+                  focusNode: _initialFocus,
+                  valueListenablePass: _isShowOldPass,
+                  controller: _oldPass,
+                  hintText: 'Masukan password lama',
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Silahkan masukan password lama';
+                    }
+                    return null;
+                  },
+                );
+              },
+            ),
+
+            const SizedBox(height: 12.0),
+
+            /// New Password
+            const Text('Password Baru'),
+            const SizedBox(height: 12.0),
+            ValueListenableBuilder(
+              valueListenable: _isShowNewPass,
+              builder: (_, __, ___) {
+                return TextFormCustom(
+                  controller: _newPass,
+                  valueListenablePass: _isShowNewPass,
+                  hintText: 'Masukan password baru',
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (value) {
+                    if (value == null || value.length < 6) {
+                      return "Silahkan masukan password min 6 digit";
+                    }
+                    if (value != _confirmNewPass.text) {
+                      return 'Password tidak cocok';
+                    }
+                    return null;
+                  },
+                );
+              },
+            ),
+
+            const SizedBox(height: 12.0),
+
+            /// Confirm New Password
+            const Text('Konfirmasi Password Baru'),
+            const SizedBox(height: 12.0),
+            ValueListenableBuilder(
+              valueListenable: _isShowConfirmNewPass,
+              builder: (_, __, ___) {
+                return TextFormCustom(
+                  controller: _confirmNewPass,
+                  valueListenablePass: _isShowConfirmNewPass,
+                  hintText: 'Masukan password lagi',
+                  keyboardType: TextInputType.visiblePassword,
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (_) => save(),
+                  validator: (value) {
+                    if (value == null || value.length < 6) {
+                      return "Silahkan masukan password min 6 digit";
+                    }
+                    if (value != _newPass.text) {
+                      return 'Password tidak cocok';
+                    }
+                    return null;
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 12.0),
+
+            /// Save Button
+            ButtonFormCustom(text: 'Simpan', onPressed: () => save())
+          ],
         ),
       ),
     );
