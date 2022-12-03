@@ -3,8 +3,8 @@ import 'package:w_vaccine/features/home/index_home.dart';
 import 'package:w_vaccine/features/profile/index_profile.dart';
 import 'package:w_vaccine/features/ticket/index_ticket.dart';
 import 'package:w_vaccine/features/vaccine/index_vaccine.dart';
+import 'package:w_vaccine/styles/Wvaccine_icons.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
-import 'package:w_vaccine/styles/icons.dart';
 
 class IndexNavigation extends StatefulWidget {
   const IndexNavigation({super.key});
@@ -42,22 +42,22 @@ class _IndexNavigationState extends State<IndexNavigation> {
         showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_sharp),
+            icon: Icon(WvaccineIcons.home_outlined),
             label: 'Beranda',
             tooltip: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(WvaccineIcons.vaccine),
+            icon: Icon(WvaccineIcons.vaccine_outlined),
             label: 'Vaksin',
             tooltip: 'Vaksin',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_repair_service),
+            icon: Icon(WvaccineIcons.ticket_outlined),
             label: 'Tiket',
             tooltip: 'Ticket',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(WvaccineIcons.people_outlined),
             label: 'Profile',
             tooltip: 'Profile',
           ),
