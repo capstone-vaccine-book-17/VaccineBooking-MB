@@ -91,223 +91,7 @@ class FaskesPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/vaccine/ic_suntik.png",
-                                      width: 20,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    const Text(
-                                      "Dosis Pertama",
-                                      style: TextStyle(
-                                        color: blackColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const Text(
-                                  "Corona Vac",
-                                  style: TextStyle(
-                                    color: blackColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/vaccine/ic_jam.png",
-                                  width: 20,
-                                ),
-                                const SizedBox(width: 10),
-                                const Text(
-                                  "08:00 - 10:00",
-                                  style: TextStyle(
-                                    color: blackColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/vaccine/ic_kuota.png",
-                                  width: 20,
-                                  height: 20,
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "1.2 km dari rumah",
-                                  style: TextStyle(
-                                    color: greyColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  "Tersisa 70",
-                                  style: TextStyle(
-                                    color: redColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xff3366FF),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 10),
-                                    textStyle: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  onPressed: () {},
-                                  child: const Text(
-                                    "Pilih",
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/vaccine/ic_suntik.png",
-                                      width: 20,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    const Text(
-                                      "Dosis Kedua",
-                                      style: TextStyle(
-                                        color: blackColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const Text(
-                                  "AstraZaneca",
-                                  style: TextStyle(
-                                    color: blackColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/vaccine/ic_jam.png",
-                                  width: 20,
-                                ),
-                                const SizedBox(width: 10),
-                                const Text(
-                                  "08:00 - 10:00",
-                                  style: TextStyle(
-                                    color: blackColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/vaccine/ic_kuota.png",
-                                  width: 20,
-                                  height: 20,
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "1.2 km dari rumah",
-                                  style: TextStyle(
-                                    color: greyColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  "Tersisa 70",
-                                  style: TextStyle(
-                                    color: redColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xff3366FF),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 10),
-                                    textStyle: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  onPressed: () {},
-                                  child: const Text(
-                                    "Pilih",
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    _daftarVaksin(context),
                   ],
                 ),
               ),
@@ -370,73 +154,7 @@ class FaskesPage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/vaccine/ic_person.png",
-                                    width: 25,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Text(
-                                            "Afifah",
-                                            style: TextStyle(
-                                              color: blackColor,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            "(Pribadi)",
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const Text(
-                                        "NIK : 15781027102010011",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: greyColor,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Image.asset(
-                                          "assets/vaccine/ic_edit.png",
-                                          width: 20,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Image.asset(
-                                          "assets/vaccine/ic_delete.png",
-                                          width: 20,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          _daftarAnggota(context),
                           const SizedBox(height: 21),
                           Container(
                             width: double.infinity,
@@ -468,17 +186,10 @@ class FaskesPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 120),
+                          const SizedBox(height: 100),
                           Container(
                             width: double.infinity,
                             child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xff3366FF),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
-                                textStyle: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
-                              ),
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -488,14 +199,7 @@ class FaskesPage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              child: const Text(
-                                "Pesan Vaksin",
-                                style: TextStyle(
-                                  color: Color(0xffffffff),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
+                              child: const Text("Pesan Vaksin"),
                             ),
                           ),
                         ],
@@ -529,6 +233,223 @@ class FaskesPage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+
+  Widget _daftarVaksin(BuildContext context) {
+    /// Later will be replaced with model within this view model
+    List<Map<String?, String?>> datas = [
+      {
+        'dosis': 'Dosis Pertama',
+        'nama': 'Corona Vac',
+        'waktu': '08:00 - 10:00',
+        'kuota': '200 Kuota',
+        'sisaKuota': 'Tersisa 70',
+      },
+      {
+        'dosis': 'Dosis Kedua',
+        'nama': 'AstraZaneca',
+        'waktu': '08:00 - 10:00',
+        'kuota': '200 Kuota',
+        'sisaKuota': 'Tersisa 70',
+      },
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        children: [
+          for (var data in datas)
+            InkWell(
+              onTap: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const FaskesPage(),
+                //   ),
+                // );
+              },
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                "assets/vaccine/ic_suntik.png",
+                                width: 20,
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                data['dosis'].toString(),
+                                style: TextStyle(
+                                  color: blackColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            data['nama'].toString(),
+                            style: TextStyle(
+                              color: blackColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/vaccine/ic_jam.png",
+                            width: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            data['waktu'].toString(),
+                            style: TextStyle(
+                              color: blackColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/vaccine/ic_kuota.png",
+                            width: 20,
+                            height: 20,
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            data['kuota'].toString(),
+                            style: TextStyle(
+                              color: greyColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            data['sisaKuota'].toString(),
+                            style: TextStyle(
+                              color: redColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(
+                              "Pilih",
+                              style: TextStyle(
+                                color: Color(0xffffffff),
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _daftarAnggota(BuildContext context) {
+    /// Later will be replaced with model within this view model
+    List<Map<String?, String?>> datas = [
+      {
+        'name': 'Afifah',
+        'hubunganKeluarga': 'Pribadi',
+        'nik': '1578102710200011',
+        'status': 'Tersedia',
+      },
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        children: [
+          for (var data in datas)
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FaskesPage(),
+                  ),
+                );
+              },
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        "assets/vaccine/ic_person.png",
+                        width: 25,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(data['name'].toString()),
+                              SizedBox(width: 5),
+                              Text(data['hubunganKeluarga'].toString()),
+                            ],
+                          ),
+                          Text(
+                            "NIK : ${data['nik'].toString()}",
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Image.asset(
+                              "assets/vaccine/ic_edit.png",
+                              width: 20,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Image.asset(
+                              "assets/vaccine/ic_delete.png",
+                              width: 20,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
