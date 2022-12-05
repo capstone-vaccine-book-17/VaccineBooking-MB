@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/vaccine/faskes.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class IndexVaccine extends StatelessWidget {
-  const IndexVaccine({super.key});
+  IndexVaccine({super.key});
 
   @override
   Widget build(BuildContext context) {
