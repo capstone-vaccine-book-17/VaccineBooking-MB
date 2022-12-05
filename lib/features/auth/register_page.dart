@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
       _dateOfBirth.text = '';
       return;
     }
-    _dateOfBirth.text = DateFormat('yyyy-MM-dd').format(date!);
+    _dateOfBirth.text = DateFormat('yyyy-MM-dd').format(date);
   }
 
   void register() {
