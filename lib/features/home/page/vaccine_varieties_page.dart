@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/home/model/vaccine_model.dart';
+import 'package:w_vaccine/features/home/page/detail_vaccine_page.dart';
 import 'package:w_vaccine/features/home/view_model/vaccine_varieties_view_model.dart';
 
-class VaccineVarietiesPage extends StatelessWidget {
+class VaccineVarietiesPage extends StatefulWidget {
   const VaccineVarietiesPage({super.key});
 
+  @override
+  State<VaccineVarietiesPage> createState() => _VaccineVarietiesPageState();
+}
+
+class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<VaccineVaritiesViewModel>(context, listen: false);
@@ -65,7 +71,13 @@ class VaccineVarietiesPage extends StatelessWidget {
                     heightFactor: 0.5,
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) {
+                            return const DetailVaccinePage();
+                          },
+                        ));
+                      },
                       child: const Text('Selengkapnya'),
                     ),
                   ),
