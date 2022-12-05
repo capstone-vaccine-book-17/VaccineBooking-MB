@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
-import 'package:w_vaccine/styles/icons.dart';
+import 'package:w_vaccine/styles/Wvaccine_icons.dart';
 
 class DetailFamily extends StatelessWidget {
   const DetailFamily({super.key, required this.data});
@@ -47,7 +47,7 @@ class DetailFamily extends StatelessWidget {
                             child: Column(
                               children: [
                                 Image.asset(
-                                  'assets/draghandle.png',
+                                  'assets/png/draghandle.png',
                                   cacheHeight: 6,
                                   cacheWidth: 45,
                                 ),
