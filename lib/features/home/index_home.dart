@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:w_vaccine/features/home/page/detail_news_page.dart';
+import 'package:w_vaccine/features/home/page/notification_page.dart';
+import 'package:w_vaccine/features/home/page/vaccine_varieties_page.dart';
+import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
 
 class IndexHome extends StatelessWidget {
   const IndexHome({super.key});
@@ -9,13 +14,13 @@ class IndexHome extends StatelessWidget {
       // appBar: AppBar(),
       body: Stack(
         children: [
-          _body(),
+          _body(context),
         ],
       ),
     );
   }
 
-  Widget _stack() {
+  Widget _stack(BuildContext context) {
     return Stack(
       children: [
         Container(
@@ -36,27 +41,27 @@ class IndexHome extends StatelessWidget {
             ),
           ),
         ),
-        _customAppBar(),
+        _customAppBar(context),
       ],
     );
   }
 
   /// Body Safe Area
-  Widget _body() {
+  Widget _body(context) {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            _stack(),
+            _stack(context),
 
             /// Menu
-            _menu(),
+            _menu(context),
 
             /// List of Health Workers / Daftar Tenaga Kesehatan
             _listOfHealthWorkers(),
 
             /// Health News / Berita Kesehatan
-            _healthNews()
+            _healthNews(context)
           ],
         ),
       ),
@@ -64,7 +69,7 @@ class IndexHome extends StatelessWidget {
   }
 
   /// Custom App bar
-  Widget _customAppBar() {
+  Widget _customAppBar(BuildContext context) {
     String temp1 = 'Hai Namamu';
     return Padding(
       padding: const EdgeInsets.all(8),
@@ -82,7 +87,12 @@ class IndexHome extends StatelessWidget {
               ),
               const Spacer(),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NotificationPage()));
+                },
                 icon: const Icon(Icons.ring_volume),
                 color: Colors.white,
               )
@@ -139,7 +149,7 @@ class IndexHome extends StatelessWidget {
   }
 
   /// Menu
-  Widget _menu() {
+  Widget _menu(BuildContext context) {
     /// Later will be replaced with model within this view model
     List<Map<String, String>> datas = [
       {
@@ -172,12 +182,20 @@ class IndexHome extends StatelessWidget {
               height: 100,
               child: Column(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1),
-                      borderRadius: BorderRadius.circular(10),
+                  GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const FlutterLogo(size: 48),
                     ),
-                    child: const FlutterLogo(size: 48),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const VaccineVarietiesPage()));
+                    },
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -287,22 +305,24 @@ class IndexHome extends StatelessWidget {
   }
 
   /// Health News / Berita Kesehatan
-  Widget _healthNews() {
+  Widget _healthNews(BuildContext context) {
+    final vm = Provider.of<NewsViewModel>(context, listen: false);
+
     /// Later will be replaced with model within this view model
-    List<Map<String, String>> datas = [
-      {
-        'title': 'Ini hal penting yang wajib kamu ketahui',
-        'author': 'Kobo Kanaeru',
-        'date': '12/09/2022 09:31',
-        'views': '23',
-      },
-      {
-        'title': 'Ini hal penting yang wajib kamu ketahui',
-        'author': 'Kobo Kanaeru',
-        'date': '12/09/2022 09:31',
-        'views': '23',
-      }
-    ];
+    // List<Map<String, String>> datas = [
+    //   {
+    //     'title': 'Ini hal penting yang wajib kamu ketahui',
+    //     'author': 'Kobo Kanaeru',
+    //     'date': '12/09/2022 09:31',
+    //     'views': '23',
+    //   },
+    //   {
+    //     'title': 'Ini hal penting yang wajib kamu ketahui',
+    //     'author': 'Kobo Kanaeru',
+    //     'date': '12/09/2022 09:31',
+    //     'views': '23',
+    //   }
+    // ];
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -320,56 +340,64 @@ class IndexHome extends StatelessWidget {
               ),
             ],
           ),
-          for (var data in datas)
-            Card(
-              elevation: 3,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        // image: DecorationImage(image: )
+          for (var data in vm.news)
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailNewsPage(data: data)));
+              },
+              child: Card(
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          // image: DecorationImage(image: )
+                        ),
+                        child: const FlutterLogo(
+                          size: 76,
+                          style: FlutterLogoStyle.stacked,
+                        ),
                       ),
-                      child: const FlutterLogo(
-                        size: 76,
-                        style: FlutterLogoStyle.stacked,
+                      const SizedBox(width: 8.0),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              data.title,
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              '${data.author} - ${data.date}',
+                              style: const TextStyle(color: Colors.black54),
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  color: Colors.blue,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '${data.views} views',
+                                  style: const TextStyle(color: Colors.blue),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8.0),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            data['title']!,
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            '${data['author']!} - ${data['date']!}',
-                            style: const TextStyle(color: Colors.black54),
-                          ),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: Colors.blue,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                '${data['views']!} views',
-                                style: const TextStyle(color: Colors.blue),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

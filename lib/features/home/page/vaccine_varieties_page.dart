@@ -24,9 +24,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: [
-              for (var data in vm.vaccines) _cardVariety(data),
-            ],
+            children: [for (var data in vm.vaccines) _cardVariety(data)],
           ),
         ),
       ),
@@ -66,7 +64,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
                   const SizedBox(height: 4.0),
                   Text(data.type),
                   const SizedBox(height: 4.0),
-                  const Text('Description goes here '),
+                  Text(data.description1, maxLines: 1),
                   Align(
                     heightFactor: 0.5,
                     alignment: Alignment.centerRight,
@@ -74,11 +72,11 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) {
-                            return const DetailVaccinePage();
+                            return DetailVaccinePage(data: data);
                           },
                         ));
                       },
-                      child: const Text('Selengkapnya'),
+                      child: const Text('See more'),
                     ),
                   ),
                 ],
