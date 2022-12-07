@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/tiket_menunggu_antrian.dart';
-import 'package:w_vaccine/features/ticket/tiket_selesai.dart';
-import 'package:w_vaccine/features/ticket/tiket_semua.dart';
-import 'package:w_vaccine/features/ticket/detail_vaksin_selesai.dart';
+import 'package:w_vaccine/features/ticket/ticket_waiting_queue.dart';
+import 'package:w_vaccine/features/ticket/ticket_complated.dart';
+import 'package:w_vaccine/features/ticket/ticket_all.dart';
+import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
 class Indexticket extends StatefulWidget {
@@ -82,9 +82,9 @@ class _IndexticketState extends State<Indexticket> {
           ),
           body: const TabBarView(
             children: [
-              Semua(),
-              MenungguAntrian(),
-              TiketSelesai(),
+              TicketAll(),
+              WaitingQueue(),
+              TicketCompleted(),
             ],
           ),
         ),

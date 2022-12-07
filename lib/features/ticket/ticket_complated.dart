@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/detail_vaksin_selesai.dart';
+import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
-class TiketSelesai extends StatefulWidget {
-  const TiketSelesai({super.key});
+class TicketCompleted extends StatefulWidget {
+  const TicketCompleted({super.key});
 
   @override
-  State<TiketSelesai> createState() => _TiketSelesaiState();
+  State<TicketCompleted> createState() => _TicketCompletedState();
 }
 
-class _TiketSelesaiState extends State<TiketSelesai> {
+class _TicketCompletedState extends State<TicketCompleted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +27,7 @@ class _TiketSelesaiState extends State<TiketSelesai> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TiketVaksinSelesai(),
+                          builder: (context) => const TicketVaccineCompleted(),
                         ),
                       );
                     },

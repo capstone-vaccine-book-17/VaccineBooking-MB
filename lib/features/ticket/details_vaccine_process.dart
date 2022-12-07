@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
-class TiketVaksinProses extends StatefulWidget {
-  const TiketVaksinProses({super.key});
+class TicketVaccineProcess extends StatefulWidget {
+  const TicketVaccineProcess({super.key});
 
   @override
-  State<TiketVaksinProses> createState() => _TiketVaksinProsesState();
+  State<TicketVaccineProcess> createState() => _TicketVaccineProcessState();
 }
 
-class _TiketVaksinProsesState extends State<TiketVaksinProses> {
+class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

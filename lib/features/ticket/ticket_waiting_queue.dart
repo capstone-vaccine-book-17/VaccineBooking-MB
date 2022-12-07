@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/detail_vaksin_proses.dart';
+import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
-class MenungguAntrian extends StatefulWidget {
-  const MenungguAntrian({super.key});
+class WaitingQueue extends StatefulWidget {
+  const WaitingQueue({super.key});
 
   @override
-  State<MenungguAntrian> createState() => _MenungguAntrianState();
+  State<WaitingQueue> createState() => _WaitingQueueState();
 }
 
-class _MenungguAntrianState extends State<MenungguAntrian> {
+class _WaitingQueueState extends State<WaitingQueue> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _MenungguAntrianState extends State<MenungguAntrian> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TiketVaksinProses(),
+                        builder: (context) => const TicketVaccineProcess(),
                       ),
                     );
                   },

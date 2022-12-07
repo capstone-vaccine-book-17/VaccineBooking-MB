@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/detail_vaksin_proses.dart';
-import 'package:w_vaccine/features/ticket/detail_vaksin_selesai.dart';
+import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
+import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
-class Semua extends StatefulWidget {
-  const Semua({super.key});
+class TicketAll extends StatefulWidget {
+  const TicketAll({super.key});
 
   @override
-  State<Semua> createState() => _SemuaState();
+  State<TicketAll> createState() => _TicketAllState();
 }
 
-class _SemuaState extends State<Semua> {
+class _TicketAllState extends State<TicketAll> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class _SemuaState extends State<Semua> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TiketVaksinProses(),
+                          builder: (context) => const TicketVaccineProcess(),
                         ),
                       );
                     },
@@ -190,7 +190,7 @@ class _SemuaState extends State<Semua> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TiketVaksinSelesai(),
+                          builder: (context) => const TicketVaccineCompleted(),
                         ),
                       );
                     },
