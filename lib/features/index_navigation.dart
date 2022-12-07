@@ -14,10 +14,10 @@ class IndexNavigation extends StatefulWidget {
 class _IndexNavigationState extends State<IndexNavigation> {
   int _currentIndexNavigation = 0;
 
-  List<Widget> pages = const [
+  List<Widget> pages = [
     IndexHome(),
     IndexVaccine(),
-    IndexTicket(),
+    Indexticket(),
     IndexProfile(),
   ];
 
