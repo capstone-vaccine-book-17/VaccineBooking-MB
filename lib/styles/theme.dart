@@ -38,7 +38,7 @@ ThemeData testTheme = ThemeData(
     bodyText1: GoogleFonts.poppins(
         fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5),
     bodyText2: GoogleFonts.poppins(
-        fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.25),
     button: GoogleFonts.poppins(
         fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
     caption: GoogleFonts.poppins(

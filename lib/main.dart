@@ -20,15 +20,11 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => VaccineVaritiesViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => NewsViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => NotificationViewModel(),
-        ),
+        ///home
+        ChangeNotifierProvider(create: (_) => VaccineVaritiesViewModel()),
+        ChangeNotifierProvider(create: (_) => NewsViewModel()),
+        ChangeNotifierProvider(create: (_) => NotificationViewModel()),
+
         /// Auth
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => RegisterViewModel()),
