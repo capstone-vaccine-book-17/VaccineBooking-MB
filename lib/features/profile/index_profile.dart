@@ -3,9 +3,10 @@ import 'package:w_vaccine/features/profile/page/family_members_page.dart';
 import 'package:w_vaccine/features/profile/page/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/page/change_password_page.dart';
 import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
+import 'package:w_vaccine/styles/Wvaccine_icons.dart';
 import '../../widgets/profile/list_menu.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/styles/icons.dart';
+
 
 class IndexProfile extends StatefulWidget {
   const IndexProfile({super.key});
@@ -144,7 +145,7 @@ class _IndexProfileState extends State<IndexProfile> {
                   }),
                 ),
                 ListMenu(
-                  icon: WvaccineIcons.exit,
+                  icon: WvaccineIcons.exit_app,
                   name: 'Keluar Akun',
                   func: (() {}),
                 ),

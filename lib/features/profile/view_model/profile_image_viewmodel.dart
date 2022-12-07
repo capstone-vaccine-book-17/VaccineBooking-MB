@@ -12,5 +12,6 @@ class ProfileImage with ChangeNotifier {
     if (imageGallery == null) return;
     image = File(imageGallery.path);
     notifyListeners();
+    //1
   }
 }

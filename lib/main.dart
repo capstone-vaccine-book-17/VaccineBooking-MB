@@ -12,6 +12,9 @@ import 'package:w_vaccine/features/profile/view_model/change_password_view_model
 import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
 import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
 import 'package:w_vaccine/styles/theme.dart';
+import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
+import 'package:w_vaccine/features/home/view_model/notification_view_model.dart';
+import 'package:w_vaccine/features/home/view_model/vaccine_varieties_view_model.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +23,11 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ///home
+        ChangeNotifierProvider(create: (_) => VaccineVaritiesViewModel()),
+        ChangeNotifierProvider(create: (_) => NewsViewModel()),
+        ChangeNotifierProvider(create: (_) => NotificationViewModel()),
+
         /// Auth
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => RegisterViewModel()),
