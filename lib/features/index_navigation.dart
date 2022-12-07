@@ -25,7 +25,6 @@ class _IndexNavigationState extends State<IndexNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    print('Build Index Navigation');
     return Scaffold(
       body: IndexedStack(
         index: _currentIndexNavigation,
