@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/auth/login_view_model.dart';
-import 'package:w_vaccine/features/auth/register_view_model.dart';
+import 'package:w_vaccine/dependency_injection/service_locator.dart';
+import 'package:w_vaccine/features/auth/page/login_page.dart';
+import 'package:w_vaccine/features/auth/view_model/login_view_model.dart';
+import 'package:w_vaccine/features/auth/view_model/register_view_model.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
@@ -13,6 +15,8 @@ import 'package:w_vaccine/styles/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setup();
+
   runApp(
     MultiProvider(
       providers: [
@@ -42,7 +46,25 @@ class MyApp extends StatelessWidget {
       title: 'WVaccine',
       debugShowCheckedModeBanner: false,
       theme: testTheme,
-      home: const IndexNavigation(),
+      // home: const IndexNavigation(),
+      home: const LoginPage(),
     );
   }
 }
+/*
+Splash Screen Asyncrhonus:
+Cek Token di SharedPref
+1. Tidak ada 
+  -> lempar ke Login
+Ada ? Cek expired nya
+2. Ada tapi expire 
+  -> lempar ke Login
+  - HAPUS semua Store untuk Profile dan Family Member jika pake Shared Pref / SQlite
+3. Ada tidak expire 
+  -> lempar ke Index Navigation
+  - Fetch 3 get API untuk profile
+  - Store dimana ?? Shared Pref / Sqlite / Provider (Satu provider global / Tersebar di masing2 ViewModel);
+  - Fetch Family Member
+  - Store dimana ?? Shared Pref / Sqlite / Provider (Satu provider global / Tersebar di masing2 ViewModel);
+DONE
+*/
