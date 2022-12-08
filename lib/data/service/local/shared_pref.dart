@@ -5,7 +5,8 @@ class SharedPref {
 
   SharedPref() {
     _storage = const FlutterSecureStorage(
-        aOptions: AndroidOptions(encryptedSharedPreferences: true));
+      aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    );
   }
 
   static const String _keyToken = 'TokenUltimateSecure';
@@ -23,8 +24,9 @@ class SharedPref {
     return "Token delete successfully";
   }
 
-  Future<void> readToken() async {
+  Future<String?> readToken() async {
     String? token = await _storage.read(key: _keyToken);
     print(token);
+    return token;
   }
 }
