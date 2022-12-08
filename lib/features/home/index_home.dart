@@ -7,7 +7,6 @@ import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 import 'package:w_vaccine/styles/wvaccine_icons.dart';
 
-
 class IndexHome extends StatelessWidget {
   const IndexHome({super.key});
 
@@ -73,7 +72,7 @@ class IndexHome extends StatelessWidget {
 
   /// Custom App bar
   Widget _customAppBar(BuildContext context) {
-    String temp1 = 'Hai Namamu';
+    String temp1 = 'Namamu';
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -88,8 +87,8 @@ class IndexHome extends StatelessWidget {
                 ),
               ),
               Text(
-                temp1,
-                style: const TextStyle(color: Colors.white),
+                'Hai, ${temp1}',
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
               const Spacer(),
               IconButton(
@@ -126,7 +125,7 @@ class IndexHome extends StatelessWidget {
           children: [
             Row(
               children: [
-                const FlutterLogo(size: 46),
+                Image.asset('assets/images/ayovaksin.png'),
                 const SizedBox(width: 16.0),
                 Expanded(
                   child: Column(
@@ -157,7 +156,7 @@ class IndexHome extends StatelessWidget {
   /// Menu
   Widget _menu(BuildContext context) {
     /// Later will be replaced with model within this view model
-    List<Map<String, String>> datas = [
+    List<Map> datas = [
       {
         'label': 'Varietas Vaksin',
         'image': '',
