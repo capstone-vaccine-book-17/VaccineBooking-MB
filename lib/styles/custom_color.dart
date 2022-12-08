@@ -12,5 +12,10 @@ class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
 
+Color primaryColor = HexColor("A6A5FF");
 Color btncolor = HexColor("#3366FF");
 Color slctdcolor = HexColor("#0057FF");
+Color hometopbarclr = HexColor("#0048d4");
+
+
+
