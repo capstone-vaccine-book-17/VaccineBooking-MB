@@ -20,9 +20,9 @@ class DetailNewsPage extends StatelessWidget {
             Container(
               constraints: const BoxConstraints(maxHeight: 250),
               // constraints: const BoxConstraints(maxHeight: 150),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/pfi.jpeg'),
+                  image: AssetImage(data.image),
                   fit: BoxFit.cover,
                 ),
               ),

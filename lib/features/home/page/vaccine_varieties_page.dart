@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/home/model/vaccine_model.dart';
 import 'package:w_vaccine/features/home/page/detail_vaccine_page.dart';
 import 'package:w_vaccine/features/home/view_model/vaccine_varieties_view_model.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
 
 class VaccineVarietiesPage extends StatefulWidget {
   const VaccineVarietiesPage({super.key});
@@ -23,8 +24,11 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [for (var data in vm.vaccines) _cardVariety(data)],
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            child: Column(
+              children: [for (var data in vm.vaccines) _cardVariety(data)],
+            ),
           ),
         ),
       ),
@@ -34,6 +38,9 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
   Widget _cardVariety(VaccineModel data) {
     return Card(
       elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -62,7 +69,10 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
                     ),
                   ),
                   const SizedBox(height: 4.0),
-                  Text(data.type),
+                  Text(
+                    data.type,
+                    style: TextStyle(color: hometopbarclr),
+                  ),
                   const SizedBox(height: 4.0),
                   Text(data.description1, maxLines: 1),
                   Align(

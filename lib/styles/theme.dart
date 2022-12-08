@@ -8,7 +8,9 @@ import 'package:w_vaccine/styles/custom_color.dart';
 ThemeData lightTheme = ThemeData.light().copyWith();
 
 ThemeData testTheme = ThemeData(
+  scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
+    elevation: 1,
     color: Colors.white,
     titleTextStyle: TextStyle(
       color: Colors.black,
@@ -38,7 +40,7 @@ ThemeData testTheme = ThemeData(
     bodyText1: GoogleFonts.poppins(
         fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5),
     bodyText2: GoogleFonts.poppins(
-        fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.25),
     button: GoogleFonts.poppins(
         fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
     caption: GoogleFonts.poppins(

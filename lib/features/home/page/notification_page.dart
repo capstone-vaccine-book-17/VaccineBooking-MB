@@ -17,22 +17,28 @@ class _NotificationPageState extends State<NotificationPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Varietas Vaksin',
+          'Notifikasi',
         ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [for (var data in vm.notif) _cardVariety(data)],
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            child: Column(
+              children: [for (var data in vm.notif) _cardNotif(data)],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _cardVariety(NotificationModel data) {
+  Widget _cardNotif(NotificationModel data) {
     return Card(
       elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Row(
@@ -55,9 +61,9 @@ class _NotificationPageState extends State<NotificationPage> {
                   Text(
                     data.title,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: Colors.blue),
                   ),
                   const SizedBox(height: 4.0),
                   Text(data.description, maxLines: 1),
