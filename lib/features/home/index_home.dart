@@ -5,11 +5,8 @@ import 'package:w_vaccine/features/home/page/notification_page.dart';
 import 'package:w_vaccine/features/home/page/vaccine_varieties_page.dart';
 import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 import 'package:w_vaccine/styles/wvaccine_icons.dart';
 
-import '../../styles/custom_color.dart';
 
 class IndexHome extends StatelessWidget {
   const IndexHome({super.key});
@@ -40,7 +37,7 @@ class IndexHome extends StatelessWidget {
             height: 150,
             decoration: BoxDecoration(
               color: hometopbarclr,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
@@ -197,9 +194,9 @@ class IndexHome extends StatelessWidget {
                         border: Border.all(width: 1),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.all(5),
-                        child: const Icon(
+                        child: Icon(
                           WvaccineIcons.vaccine_color,
                           color: Colors.blueAccent,
                           size: 40,
@@ -387,7 +384,7 @@ class IndexHome extends StatelessWidget {
                           // image: DecorationImage(image: )
                         ),
                         child: Padding(
-                          padding: EdgeInsets.only(right: 20),
+                          padding: const EdgeInsets.only(right: 20),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(

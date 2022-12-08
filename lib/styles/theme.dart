@@ -8,6 +8,14 @@ import 'package:w_vaccine/styles/custom_color.dart';
 ThemeData lightTheme = ThemeData.light().copyWith();
 
 ThemeData testTheme = ThemeData(
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      textStyle: MaterialStateProperty.all(
+        const TextStyle(fontWeight: FontWeight.bold),
+      ),
+      foregroundColor: MaterialStateProperty.all<Color>(hometopbarclr),
+    ),
+  ),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
     elevation: 1,

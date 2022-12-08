@@ -25,7 +25,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Column(
               children: [for (var data in vm.vaccines) _cardVariety(data)],
             ),

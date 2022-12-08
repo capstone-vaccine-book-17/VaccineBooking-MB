@@ -23,7 +23,7 @@ class _NotificationPageState extends State<NotificationPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Column(
               children: [for (var data in vm.notif) _cardNotif(data)],
             ),
