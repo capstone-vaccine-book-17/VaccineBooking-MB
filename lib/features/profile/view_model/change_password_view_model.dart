@@ -5,11 +5,7 @@ class ChangePasswordViewModel with ChangeNotifier {
     required String oldPass,
     required String newPass,
     required String confirmNewPass,
-  }) {
-    print(oldPass);
-    print(newPass);
-    print(confirmNewPass);
-  }
+  }) {}
 }
 
 // class ObscureSwitcher with ChangeNotifier {

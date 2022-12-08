@@ -7,6 +7,7 @@ import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 import 'package:w_vaccine/styles/wvaccine_icons.dart';
 
+
 class IndexHome extends StatelessWidget {
   const IndexHome({super.key});
 
@@ -99,6 +100,7 @@ class IndexHome extends StatelessWidget {
                           builder: (context) => const NotificationPage()));
                 },
                 icon: const Icon(WvaccineIcons.notif_false),
+
                 color: Colors.white,
               )
             ],
@@ -126,6 +128,7 @@ class IndexHome extends StatelessWidget {
             Row(
               children: [
                 Image.asset('assets/images/ayovaksin.png'),
+
                 const SizedBox(width: 16.0),
                 Expanded(
                   child: Column(
@@ -135,6 +138,7 @@ class IndexHome extends StatelessWidget {
                         'Ayo Lakukan Vaksinasi !',
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
+
                       ),
                       Text(
                           'Pastikan lengkapi data diri kamu sebelum melakukan pemesanan'),
@@ -156,7 +160,8 @@ class IndexHome extends StatelessWidget {
   /// Menu
   Widget _menu(BuildContext context) {
     /// Later will be replaced with model within this view model
-    List<Map> datas = [
+
+    List<Map<String, String>> datas = [
       {
         'label': 'Varietas Vaksin',
         'image': '',
@@ -201,6 +206,7 @@ class IndexHome extends StatelessWidget {
                           size: 40,
                         ),
                       ),
+
                     ),
                     onTap: () {
                       Navigator.push(
@@ -277,6 +283,7 @@ class IndexHome extends StatelessWidget {
                           width: 70,
                         ),
                       ),
+
                     ),
                     const SizedBox(width: 8.0),
                     Expanded(
@@ -289,6 +296,7 @@ class IndexHome extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
+
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -296,16 +304,19 @@ class IndexHome extends StatelessWidget {
                             data['specialist']!,
                             style: const TextStyle(
                               color: Colors.blue,
+
                             ),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             '${data['desc']!.substring(0, 30)}...',
+
                             style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black54,
                             ),
                             maxLines: 1,
+
                           ),
                           Align(
                             alignment: Alignment.centerRight,
@@ -391,6 +402,7 @@ class IndexHome extends StatelessWidget {
                               width: 90,
                             ),
                           ),
+
                         ),
                       ),
                       const SizedBox(width: 8.0),
@@ -402,6 +414,7 @@ class IndexHome extends StatelessWidget {
                               data.title,
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
+
                             ),
                             const SizedBox(height: 8),
                             Text(

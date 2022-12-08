@@ -1,8 +1,11 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/auth/login_view_model.dart';
-import 'package:w_vaccine/features/auth/register_page.dart';
+import 'package:w_vaccine/data/service/local/shared_pref.dart';
+import 'package:w_vaccine/dependency_injection/service_locator.dart';
+import 'package:w_vaccine/features/auth/view_model/login_view_model.dart';
+import 'package:w_vaccine/features/auth/page/register_page.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/widgets/button_form_custom.dart';
 import 'package:w_vaccine/widgets/text_form_custom.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,11 +28,12 @@ class _LoginPageState extends State<LoginPage> {
   /// Obsure Password hide and show
   final ValueNotifier<bool> _isShowPass = ValueNotifier(true);
 
-  void login() {
+  void login(BuildContext context) {
     if (!_loginFormKey.currentState!.validate()) {
       return;
     }
     vm.submit(
+      context: context,
       email: _emailCtl.text.trim(),
       pass: _passwordCtl.text.trim(),
     );
@@ -44,6 +48,9 @@ class _LoginPageState extends State<LoginPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(_initialFocus);
     });
+    final SharedPref storage = getIt.get<SharedPref>();
+    storage.readToken();
+    // storage.deleteToken().then((value) => print(value));
   }
 
   @override
@@ -69,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: _form(),
+                  child: _form(context),
                 ),
               ],
             ),
@@ -79,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _form() {
+  Widget _form(context) {
     return Form(
       key: _loginFormKey,
       child: Container(
@@ -128,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                   valueListenablePass: _isShowPass,
                   textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.visiblePassword,
-                  onFieldSubmitted: (_) => login(),
+                  onFieldSubmitted: (_) => login(context),
                   validator: (value) {
                     if (value == null || value.length < 6) {
                       return "Silahkan masukan password lebih dari 6";
@@ -141,15 +148,9 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 12.0),
 
             /// Login Button
-            ElevatedButton(
-              onPressed: () => login(),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text('Login'),
+            ButtonFormCustom(
+              text: 'Login',
+              onPressed: () => login(context),
             ),
             const SizedBox(height: 12.0),
 

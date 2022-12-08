@@ -5,6 +5,7 @@ import 'package:w_vaccine/features/home/page/detail_vaccine_page.dart';
 import 'package:w_vaccine/features/home/view_model/vaccine_varieties_view_model.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
+
 class VaccineVarietiesPage extends StatefulWidget {
   const VaccineVarietiesPage({super.key});
 
@@ -29,6 +30,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
             child: Column(
               children: [for (var data in vm.vaccines) _cardVariety(data)],
             ),
+
           ),
         ),
       ),
@@ -41,6 +43,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
+
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -73,6 +76,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
                     data.type,
                     style: TextStyle(color: hometopbarclr),
                   ),
+
                   const SizedBox(height: 4.0),
                   Text(data.description1, maxLines: 1),
                   Align(

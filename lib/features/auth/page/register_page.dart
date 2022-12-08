@@ -1,7 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/auth/login_page.dart';
-import 'package:w_vaccine/features/auth/register_view_model.dart';
+import 'package:w_vaccine/features/auth/model/register_model.dart';
+import 'package:w_vaccine/features/auth/page/login_page.dart';
+import 'package:w_vaccine/features/auth/view_model/register_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 import 'package:w_vaccine/widgets/dropdown_button_custom.dart';
@@ -49,18 +50,21 @@ class _RegisterPageState extends State<RegisterPage> {
     _dateOfBirth.text = DateFormat('yyyy-MM-dd').format(date);
   }
 
-  void register() {
+  void register(context) {
     if (!_registerFormKey.currentState!.validate()) {
       return;
     }
     vm.submit(
-      fullName: _fullNameCtl.text.trim(),
-      nik: _nikCtl.text.trim(),
-      address: _addressCtl.text.trim(),
-      gender: _selectedGender.value,
-      dateOfBirth: _dateOfBirth.text.trim(),
-      email: _emailCtl.text.trim(),
-      pass: _passwordCtl.text.trim(),
+      context: context,
+      registerModel: RegisterModel(
+        fullName: _fullNameCtl.text.trim(),
+        nik: _nikCtl.text.trim(),
+        address: _addressCtl.text.trim(),
+        gender: _selectedGender.value,
+        dateOfBirth: _dateOfBirth.text.trim(),
+        email: _emailCtl.text.trim(),
+        pass: _passwordCtl.text.trim(),
+      ),
     );
   }
 
@@ -102,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: _form(),
+                  child: _form(context),
                 ),
               ],
             ),
@@ -112,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _form() {
+  Widget _form(context) {
     return Form(
       key: _registerFormKey,
       child: Container(
@@ -239,9 +243,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   valueListenablePass: _isShowPass,
                   textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.visiblePassword,
-                  onFieldSubmitted: (_) => register(),
+                  onFieldSubmitted: (_) => register(context),
                   validator: (value) {
-                    if (value == null || value.length <= 6) {
+                    if (value == null || value.length < 6) {
                       return "Silahkan masukan password min 6 digit";
                     }
                     return null;
@@ -252,7 +256,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
             /// Register Button
             const SizedBox(height: 12.0),
-            ButtonFormCustom(text: 'Daftar', onPressed: () => register()),
+            ButtonFormCustom(
+              text: 'Daftar',
+              onPressed: () => register(context),
+            ),
 
             /// Go to Login Page
             const SizedBox(height: 12.0),

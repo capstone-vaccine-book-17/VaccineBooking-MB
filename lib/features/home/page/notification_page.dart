@@ -18,6 +18,7 @@ class _NotificationPageState extends State<NotificationPage> {
       appBar: AppBar(
         title: const Text(
           'Notifikasi',
+
         ),
       ),
       body: SafeArea(

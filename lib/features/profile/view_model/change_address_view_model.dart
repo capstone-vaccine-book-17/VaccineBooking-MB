@@ -14,12 +14,7 @@ class ChangeAddressViewModel with ChangeNotifier {
     required String province,
     required String city,
     required String postalCode,
-  }) {
-    print(newAddress);
-    print(province);
-    print(city);
-    print(postalCode);
-  }
+  }) {}
 
   final Map<String, List<String>> _region = {
     'DKI Jakarta': [

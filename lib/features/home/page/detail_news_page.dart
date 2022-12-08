@@ -23,6 +23,7 @@ class DetailNewsPage extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(data.image),
+
                   fit: BoxFit.cover,
                 ),
               ),
