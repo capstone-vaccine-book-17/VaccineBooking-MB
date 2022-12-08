@@ -1,16 +1,14 @@
 import 'package:w_vaccine/data/service/api/auth_api.dart';
-import 'package:w_vaccine/data/service/local/shared_pref.dart';
-import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/model/register_model.dart';
 
 class AuthRepository {
   final AuthApi _authApi;
   AuthRepository(this._authApi);
 
-  Future<void> login({
+  Future<String?> login({
     required String email,
     required String password,
-    void Function(String msg)? onSuccess,
+    void Function(String msg, String token)? onSuccess,
     void Function(String msg)? onError,
   }) async {
     try {
@@ -20,11 +18,9 @@ class AuthRepository {
       );
       final String token = res.data['data']['token'];
       print(token);
-      final SharedPref storage = getIt.get<SharedPref>();
-      storage.saveToken(token: token);
-      onSuccess!('Login Successfully');
+      onSuccess!('Login Successfully', token);
     } catch (e) {
-      print('Error ${e.toString()}');
+      print(e.toString());
       onError!(e.toString());
     }
   }

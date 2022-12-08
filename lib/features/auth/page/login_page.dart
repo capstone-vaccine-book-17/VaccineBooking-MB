@@ -44,11 +44,8 @@ class _LoginPageState extends State<LoginPage> {
 
     /// Run method on Widget build complete
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      FocusScope.of(context).requestFocus(_initialFocus);
+      // FocusScope.of(context).requestFocus(_initialFocus);
     });
-    // final SharedPref storage = getIt.get<SharedPref>();
-    // storage.readToken();
-    // storage.deleteToken().then((value) => print(value));
   }
 
   @override
