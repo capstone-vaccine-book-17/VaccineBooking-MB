@@ -20,7 +20,6 @@ class _IndexNavigationState extends State<IndexNavigation> {
     const IndexHome(),
     const IndexVaccine(),
     const IndexTicket(),
-    const IndexProfile(),
   ];
 
   @override
