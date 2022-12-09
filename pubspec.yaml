@@ -38,6 +38,13 @@ dependencies:
   provider: ^6.0.4
   lottie: ^2.0.0
   flutter_typeahead: ^4.1.1
+  email_validator: ^2.1.17
+  intl: ^0.17.0
+  image_picker: ^0.8.6
+  google_fonts: ^3.0.1
+  dio: ^4.0.6
+  flutter_secure_storage: ^6.1.0
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:
@@ -64,7 +71,13 @@ flutter:
   assets:
     - assets/vaccine/
     - assets/vaccine/loading.json
+
+    - assets/images/
+    - assets/png/
+    - assets/
+
   #   - images/a_dot_ham.jpeg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -77,10 +90,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Wvaccine
+      fonts:
+        - asset: assets/icons/Wvaccine.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
