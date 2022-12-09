@@ -4,6 +4,9 @@ import 'package:w_vaccine/features/home/page/detail_news_page.dart';
 import 'package:w_vaccine/features/home/page/notification_page.dart';
 import 'package:w_vaccine/features/home/page/vaccine_varieties_page.dart';
 import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
+import 'package:w_vaccine/styles/wvaccine_icons.dart';
+
 
 class IndexHome extends StatelessWidget {
   const IndexHome({super.key});
@@ -32,9 +35,9 @@ class IndexHome extends StatelessWidget {
           top: 0,
           child: Container(
             height: 150,
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              color: hometopbarclr,
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
@@ -70,7 +73,7 @@ class IndexHome extends StatelessWidget {
 
   /// Custom App bar
   Widget _customAppBar(BuildContext context) {
-    String temp1 = 'Hai Namamu';
+    String temp1 = 'Namamu';
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -79,11 +82,14 @@ class IndexHome extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.person, color: Colors.white),
+                icon: const Icon(
+                  WvaccineIcons.people_outlined,
+                  color: Colors.white,
+                ),
               ),
               Text(
-                temp1,
-                style: const TextStyle(color: Colors.white),
+                'Hai, ${temp1}',
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
               const Spacer(),
               IconButton(
@@ -93,7 +99,8 @@ class IndexHome extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const NotificationPage()));
                 },
-                icon: const Icon(Icons.ring_volume),
+                icon: const Icon(WvaccineIcons.notif_false),
+
                 color: Colors.white,
               )
             ],
@@ -120,7 +127,8 @@ class IndexHome extends StatelessWidget {
           children: [
             Row(
               children: [
-                const FlutterLogo(size: 46),
+                Image.asset('assets/images/ayovaksin.png'),
+
                 const SizedBox(width: 16.0),
                 Expanded(
                   child: Column(
@@ -129,7 +137,8 @@ class IndexHome extends StatelessWidget {
                       Text(
                         'Ayo Lakukan Vaksinasi !',
                         style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                            fontSize: 22, fontWeight: FontWeight.bold),
+
                       ),
                       Text(
                           'Pastikan lengkapi data diri kamu sebelum melakukan pemesanan'),
@@ -151,6 +160,7 @@ class IndexHome extends StatelessWidget {
   /// Menu
   Widget _menu(BuildContext context) {
     /// Later will be replaced with model within this view model
+
     List<Map<String, String>> datas = [
       {
         'label': 'Varietas Vaksin',
@@ -188,13 +198,22 @@ class IndexHome extends StatelessWidget {
                         border: Border.all(width: 1),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const FlutterLogo(size: 48),
+                      child: const Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Icon(
+                          WvaccineIcons.vaccine_color,
+                          color: Colors.blueAccent,
+                          size: 40,
+                        ),
+                      ),
+
                     ),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const VaccineVarietiesPage()));
+                              builder: (context) =>
+                                  const VaccineVarietiesPage()));
                     },
                   ),
                   const SizedBox(height: 8),
@@ -218,12 +237,14 @@ class IndexHome extends StatelessWidget {
       {
         'name': 'Dr.Abdul Syukur,S.Pd-KHOM',
         'specialist': 'Spesialis kancker',
-        'desc': 'Prod Abdul adalah dokter yang mantapu jiwa GG gaming pokoknya'
+        'desc': 'Prod Abdul adalah dokter yang mantapu jiwa GG gaming pokoknya',
+        'image': 'assets/images/doctor.jpg'
       },
       {
         'name': 'Prof.Hiru Hulukk,S.Pd-KHOM',
         'specialist': 'Spesialis katarakk',
-        'desc': 'Dokter Huluk gemar menyuntik orang dengan suntikan cinta'
+        'desc': 'Dokter Huluk gemar menyuntik orang dengan suntikan cinta',
+        'image': 'assets/images/doctor.jpg'
       },
     ];
     return Padding(
@@ -254,7 +275,15 @@ class IndexHome extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const FlutterLogo(size: 56),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          data['image']!,
+                          scale: 10,
+                          width: 70,
+                        ),
+                      ),
+
                     ),
                     const SizedBox(width: 8.0),
                     Expanded(
@@ -265,8 +294,9 @@ class IndexHome extends StatelessWidget {
                           Text(
                             data['name']!,
                             style: const TextStyle(
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -274,16 +304,19 @@ class IndexHome extends StatelessWidget {
                             data['specialist']!,
                             style: const TextStyle(
                               color: Colors.blue,
-                              fontSize: 14,
+
                             ),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            '${data['desc']!.substring(0, 45 - 3)}...',
+                            '${data['desc']!.substring(0, 30)}...',
+
                             style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black54,
                             ),
+                            maxLines: 1,
+
                           ),
                           Align(
                             alignment: Alignment.centerRight,
@@ -360,9 +393,16 @@ class IndexHome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           // image: DecorationImage(image: )
                         ),
-                        child: const FlutterLogo(
-                          size: 76,
-                          style: FlutterLogoStyle.stacked,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              data.image,
+                              width: 90,
+                            ),
+                          ),
+
                         ),
                       ),
                       const SizedBox(width: 8.0),
@@ -372,7 +412,9 @@ class IndexHome extends StatelessWidget {
                           children: [
                             Text(
                               data.title,
-                              style: const TextStyle(fontSize: 18),
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+
                             ),
                             const SizedBox(height: 8),
                             Text(
