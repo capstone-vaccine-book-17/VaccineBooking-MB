@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
       title: 'WVaccine',
       debugShowCheckedModeBanner: false,
       theme: testTheme,
+
       home: const IndexNavigation(),
       // home: const LoginPage(),
     );
