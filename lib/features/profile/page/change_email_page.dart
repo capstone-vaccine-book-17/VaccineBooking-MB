@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
 import 'package:provider/provider.dart';
@@ -18,14 +19,24 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
 
   late ChangeEmailViewModel vm;
 
-  void save() {
-    vm.submit(email: _emailCtl.text.trim());
+  void save(context) {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+    vm.submit(context: context, email: _emailCtl.text.trim());
   }
 
   @override
   void initState() {
     vm = Provider.of<ChangeEmailViewModel>(context, listen: false);
+    _emailCtl.text = vm.email;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailCtl.dispose();
+    super.dispose();
   }
 
   @override
@@ -40,7 +51,7 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: _form(),
+                child: _form(context),
               ),
             ],
           ),
@@ -49,7 +60,7 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
     );
   }
 
-  Widget _form() {
+  Widget _form(context) {
     return Form(
       key: _formKey,
       child: Container(
@@ -75,9 +86,11 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
               controller: _emailCtl,
               textInputAction: TextInputAction.done,
               hintText: 'Masukan email baru',
-              onFieldSubmitted: (_) => save(),
+              onFieldSubmitted: (_) => save(context),
               validator: (value) {
-                if (value == null) {
+                if (value == null ||
+                    value.isEmpty ||
+                    !EmailValidator.validate(value)) {
                   return "Silahkan masukan alamat email dengan benar";
                 }
                 return null;
@@ -86,7 +99,7 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
             const SizedBox(height: 12.0),
 
             /// Save Button
-            ButtonFormCustom(text: 'Simpan', onPressed: () => save()),
+            ButtonFormCustom(text: 'Simpan', onPressed: () => save(context)),
           ],
         ),
       ),

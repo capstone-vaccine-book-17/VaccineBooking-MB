@@ -9,7 +9,7 @@ class LoginViewModel with ChangeNotifier {
   final _authRepo = getIt.get<AuthRepository>();
 
   void submit({
-    required BuildContext context,
+    required context,
     required String email,
     required String pass,
   }) {

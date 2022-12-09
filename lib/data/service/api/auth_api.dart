@@ -23,8 +23,8 @@ class AuthApi {
       );
       return res;
     } on DioError catch (e) {
-      final String errorMsg = DioException.fromDioError(e).toString();
-      throw errorMsg;
+      // final String errorMsg = DioException.fromDioError(e).toString();
+      throw "email or password incorrect";
     }
   }
 

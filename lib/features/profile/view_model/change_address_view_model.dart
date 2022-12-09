@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/data/repository/profile_repository.dart';
+import 'package:w_vaccine/data/service/local/shared_pref.dart';
+import 'package:w_vaccine/dependency_injection/profile_data.dart';
+import 'package:w_vaccine/dependency_injection/service_locator.dart';
+import 'package:w_vaccine/features/auth/page/login_page.dart';
+import 'package:w_vaccine/features/splash/onboarding_screen.dart';
+import 'package:w_vaccine/styles/nofication.dart';
 
 class ChangeAddressViewModel with ChangeNotifier {
+  final profileData = getIt.get<ProfileData>();
+  final _profileRepo = getIt.get<ProfileRepository>();
+
+  String get address => profileData.address?.address ?? '';
+  String get province => profileData.address?.province ?? '';
+  String get city => profileData.address?.city ?? '';
+  String get postalCode => profileData.address?.postalCode ?? '';
+
   List<String> get provinces {
     return List.unmodifiable(_region.keys.map((e) => e).toList());
   }
@@ -10,11 +25,35 @@ class ChangeAddressViewModel with ChangeNotifier {
   }
 
   void submit({
-    required String newAddress,
-    required String province,
-    required String city,
-    required String postalCode,
-  }) {}
+    required context,
+    required AddressData addressData,
+  }) async {
+    final SharedPref storage = getIt.get<SharedPref>();
+    String? token = await storage.readToken();
+    if (token == null) {
+      snackbarMessage(context, 'Debug Mode - Do not have token');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+      );
+    }
+    _profileRepo.changeAddress(
+      token: token!,
+      addressData: addressData,
+      onSuccess: (msg) {
+        profileData.address = addressData;
+        snackbarMessage(context, msg);
+        Navigator.of(context).pop();
+      },
+
+      /// Token Expire : Unauthorized
+      onError: (msg) {
+        snackbarMessage(context, msg);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const LoginPage()),
+        );
+      },
+    );
+  }
 
   final Map<String, List<String>> _region = {
     'DKI Jakarta': [

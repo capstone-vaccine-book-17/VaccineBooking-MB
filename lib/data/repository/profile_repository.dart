@@ -1,4 +1,5 @@
 import 'package:w_vaccine/data/service/api/profile_api.dart';
+import 'package:w_vaccine/dependency_injection/profile_data.dart';
 
 class ProfileRepository {
   final ProfileApi _profileApi;
@@ -15,8 +16,7 @@ class ProfileRepository {
     } catch (e) {
       print('Profile Error - ${e.toString()}');
       // return e.toString();
-      // rethrow;
-      throw e.toString();
+      rethrow;
     }
   }
 
@@ -58,6 +58,46 @@ class ProfileRepository {
       print('Address Error - ${e.toString()}');
       // return {'message': e.toString()};
       rethrow;
+    }
+  }
+
+  Future<void> changeAddress({
+    required String token,
+    required AddressData addressData,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
+  }) async {
+    try {
+      final res = await _profileApi.putChangeAddress(
+        token: token,
+        addressData: addressData,
+      );
+      final String msg = res.data['message'];
+      onSuccess!(msg);
+    } catch (e) {
+      print('Change Address Error - ${e.toString()}');
+      // return {'message': e.toString()};
+      onError!(e.toString());
+    }
+  }
+
+  Future<void> changeEmail({
+    required String token,
+    required String email,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
+  }) async {
+    try {
+      final res = await _profileApi.putChangeEmail(
+        token: token,
+        email: email,
+      );
+      final String msg = res.data['message'];
+      onSuccess!(msg);
+    } catch (e) {
+      print('Change Email Error - ${e.toString()}');
+      // return {'message': e.toString()};
+      onError!(e.toString());
     }
   }
 }

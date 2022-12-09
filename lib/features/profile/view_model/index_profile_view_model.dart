@@ -9,10 +9,10 @@ import 'package:w_vaccine/dependency_injection/service_locator.dart';
 class IndexProfileViewModel with ChangeNotifier {
   File? image;
 
-  final storage = getIt.get<ProfileData>();
+  final profileData = getIt.get<ProfileData>();
 
-  String? get name => storage.fullName;
-  String? get nik => storage.nik;
+  String? get name => profileData.fullName;
+  String? get nik => profileData.nik;
 
   Future openGallery() async {
     final imageGallery =

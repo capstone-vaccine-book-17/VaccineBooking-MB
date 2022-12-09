@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/dependency_injection/profile_data.dart';
 import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 import 'package:w_vaccine/widgets/dropdown_button_custom.dart';
@@ -26,15 +27,18 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
 
   final _initialFocus = FocusNode();
 
-  void save() {
+  void save(context) {
     if (!_formKey.currentState!.validate()) {
       return;
     }
     vm.submit(
-      newAddress: _newAddressCtl.text.trim(),
-      province: _selectedProvince.value.trim(),
-      city: _selectedCity.value.trim(),
-      postalCode: _postalCodeCtl.text.trim(),
+      context: context,
+      addressData: AddressData(
+        address: _newAddressCtl.text.trim(),
+        province: _selectedProvince.value.trim(),
+        city: _selectedCity.value.trim(),
+        postalCode: _postalCodeCtl.text.trim(),
+      ),
     );
   }
 
@@ -52,6 +56,10 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
       FocusScope.of(context).requestFocus(_initialFocus);
     });
     _selectedProvince.addListener(resetDropdownCity);
+    _newAddressCtl.text = vm.address;
+    _selectedProvince.value = vm.province;
+    _selectedCity.value = vm.city;
+    _postalCodeCtl.text = vm.postalCode;
     super.initState();
   }
 
@@ -75,7 +83,7 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: _form(),
+                child: _form(context),
               ),
             ],
           ),
@@ -84,7 +92,7 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
     );
   }
 
-  Widget _form() {
+  Widget _form(context) {
     return Form(
       key: _formKey,
       child: Container(
@@ -105,7 +113,7 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// New Address
-            const Text('Alamat Baru'),
+            const Text('Alamat'),
             const SizedBox(height: 12.0),
             TextFormCustom(
               focusNode: _initialFocus,
@@ -152,9 +160,10 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
             const SizedBox(height: 12.0),
             TextFormCustom(
               controller: _postalCodeCtl,
+              keyboardType: TextInputType.number,
               textInputAction: TextInputAction.done,
               hintText: "Masukan Kode Pos",
-              onFieldSubmitted: (_) => save(),
+              onFieldSubmitted: (_) => save(context),
               validator: (value) {
                 if (value == null) {
                   return "Silahkan masukan kode pos dengan benar";
@@ -168,7 +177,7 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
             const SizedBox(height: 12.0),
 
             /// Save Button
-            ButtonFormCustom(text: 'Simpan', onPressed: () => save()),
+            ButtonFormCustom(text: 'Simpan', onPressed: () => save(context)),
           ],
         ),
       ),

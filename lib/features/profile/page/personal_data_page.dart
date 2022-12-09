@@ -12,7 +12,24 @@ class PersonalDataPage extends StatefulWidget {
 }
 
 class _PersonalDataPageState extends State<PersonalDataPage> {
-  final storage = getIt.get<ProfileData>();
+  final profileData = getIt.get<ProfileData>();
+
+  final _addressCtl = TextEditingController();
+  final _emailCtl = TextEditingController();
+
+  @override
+  void initState() {
+    _addressCtl.text = profileData.address?.address ?? 'empty';
+    _emailCtl.text = profileData.email ?? 'empty';
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _addressCtl.dispose();
+    _emailCtl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +76,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const SizedBox(height: 12.0),
             TextFormField(
               readOnly: true,
-              initialValue: storage.fullName,
+              initialValue: profileData.fullName,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -73,7 +90,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const SizedBox(height: 12.0),
             TextFormField(
               readOnly: true,
-              initialValue: storage.nik,
+              initialValue: profileData.nik,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -87,15 +104,17 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const SizedBox(height: 12.0),
             TextFormField(
               readOnly: true,
-              initialValue: storage.address!.address,
+              controller: _addressCtl,
               decoration: InputDecoration(
                 suffixIcon: TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(
                         builder: (context) => const ChangeAddressPage(),
                       ),
-                    );
+                    ).whenComplete(() => _addressCtl.text =
+                        profileData.address?.address ?? 'empty');
                   },
                   child: const Text('Ubah'),
                 ),
@@ -113,14 +132,17 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const SizedBox(height: 12.0),
             TextFormField(
               readOnly: true,
-              initialValue: storage.email,
+              controller: _emailCtl,
               decoration: InputDecoration(
                 suffixIcon: TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(
                         builder: (context) => const ChangeEmailPage(),
                       ),
+                    ).whenComplete(
+                      () => _emailCtl.text = profileData.email ?? 'empty',
                     );
                   },
                   child: const Text('Ubah'),
@@ -139,7 +161,7 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             const SizedBox(height: 12.0),
             TextFormField(
               readOnly: true,
-              initialValue: storage.gender,
+              initialValue: profileData.gender,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
