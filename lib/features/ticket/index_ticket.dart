@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/ticket_waiting_queue.dart';
 import 'package:w_vaccine/features/ticket/ticket_complated.dart';
 import 'package:w_vaccine/features/ticket/ticket_all.dart';
-import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 
-class Indexticket extends StatefulWidget {
-  const Indexticket({Key? key}) : super(key: key);
+class IndexTicket extends StatefulWidget {
+  const IndexTicket({Key? key}) : super(key: key);
 
   @override
-  _IndexticketState createState() => _IndexticketState();
+  State<IndexTicket> createState() => _IndexticketState();
 }
 
-class _IndexticketState extends State<Indexticket> {
+class _IndexticketState extends State<IndexTicket> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowMaterialGrid: false,
@@ -36,7 +35,7 @@ class _IndexticketState extends State<Indexticket> {
               ),
               bottom: TabBar(
                 labelColor: Colors.black,
-                unselectedLabelColor: Color.fromRGBO(96, 140, 206, 0.5),
+                unselectedLabelColor: const Color.fromRGBO(96, 140, 206, 0.5),
                 indicatorColor: Colors.blue,
                 tabs: [
                   Tab(

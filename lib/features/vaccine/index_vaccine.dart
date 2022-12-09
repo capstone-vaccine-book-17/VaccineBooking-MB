@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/vaccine/faskes.dart';
 
 class IndexVaccine extends StatelessWidget {
-  IndexVaccine({super.key});
+  const IndexVaccine({super.key});
 
-  String _valueSort = "";
+  final String _valueSort = "";
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,9 @@ class IndexVaccine extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
+                const SizedBox(
                   width: 300,
-                  child: const TextField(
+                  child: TextField(
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: "\t\tCari Lokasi Faskes",
@@ -64,7 +64,7 @@ class IndexVaccine extends StatelessWidget {
                             ),
                           ),
                           builder: (context) => Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   const Text(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 
 class TicketCompleted extends StatefulWidget {
   const TicketCompleted({super.key});
@@ -44,7 +43,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                     Text(
                                       "Afifah",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -56,7 +54,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
                                     ),
-                                    primary: Color.fromARGB(255, 202, 212, 254),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 10),
                                     textStyle: const TextStyle(
@@ -83,7 +80,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                     Text(
                                       "No Antrian : 100",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -93,7 +89,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                 const Text(
                                   "08.00 - 10.00",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -113,11 +108,10 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                       width: 20,
                                     ),
                                     const Padding(
-                                      padding: const EdgeInsets.only(left: 9),
+                                      padding: EdgeInsets.only(left: 9),
                                       child: Text(
                                         "Sinovac",
                                         style: TextStyle(
-                                          color: blackColor,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -128,7 +122,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                 const Text(
                                   "Dosis Pertama",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -146,7 +139,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                 const Text(
                                   "RS Abdi Waluyo",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -164,7 +156,6 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                     child: Text(
                                       "17 Desember 2022",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
                                       ),

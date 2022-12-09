@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 
 class TicketAll extends StatefulWidget {
   const TicketAll({super.key});
@@ -45,7 +44,6 @@ class _TicketAllState extends State<TicketAll> {
                                     Text(
                                       "Afifah",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -57,7 +55,6 @@ class _TicketAllState extends State<TicketAll> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
                                     ),
-                                    primary: Color.fromARGB(255, 255, 231, 165),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 10),
                                     textStyle: const TextStyle(
@@ -68,7 +65,6 @@ class _TicketAllState extends State<TicketAll> {
                                   child: const Text(
                                     "Proses",
                                     style: TextStyle(
-                                      color: Color.fromARGB(255, 45, 34, 3),
                                       fontSize: 16,
                                     ),
                                   ),
@@ -84,7 +80,6 @@ class _TicketAllState extends State<TicketAll> {
                                     Text(
                                       "No Antrian : 100",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -94,7 +89,6 @@ class _TicketAllState extends State<TicketAll> {
                                 const Text(
                                   "08.00 - 10.00",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -114,11 +108,10 @@ class _TicketAllState extends State<TicketAll> {
                                       width: 20,
                                     ),
                                     const Padding(
-                                      padding: const EdgeInsets.only(left: 9),
+                                      padding: EdgeInsets.only(left: 9),
                                       child: Text(
                                         "Sinovac",
                                         style: TextStyle(
-                                          color: blackColor,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -129,7 +122,6 @@ class _TicketAllState extends State<TicketAll> {
                                 const Text(
                                   "Dosis Pertama",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -147,7 +139,6 @@ class _TicketAllState extends State<TicketAll> {
                                 const Text(
                                   "RS Abdi Waluyo",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -165,7 +156,6 @@ class _TicketAllState extends State<TicketAll> {
                                     child: Text(
                                       "17 Desember 2022",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -207,7 +197,6 @@ class _TicketAllState extends State<TicketAll> {
                                     Text(
                                       "Afifah",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -219,7 +208,6 @@ class _TicketAllState extends State<TicketAll> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
                                     ),
-                                    primary: Color.fromARGB(255, 202, 212, 254),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 10),
                                     textStyle: const TextStyle(
@@ -246,7 +234,6 @@ class _TicketAllState extends State<TicketAll> {
                                     Text(
                                       "No Antrian : 100",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -256,7 +243,6 @@ class _TicketAllState extends State<TicketAll> {
                                 const Text(
                                   "08.00 - 10.00",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -276,11 +262,10 @@ class _TicketAllState extends State<TicketAll> {
                                       width: 20,
                                     ),
                                     const Padding(
-                                      padding: const EdgeInsets.only(left: 9),
+                                      padding: EdgeInsets.only(left: 9),
                                       child: Text(
                                         "Sinovac",
                                         style: TextStyle(
-                                          color: blackColor,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -291,7 +276,6 @@ class _TicketAllState extends State<TicketAll> {
                                 const Text(
                                   "Dosis Pertama",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -309,7 +293,6 @@ class _TicketAllState extends State<TicketAll> {
                                 const Text(
                                   "RS Abdi Waluyo",
                                   style: TextStyle(
-                                    color: blackColor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -327,7 +310,6 @@ class _TicketAllState extends State<TicketAll> {
                                     child: Text(
                                       "17 Desember 2022",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
                                       ),
