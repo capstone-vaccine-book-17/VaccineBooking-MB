@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
 
 class TicketAll extends StatefulWidget {
   const TicketAll({super.key});
@@ -32,6 +33,7 @@ class _TicketAllState extends State<TicketAll> {
                       );
                     },
                     child: Card(
+                      elevation: 2,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
@@ -52,6 +54,7 @@ class _TicketAllState extends State<TicketAll> {
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: bgfntcolorprs,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
                                     ),
@@ -62,11 +65,10 @@ class _TicketAllState extends State<TicketAll> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                   onPressed: () {},
-                                  child: const Text(
+                                  child: Text(
                                     "Proses",
                                     style: TextStyle(
-                                      fontSize: 16,
-                                    ),
+                                        fontSize: 16, color: fntcolorprs),
                                   ),
                                 ),
                               ],
@@ -185,6 +187,7 @@ class _TicketAllState extends State<TicketAll> {
                       );
                     },
                     child: Card(
+                      elevation: 2,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
@@ -205,6 +208,7 @@ class _TicketAllState extends State<TicketAll> {
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: bgfntcolordone,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
                                     ),
@@ -215,10 +219,10 @@ class _TicketAllState extends State<TicketAll> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                   onPressed: () {},
-                                  child: const Text(
+                                  child: Text(
                                     "Selesai",
                                     style: TextStyle(
-                                      color: Color.fromARGB(255, 10, 17, 154),
+                                      color: fntcolordone,
                                       fontSize: 16,
                                     ),
                                   ),

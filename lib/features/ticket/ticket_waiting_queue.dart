@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
 
 class WaitingQueue extends StatefulWidget {
   const WaitingQueue({super.key});
@@ -50,6 +51,7 @@ class _WaitingQueueState extends State<WaitingQueue> {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                  backgroundColor: bgfntcolorprs,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
@@ -60,10 +62,10 @@ class _WaitingQueueState extends State<WaitingQueue> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 onPressed: () {},
-                                child: const Text(
+                                child: Text(
                                   "Proses",
                                   style: TextStyle(
-                                    color: Color.fromARGB(255, 45, 34, 3),
+                                    color: fntcolorprs,
                                     fontSize: 16,
                                   ),
                                 ),

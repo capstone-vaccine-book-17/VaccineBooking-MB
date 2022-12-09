@@ -17,13 +17,10 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<FamilyData>(context, listen: false);
-
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
           'Anggota Keluarga',
-          style: TextStyle(color: Colors.black),
         ),
       ),
       body: SingleChildScrollView(

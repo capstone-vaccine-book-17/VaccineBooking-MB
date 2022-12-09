@@ -160,19 +160,19 @@ class IndexHome extends StatelessWidget {
     List<Map<String, String>> datas = [
       {
         'label': 'Varietas Vaksin',
-        'image': '',
+        'image': 'assets/png/vaccine.png',
       },
       {
         'label': 'Toko Kesehatan',
-        'image': '',
+        'image': 'assets/png/health.png',
       },
       {
         'label': 'Chat Rumah Sakit',
-        'image': '',
+        'image': 'assets/png/operator.png',
       },
       {
         'label': 'Lihat\n Semua',
-        'image': '',
+        'image': 'assets/png/blocks.png',
       },
     ];
 
@@ -194,14 +194,18 @@ class IndexHome extends StatelessWidget {
                         border: Border.all(width: 1),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(5),
-                        child: Icon(
-                          WvaccineIcons.vaccine_color,
-                          color: Colors.blueAccent,
-                          size: 40,
-                        ),
-                      ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: Image.asset(data['image']!))
+                          //     Icon(
+                          //   WvaccineIcons.vaccine_color,
+                          //   color: hometopbarclr,
+                          //   size: 40,
+                          // ),
+                          ),
                     ),
                     onTap: () {
                       Navigator.push(

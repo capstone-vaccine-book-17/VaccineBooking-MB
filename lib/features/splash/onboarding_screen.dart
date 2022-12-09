@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
+                                builder: (context) => const RegisterPage()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff3366FF),
@@ -71,7 +71,7 @@ class OnboardingScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                                builder: (context) => const LoginPage()));
                       },
                       style: OutlinedButton.styleFrom(
                         side: const BorderSide(
