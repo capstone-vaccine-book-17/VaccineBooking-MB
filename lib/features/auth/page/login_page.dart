@@ -1,7 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/data/service/local/shared_pref.dart';
-import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/view_model/login_view_model.dart';
 import 'package:w_vaccine/features/auth/page/register_page.dart';
 import 'package:provider/provider.dart';
@@ -46,11 +44,8 @@ class _LoginPageState extends State<LoginPage> {
 
     /// Run method on Widget build complete
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      FocusScope.of(context).requestFocus(_initialFocus);
+      // FocusScope.of(context).requestFocus(_initialFocus);
     });
-    final SharedPref storage = getIt.get<SharedPref>();
-    storage.readToken();
-    // storage.deleteToken().then((value) => print(value));
   }
 
   @override
