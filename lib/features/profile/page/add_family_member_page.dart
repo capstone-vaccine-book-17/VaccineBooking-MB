@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 import 'package:w_vaccine/widgets/dropdown_button_custom.dart';
@@ -32,11 +33,14 @@ class _AddFamilyMemberPageState extends State<AddFamilyMemberPage> {
       return;
     }
     vm.submit(
-      fullName: _fullNameCtl.text.trim(),
-      nik: _nikCtl.text.trim(),
-      age: _ageCtl.text.trim(),
-      gender: _selectedGender.value,
-      relationship: _selectedRelationship.value,
+      context: context,
+      familyMember: FamilyMember(
+        name: _fullNameCtl.text.trim(),
+        nik: _nikCtl.text.trim(),
+        age: _ageCtl.text.trim(),
+        gender: _selectedGender.value,
+        relationship: _selectedRelationship.value,
+      ),
     );
   }
 

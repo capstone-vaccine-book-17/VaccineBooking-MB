@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
+import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/features/profile/page/add_family_member_page.dart';
 import 'package:w_vaccine/features/profile/page/detail_family_member.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/family_member_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 
 class FamilyMembersPage extends StatefulWidget {
@@ -14,9 +14,16 @@ class FamilyMembersPage extends StatefulWidget {
 }
 
 class _FamilyMembersPageState extends State<FamilyMembersPage> {
+  late FamilyMemberViewModel vm;
+
+  @override
+  void initState() {
+    vm = Provider.of<FamilyMemberViewModel>(context, listen: false);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FamilyData>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -30,7 +37,7 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
             children: <Widget>[
               const SizedBox(height: 20),
 
-              for (var data in provider.datas) _cardFamilyMember(data),
+              for (var data in vm.family) _cardFamilyMember(data),
 
               /// Add Button
               const SizedBox(height: 30),
@@ -52,7 +59,7 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
     );
   }
 
-  Widget _cardFamilyMember(ModelDetailFamily data) {
+  Widget _cardFamilyMember(FamilyMember data) {
     return Card(
       elevation: 6,
       child: InkWell(
@@ -102,76 +109,3 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
     );
   }
 }
-
-          // ListView.builder(
-          //     shrinkWrap: true,
-          //     itemCount: provider.datas.length,
-          //     itemBuilder: (context, index) {
-          //       return GestureDetector(
-          //         onTap: () {
-          //           Navigator.push(
-          //               context,
-          //               MaterialPageRoute(
-          //                   builder: (context) => DetailFamily(
-          //                         data: provider.datas[index],
-          //                       )));
-          //         },
-          //         child: Padding(
-          //           padding:
-          //               const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-          //           child: Container(
-          //             width: double.infinity,
-          //             height: 100,
-          //             decoration: BoxDecoration(
-          //               borderRadius:
-          //                   const BorderRadius.all(Radius.circular(10)),
-          //               color: Colors.white,
-          //               boxShadow: [
-          //                 BoxShadow(
-          //                   color: Colors.grey.withOpacity(0.3),
-          //                   spreadRadius: 0,
-          //                   blurRadius: 6,
-          //                   offset: const Offset(0, 0),
-          //                 )
-          //               ],
-          //             ),
-          //             child: Padding(
-          //               padding: const EdgeInsets.symmetric(
-          //                   vertical: 10, horizontal: 12),
-          //               child: Column(
-          //                 mainAxisAlignment: MainAxisAlignment.center,
-          //                 children: [
-          //                   Row(
-          //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //                     children: [
-          //                       Text(
-          //                         provider.datas[index].name,
-          //                         style: const TextStyle(
-          //                             fontWeight: FontWeight.bold),
-          //                       ),
-          //                       Text(provider.datas[index].relationship,
-          //                           style: const TextStyle(
-          //                               fontWeight: FontWeight.bold)),
-          //                     ],
-          //                   ),
-          //                   const SizedBox(
-          //                     height: 12,
-          //                   ),
-          //                   Row(
-          //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //                     children: [
-          //                       Text(
-          //                         'NIK: ${provider.datas[index].nik}',
-          //                         style: const TextStyle(color: Colors.grey),
-          //                       ),
-          //                       Text(provider.datas[index].age,
-          //                           style: const TextStyle(color: Colors.grey)),
-          //                     ],
-          //                   ),
-          //                 ],
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       );
-          //     }),

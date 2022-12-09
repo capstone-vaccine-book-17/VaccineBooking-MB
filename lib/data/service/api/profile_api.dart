@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:w_vaccine/data/service/api/constant_api.dart';
 import 'package:w_vaccine/data/service/dio_client.dart';
 import 'package:w_vaccine/data/service/dio_exception.dart';
+import 'package:w_vaccine/dependency_injection/profile_data.dart';
 
 class ProfileApi {
   final DioClient _dioClient;
@@ -48,6 +49,51 @@ class ProfileApi {
     try {
       final Response res = await _dioClient.get(
         '${ConstantApi.profileEndpoint}/address',
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+      );
+      return res;
+    } on DioError catch (e) {
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
+
+  Future<Response> putChangeAddress({
+    required String token,
+    required AddressData addressData,
+  }) async {
+    try {
+      final Response res = await _dioClient.put(
+        '${ConstantApi.profileEndpoint}/updateAddress',
+        data: {
+          'new_address': addressData.address,
+          'province': addressData.province,
+          'city': addressData.city,
+          'post_code': addressData.postalCode
+        },
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+      );
+      return res;
+    } on DioError catch (e) {
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
+
+  Future<Response> putChangeEmail({
+    required String token,
+    required String email,
+  }) async {
+    try {
+      final Response res = await _dioClient.put(
+        '${ConstantApi.profileEndpoint}/emailUpdate',
+        data: {
+          'email': email,
+        },
         options: Options(
           headers: {"Authorization": 'Bearer $token'},
         ),

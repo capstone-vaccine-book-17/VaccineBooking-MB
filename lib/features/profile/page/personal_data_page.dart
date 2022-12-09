@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/dependency_injection/profile_data.dart';
+import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/profile/page/change_address_page.dart';
 import 'package:w_vaccine/features/profile/page/change_email_page.dart';
 
@@ -10,6 +12,25 @@ class PersonalDataPage extends StatefulWidget {
 }
 
 class _PersonalDataPageState extends State<PersonalDataPage> {
+  final profileData = getIt.get<ProfileData>();
+
+  final _addressCtl = TextEditingController();
+  final _emailCtl = TextEditingController();
+
+  @override
+  void initState() {
+    _addressCtl.text = profileData.address?.address ?? 'empty';
+    _emailCtl.text = profileData.email ?? 'empty';
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _addressCtl.dispose();
+    _emailCtl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,13 +74,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             /// Nama lengkap
             const Text('Nama Lengkap'),
             const SizedBox(height: 12.0),
-            const TextField(
-              enabled: false,
-              decoration: InputDecoration(
+            TextFormField(
+              readOnly: true,
+              initialValue: profileData.fullName,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
               ),
             ),
@@ -68,13 +88,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             /// NIK
             const Text('NIK'),
             const SizedBox(height: 12.0),
-            const TextField(
-              enabled: false,
-              decoration: InputDecoration(
+            TextFormField(
+              readOnly: true,
+              initialValue: profileData.nik,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
               ),
             ),
@@ -83,16 +102,19 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             /// Alamat
             const Text('Alamat'),
             const SizedBox(height: 12.0),
-            TextField(
-              // enabled: false,
+            TextFormField(
+              readOnly: true,
+              controller: _addressCtl,
               decoration: InputDecoration(
                 suffixIcon: TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(
                         builder: (context) => const ChangeAddressPage(),
                       ),
-                    );
+                    ).whenComplete(() => _addressCtl.text =
+                        profileData.address?.address ?? 'empty');
                   },
                   child: const Text('Ubah'),
                 ),
@@ -108,15 +130,19 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             /// Email
             const Text('Email'),
             const SizedBox(height: 12.0),
-            TextField(
-              // enabled: false,
+            TextFormField(
+              readOnly: true,
+              controller: _emailCtl,
               decoration: InputDecoration(
                 suffixIcon: TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(
                         builder: (context) => const ChangeEmailPage(),
                       ),
+                    ).whenComplete(
+                      () => _emailCtl.text = profileData.email ?? 'empty',
                     );
                   },
                   child: const Text('Ubah'),
@@ -133,13 +159,12 @@ class _PersonalDataPageState extends State<PersonalDataPage> {
             /// Jenis Kelamin
             const Text('Jenis Kelamin'),
             const SizedBox(height: 12.0),
-            const TextField(
-              enabled: false,
-              decoration: InputDecoration(
+            TextFormField(
+              readOnly: true,
+              initialValue: profileData.gender,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
               ),
             ),

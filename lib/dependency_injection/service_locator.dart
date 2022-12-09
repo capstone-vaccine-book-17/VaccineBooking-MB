@@ -6,6 +6,7 @@ import 'package:w_vaccine/data/service/api/auth_api.dart';
 import 'package:w_vaccine/data/service/api/profile_api.dart';
 import 'package:w_vaccine/data/service/dio_client.dart';
 import 'package:w_vaccine/data/service/local/shared_pref.dart';
+import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/dependency_injection/profile_data.dart';
 
 final getIt = GetIt.instance;
@@ -25,4 +26,5 @@ Future<void> setup() async {
 
   /// Global Variable
   getIt.registerSingleton(ProfileData());
+  getIt.registerSingleton(FamilyData());
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/profile/model/detail_family_model.dart';
+import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/styles/Wvaccine_icons.dart';
 
 class DetailFamily extends StatelessWidget {
   const DetailFamily({super.key, required this.data});
 
-  final ModelDetailFamily data;
+  final FamilyMember data;
 
   @override
   Widget build(BuildContext context) {
