@@ -3,6 +3,8 @@ import 'package:w_vaccine/features/home/index_home.dart';
 import 'package:w_vaccine/features/profile/index_profile.dart';
 import 'package:w_vaccine/features/ticket/index_ticket.dart';
 import 'package:w_vaccine/features/vaccine/index_vaccine.dart';
+import 'package:w_vaccine/styles/Wvaccine_icons.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
 
 class IndexNavigation extends StatefulWidget {
   const IndexNavigation({super.key});
@@ -15,15 +17,13 @@ class _IndexNavigationState extends State<IndexNavigation> {
   int _currentIndexNavigation = 0;
 
   List<Widget> pages = [
-    IndexHome(),
-    IndexVaccine(),
-    Indexticket(),
-    IndexProfile(),
+    const IndexHome(),
+    const IndexVaccine(),
+    const IndexTicket(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    print('Build Index Navigation');
     return Scaffold(
       body: IndexedStack(
         index: _currentIndexNavigation,
@@ -35,27 +35,27 @@ class _IndexNavigationState extends State<IndexNavigation> {
         onTap: (value) => setState(() => _currentIndexNavigation = value),
         currentIndex: _currentIndexNavigation,
         // backgroundColor: Colors.blue,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: slctdcolor,
         unselectedItemColor: Colors.black,
         showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(WvaccineIcons.home_outlined),
             label: 'Beranda',
             tooltip: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.food_bank),
+            icon: Icon(WvaccineIcons.vaccine_outlined),
             label: 'Vaksin',
             tooltip: 'Vaksin',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_repair_service),
+            icon: Icon(WvaccineIcons.ticket_outlined),
             label: 'Tiket',
             tooltip: 'Ticket',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(WvaccineIcons.people_outlined),
             label: 'Profile',
             tooltip: 'Profile',
           ),
