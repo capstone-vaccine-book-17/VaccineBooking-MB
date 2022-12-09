@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/features/auth/page/login_page.dart';
+import 'package:w_vaccine/features/auth/page/register_page.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -45,7 +47,12 @@ class OnboardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterPage()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff3366FF),
                         padding: const EdgeInsets.symmetric(
@@ -60,7 +67,12 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 16),
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
+                      },
                       style: OutlinedButton.styleFrom(
                         side: const BorderSide(
                             width: 1.5, color: Color(0xff3366FF)),
