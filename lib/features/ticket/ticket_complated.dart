@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
+import 'package:w_vaccine/styles/custom_color.dart';
 
 class TicketCompleted extends StatefulWidget {
   const TicketCompleted({super.key});
@@ -51,6 +52,7 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: bgfntcolordone,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15),
                                     ),
@@ -61,10 +63,10 @@ class _TicketCompletedState extends State<TicketCompleted> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                   onPressed: () {},
-                                  child: const Text(
+                                  child: Text(
                                     "Selesai",
                                     style: TextStyle(
-                                      color: Color.fromARGB(255, 10, 17, 154),
+                                      color: fntcolordone,
                                       fontSize: 16,
                                     ),
                                   ),

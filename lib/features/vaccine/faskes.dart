@@ -41,9 +41,9 @@ class FaskesPage extends StatelessWidget {
                         const Text(
                           "Jl. HOS. Cokroaminoto No.31-33, RT.1/RW.3, \nGondangdia, Kec. Menteng, Kota Jakarta Pusat, \nDaerah Khusus Ibukota Jakarta 10350",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black54),
                         ),
                       ],
                     ),
@@ -123,6 +123,11 @@ class FaskesPage extends StatelessWidget {
                     child: Column(
                       children: [
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -184,6 +189,11 @@ class FaskesPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -289,9 +299,9 @@ class FaskesPage extends StatelessWidget {
                           Text(
                             data['nama'].toString(),
                             style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black54),
                           )
                         ],
                       ),
@@ -342,6 +352,11 @@ class FaskesPage extends StatelessWidget {
                             ),
                           ),
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
                             onPressed: () {},
                             child: const Text(
                               "Pilih",

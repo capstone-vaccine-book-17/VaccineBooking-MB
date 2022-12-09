@@ -26,10 +26,8 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
           'Anggota Keluarga',
-          style: TextStyle(color: Colors.black),
         ),
       ),
       body: SingleChildScrollView(
