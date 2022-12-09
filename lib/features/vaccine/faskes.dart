@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/vaccine/loading_page.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 
 class FaskesPage extends StatelessWidget {
   const FaskesPage({super.key});
@@ -26,7 +25,6 @@ class FaskesPage extends StatelessWidget {
                     const Text(
                       "Rs. Abdi Waluyo",
                       style: TextStyle(
-                        color: blackColor,
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
                       ),
@@ -44,7 +42,6 @@ class FaskesPage extends StatelessWidget {
                           "Jl. HOS. Cokroaminoto No.31-33, RT.1/RW.3, \nGondangdia, Kec. Menteng, Kota Jakarta Pusat, \nDaerah Khusus Ibukota Jakarta 10350",
                           style: TextStyle(
                             fontSize: 14,
-                            color: greyColor,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -55,7 +52,6 @@ class FaskesPage extends StatelessWidget {
                       "Jadwal",
                       style: TextStyle(
                         fontSize: 16,
-                        color: greyColor,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -286,8 +282,7 @@ class FaskesPage extends StatelessWidget {
                               const SizedBox(width: 10),
                               Text(
                                 data['dosis'].toString(),
-                                style: TextStyle(
-                                  color: blackColor,
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -296,8 +291,7 @@ class FaskesPage extends StatelessWidget {
                           ),
                           Text(
                             data['nama'].toString(),
-                            style: TextStyle(
-                              color: blackColor,
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                             ),
@@ -314,8 +308,7 @@ class FaskesPage extends StatelessWidget {
                           const SizedBox(width: 10),
                           Text(
                             data['waktu'].toString(),
-                            style: TextStyle(
-                              color: blackColor,
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
@@ -333,8 +326,7 @@ class FaskesPage extends StatelessWidget {
                           const SizedBox(width: 12),
                           Text(
                             data['kuota'].toString(),
-                            style: TextStyle(
-                              color: greyColor,
+                            style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                             ),
@@ -347,8 +339,7 @@ class FaskesPage extends StatelessWidget {
                         children: [
                           Text(
                             data['sisaKuota'].toString(),
-                            style: TextStyle(
-                              color: redColor,
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),

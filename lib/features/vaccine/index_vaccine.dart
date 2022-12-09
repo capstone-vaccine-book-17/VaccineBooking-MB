@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/vaccine/faskes.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class IndexVaccine extends StatelessWidget {
   IndexVaccine({super.key});
+
+  String _valueSort = "";
 
   @override
   Widget build(BuildContext context) {
@@ -54,16 +54,48 @@ class IndexVaccine extends StatelessWidget {
                 const SizedBox(width: 8),
                 Column(
                   children: [
-                    Image.asset(
-                      "assets/vaccine/ic_filter.png",
-                      color: greyColor,
-                      width: 20,
-                      height: 20,
+                    IconButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(32),
+                            ),
+                          ),
+                          builder: (context) => Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "Sort",
+                                    style: TextStyle(fontSize: 24),
+                                  ),
+                                  RadioListTile(
+                                    value: "Dosis Pertama",
+                                    title: const Text("Dosis Pertama"),
+                                    groupValue: _valueSort,
+                                    onChanged: (dosis) {},
+                                  ),
+                                  RadioListTile(
+                                    value: "Dosis Kedua",
+                                    title: const Text("Dosis Kedua"),
+                                    groupValue: _valueSort,
+                                    onChanged: (dosis) {},
+                                  ),
+                                ],
+                              )),
+                        );
+                      },
+                      icon: Image.asset(
+                        "assets/vaccine/ic_filter.png",
+                        width: 20,
+                        height: 20,
+                      ),
                     ),
                     const Text(
                       "Sort By",
                       style: TextStyle(
-                        color: greyColor,
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
@@ -84,7 +116,6 @@ class IndexVaccine extends StatelessWidget {
                 const Text(
                   "Jl. Yanuar akbar, Jawa barat",
                   style: TextStyle(
-                    color: greyColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
@@ -95,7 +126,6 @@ class IndexVaccine extends StatelessWidget {
             const Text(
               "Faskes Terdekat",
               style: TextStyle(
-                color: blackColor,
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
