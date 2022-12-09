@@ -30,11 +30,11 @@ void main() {
         ChangeNotifierProvider(create: (_) => VaccineVaritiesViewModel()),
         ChangeNotifierProvider(create: (_) => NewsViewModel()),
         ChangeNotifierProvider(create: (_) => NotificationViewModel()),
-
+        
         /// Auth
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => RegisterViewModel()),
-
+        
         /// Profile
         ChangeNotifierProvider(create: (_) => ChangePasswordViewModel()),
         ChangeNotifierProvider(create: (_) => ChangeEmailViewModel()),
@@ -58,7 +58,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: testTheme,
       home: const SplashScreen(),
-      // home: const LoginPage(),
     );
   }
 }
