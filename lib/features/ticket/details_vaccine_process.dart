@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 
 class TicketVaccineProcess extends StatefulWidget {
   const TicketVaccineProcess({super.key});
@@ -19,7 +18,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
             Text(
               textAlign: TextAlign.start,
               "Tiket Vaksin",
-              style: TextStyle(color: blackColor),
             ),
           ],
         ),
@@ -48,20 +46,19 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Column(
                                 children: const [
                                   Text(
                                     "Detail Pendaftaran",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Column(
                                 children: const [
                                   Text(
@@ -80,7 +77,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                   Text(
                                     "Nama Lengkap",
                                     style: TextStyle(
-                                      color: greyColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -93,33 +89,30 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                   Text(
                                     "Afifah",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Row(
                                 children: const [
                                   Text(
                                     "No Nik",
                                     style: TextStyle(
-                                      color: greyColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Row(
                                 children: const [
                                   Text(
                                     "157102170201011",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -132,7 +125,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                   Text(
                                     "Jenis Kelamin",
                                     style: TextStyle(
-                                      color: greyColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -145,7 +137,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                   Text(
                                     "Perempuan",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -161,7 +152,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "Jenis Vaksin",
                                       style: TextStyle(
-                                        color: greyColor,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -170,7 +160,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "Dosis",
                                       style: TextStyle(
-                                        color: greyColor,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -188,7 +177,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                       Text(
                                         "Sinovac",
                                         style: TextStyle(
-                                          color: blackColor,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -197,7 +185,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                       Text(
                                         "Kedua",
                                         style: TextStyle(
-                                          color: blackColor,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -215,7 +202,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "Tanggal Vaksinasi",
                                       style: TextStyle(
-                                        color: greyColor,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -224,7 +210,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "Waktu",
                                       style: TextStyle(
-                                        color: greyColor,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -241,7 +226,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "17 November 2022",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -250,7 +234,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "08.00 - 10.00",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -268,7 +251,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                       Text(
                                         "Lokasi Vaksin",
                                         style: TextStyle(
-                                          color: greyColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -277,7 +259,7 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -286,7 +268,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                     Text(
                                       "Rs. Abdi Waluyo",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -305,7 +286,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                                         textAlign: TextAlign.center,
                                         "Silahkan datang ke lokasi yang telah \n ditentukan tepat waktu",
                                         style: TextStyle(
-                                          color: greyColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -326,7 +306,6 @@ class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  primary: Colors.blue,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   textStyle: const TextStyle(

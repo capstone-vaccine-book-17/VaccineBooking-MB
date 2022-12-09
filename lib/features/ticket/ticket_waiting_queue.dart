@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
-import 'package:w_vaccine/styles/custom_color.dart';
 
 class WaitingQueue extends StatefulWidget {
   const WaitingQueue({super.key});
@@ -43,7 +42,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                                   Text(
                                     "Afifah",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700,
                                     ),
@@ -55,7 +53,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  primary: Color.fromARGB(255, 255, 231, 165),
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 10),
                                   textStyle: const TextStyle(
@@ -82,7 +79,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                                   Text(
                                     "No Antrian : 100",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -92,7 +88,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                               const Text(
                                 "08.00 - 10.00",
                                 style: TextStyle(
-                                  color: blackColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -116,7 +111,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                                     child: Text(
                                       "Sinovac",
                                       style: TextStyle(
-                                        color: blackColor,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -127,7 +121,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                               const Text(
                                 "Dosis Pertama",
                                 style: TextStyle(
-                                  color: blackColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -145,7 +138,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                               const Text(
                                 "RS Abdi Waluyo",
                                 style: TextStyle(
-                                  color: blackColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -162,7 +154,6 @@ class _WaitingQueueState extends State<WaitingQueue> {
                                   child: Text(
                                     "17 Desember 2022",
                                     style: TextStyle(
-                                      color: blackColor,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
                                     ),

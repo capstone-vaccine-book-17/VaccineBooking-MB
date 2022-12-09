@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/data/service/local/shared_pref.dart';
-import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
 import 'package:provider/provider.dart';
 

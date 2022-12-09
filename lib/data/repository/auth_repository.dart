@@ -5,7 +5,7 @@ class AuthRepository {
   final AuthApi _authApi;
   AuthRepository(this._authApi);
 
-  Future<String?> login({
+  Future<void> login({
     required String email,
     required String password,
     void Function(String msg, String token)? onSuccess,

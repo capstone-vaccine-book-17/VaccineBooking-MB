@@ -56,9 +56,9 @@ class FaskesPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 13),
-                    Container(
+                    const SizedBox(
                       width: double.infinity,
-                      child: const TextField(
+                      child: TextField(
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           hintText: "\t\t17 November 2022",
@@ -120,86 +120,83 @@ class FaskesPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Container(
-                      child: Column(
-                        children: [
-                          ElevatedButton(
+                    child: Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  "Pilih Anggota",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Image.asset(
+                                  "assets/vaccine/ic_down.png",
+                                  width: 25,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        _daftarAnggota(context),
+                        const SizedBox(height: 21),
+                        const SizedBox(
+                          width: double.infinity,
+                          child: TextField(
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              hintText: "\t\tTambah Keluarga",
+                              suffixIcon: Padding(
+                                padding: EdgeInsets.only(right: 20),
+                                child: Image(
+                                  width: 20,
+                                  height: 20,
+                                  image: AssetImage(
+                                    "assets/vaccine/ic_add_person.png",
+                                  ),
+                                ),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintStyle: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff888888),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 100),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const LoadingPageBookingVaccine(),
+                                ),
+                              );
                             },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
-                                    "Pilih Anggota",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "assets/vaccine/ic_down.png",
-                                    width: 25,
-                                  )
-                                ],
-                              ),
-                            ),
+                            child: const Text("Pesan Vaksin"),
                           ),
-                          const SizedBox(height: 10),
-                          _daftarAnggota(context),
-                          const SizedBox(height: 21),
-                          Container(
-                            width: double.infinity,
-                            child: const TextField(
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                hintText: "\t\tTambah Keluarga",
-                                suffixIcon: Padding(
-                                  padding: EdgeInsets.only(right: 20),
-                                  child: Image(
-                                    width: 20,
-                                    height: 20,
-                                    image: AssetImage(
-                                      "assets/vaccine/ic_add_person.png",
-                                    ),
-                                  ),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xff888888),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 100),
-                          Container(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const LoadingPageBookingVaccine(),
-                                  ),
-                                );
-                              },
-                              child: const Text("Pesan Vaksin"),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -407,7 +404,7 @@ class FaskesPage extends StatelessWidget {
                           Row(
                             children: [
                               Text(data['name'].toString()),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(data['hubunganKeluarga'].toString()),
                             ],
                           ),
