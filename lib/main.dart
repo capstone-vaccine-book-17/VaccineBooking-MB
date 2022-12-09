@@ -8,7 +8,7 @@ import 'package:w_vaccine/features/profile/view_model/change_address_view_model.
 import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_password_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/familydata_viewmodel.dart';
-import 'package:w_vaccine/features/profile/view_model/profile_image_viewmodel.dart';
+import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
 import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
 import 'package:w_vaccine/styles/theme.dart';
@@ -40,7 +40,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => ChangeEmailViewModel()),
         ChangeNotifierProvider(create: (_) => ChangeAddressViewModel()),
         ChangeNotifierProvider(create: (_) => AddFamilyMemberViewModel()),
-        ChangeNotifierProvider(create: (_) => ProfileImage()),
+        ChangeNotifierProvider(create: (_) => IndexProfileViewModel()),
         ChangeNotifierProvider(create: (_) => FamilyData()),
       ],
       child: const MyApp(),
