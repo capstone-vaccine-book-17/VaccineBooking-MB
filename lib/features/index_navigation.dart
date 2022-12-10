@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/home/index_home.dart';
 import 'package:w_vaccine/features/profile/index_profile.dart';
 import 'package:w_vaccine/features/ticket/index_ticket.dart';
-import 'package:w_vaccine/features/vaccine/index_vaccine.dart';
+import 'package:w_vaccine/features/vaccine/page/index_vaccine.dart';
 import 'package:w_vaccine/styles/Wvaccine_icons.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 

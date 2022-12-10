@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/vaccine/faskes.dart';
+import 'package:w_vaccine/features/vaccine/page/faskes.dart';
 
 class IndexVaccine extends StatelessWidget {
   const IndexVaccine({super.key});
