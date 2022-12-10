@@ -37,7 +37,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
     );
   }
 
-  Widget _cardVariety(VaccineModel data) {
+  Widget _cardVariety(VaccineVarietyModel data) {
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(

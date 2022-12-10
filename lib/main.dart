@@ -11,6 +11,7 @@ import 'package:w_vaccine/features/profile/view_model/family_member_view_model.d
 import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
 import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
+import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 import 'package:w_vaccine/styles/theme.dart';
 import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
 import 'package:w_vaccine/features/home/view_model/notification_view_model.dart';
@@ -42,6 +43,9 @@ void main() {
         ChangeNotifierProvider(create: (_) => AddFamilyMemberViewModel()),
         ChangeNotifierProvider(create: (_) => IndexProfileViewModel()),
         ChangeNotifierProvider(create: (_) => FamilyMemberViewModel()),
+
+        ///vaccine
+        ChangeNotifierProvider(create: (_) => VaccineViewModel()),
       ],
       child: const MyApp(),
     ),

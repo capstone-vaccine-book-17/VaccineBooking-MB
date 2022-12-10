@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/data/service/local/shared_pref.dart';
 import 'package:w_vaccine/features/profile/page/family_members_page.dart';
 import 'package:w_vaccine/features/profile/page/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/page/change_password_page.dart';
 import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
+import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/styles/Wvaccine_icons.dart';
 import '../../widgets/profile/list_menu.dart';
 import 'package:provider/provider.dart';
@@ -154,7 +156,17 @@ class _IndexProfileState extends State<IndexProfile> {
               ListMenu(
                 icon: WvaccineIcons.exit_app,
                 name: 'Keluar Akun',
-                func: (() {}),
+                func: (() async {
+                  //temporary logout
+
+                  SharedPref token = SharedPref();
+                  await token.deleteToken();
+
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => SplashScreen()),
+                      (route) => false);
+                }),
               ),
             ],
           ),
