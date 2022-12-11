@@ -3,6 +3,7 @@ import 'package:w_vaccine/data/repository/vaccine_repository.dart';
 import 'package:w_vaccine/data/service/local/shared_pref.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
+import 'package:w_vaccine/styles/nofication.dart';
 
 class VaccineViewModel extends ChangeNotifier {
   final _vaccineRepository = getIt.get<VaccineRepository>();
@@ -24,13 +25,14 @@ class VaccineViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> searchMedFacilitys({required String searchtxt}) async {
+  Future<void> searchMedFacilitys({required String searchtxt, context}) async {
     isLoading = true;
     notifyListeners();
     String? token = await storage.readToken();
 
     final dataSearch = await _vaccineRepository.searchMedFac(
         token: token!, searchTxt: searchtxt);
+
     _vaccine = dataSearch;
     print('ambil api');
 

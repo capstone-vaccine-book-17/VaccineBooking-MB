@@ -38,3 +38,5 @@ class VaccineData {
     return VaccineData;
   }
 }
+
+

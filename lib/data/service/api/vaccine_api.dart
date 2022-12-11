@@ -43,4 +43,22 @@ class VaccineApi {
       throw errorMsg;
     }
   }
+
+  Future<Response> getVaccineSession({
+    required String token,
+    required int id,
+  }) async {
+    try {
+      final Response res = await _dioClient.get(
+        '${ConstantApi.sessionVaccine}/$id',
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+      );
+      return res;
+    } on DioError catch (e) {
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
 }

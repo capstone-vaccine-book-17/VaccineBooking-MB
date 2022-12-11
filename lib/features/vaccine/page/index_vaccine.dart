@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
-import 'package:w_vaccine/features/vaccine/page/vaccine.dart';
+import 'package:w_vaccine/features/vaccine/page/vaccine_session_page.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 
 class IndexVaccine extends StatefulWidget {
@@ -14,9 +14,10 @@ class IndexVaccine extends StatefulWidget {
 }
 
 class _IndexVaccineState extends State<IndexVaccine> {
-  late VaccineViewModel vm;
-  final String _valueSort = "";
   final searchController = TextEditingController();
+  late VaccineViewModel vm;
+
+  final String _valueSort = "";
 
   @override
   void initState() {
@@ -27,6 +28,110 @@ class _IndexVaccineState extends State<IndexVaccine> {
 
   void searchMedical() {
     vm.searchMedFacilitys(searchtxt: searchController.text.trim());
+  }
+
+  Widget _daftarFaskes(BuildContext context) {
+    /// Later will be replaced with model within this view model
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Consumer<VaccineViewModel>(
+        builder: (context, value, child) {
+          final data = value.vaccine;
+
+          return ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, index) {
+              final medfac = data[index];
+
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FaskesPage(
+                                data: medfac,
+                                id: medfac.medicalFacilitysId!,
+                              )));
+                },
+                child: Card(
+                  elevation: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Image.network(
+                                medfac.image!,
+                                width: 100,
+                              ),
+                            ),
+                            const SizedBox(width: 8.0),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    medfac.name!,
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                  Text(
+                                    '${medfac.address} ${medfac.city} ${medfac.province}',
+                                    softWrap: false,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Dosis ${medfac.dosis!}',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text('Tersedia',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_city,
+                              color: Colors.grey,
+                            ),
+                            SizedBox(width: 6),
+                            Text(
+                              '${medfac.city}, ${medfac.province}',
+                              style: TextStyle(color: Colors.black54),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 
   @override
@@ -166,103 +271,6 @@ class _IndexVaccineState extends State<IndexVaccine> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _daftarFaskes(BuildContext context) {
-    /// Later will be replaced with model within this view model
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Consumer<VaccineViewModel>(
-        builder: (context, value, child) {
-          final data = value.vaccine;
-          return ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (context, index) {
-              final medfac = data[index];
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FaskesPage()));
-                },
-                child: Card(
-                  elevation: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Image.network(
-                                medfac.image!,
-                                width: 100,
-                              ),
-                            ),
-                            const SizedBox(width: 8.0),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    medfac.name!,
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                  ),
-                                  Text(
-                                    '${medfac.address} ${medfac.city} ${medfac.province}',
-                                    softWrap: false,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Dosis ${medfac.dosis!}',
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Text('Tersedia',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green)),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.location_city,
-                              color: Colors.grey,
-                            ),
-                            SizedBox(width: 6),
-                            Text(
-                              '${medfac.city}, ${medfac.province}',
-                              style: TextStyle(color: Colors.black54),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
-        },
       ),
     );
   }
