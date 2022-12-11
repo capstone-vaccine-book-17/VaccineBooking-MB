@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/vaccine/page/vaccine_session_page.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 
@@ -17,12 +14,16 @@ class _IndexVaccineState extends State<IndexVaccine> {
   final searchController = TextEditingController();
   late VaccineViewModel vm;
 
-  final String _valueSort = "";
+  final ValueNotifier<bool> _dosisOne = ValueNotifier(false);
+  final ValueNotifier<bool> _dosisTwo = ValueNotifier(false);
 
   @override
   void initState() {
-    vm = Provider.of<VaccineViewModel>(context, listen: false);
-    vm.getMedFacilitys();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      vm = Provider.of<VaccineViewModel>(context, listen: false);
+      vm.getMedFacilitys();
+    });
+
     super.initState();
   }
 
@@ -32,6 +33,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
 
   Widget _daftarFaskes(BuildContext context) {
     /// Later will be replaced with model within this view model
+
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Consumer<VaccineViewModel>(
@@ -55,6 +57,9 @@ class _IndexVaccineState extends State<IndexVaccine> {
                 },
                 child: Card(
                   elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -100,25 +105,25 @@ class _IndexVaccineState extends State<IndexVaccine> {
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            Text('Tersedia',
-                                style: const TextStyle(
+                            const Text('Tersedia',
+                                style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.green)),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.location_city,
                               color: Colors.grey,
                             ),
-                            SizedBox(width: 6),
+                            const SizedBox(width: 6),
                             Text(
                               '${medfac.city}, ${medfac.province}',
-                              style: TextStyle(color: Colors.black54),
+                              style: const TextStyle(color: Colors.black54),
                             )
                           ],
                         )
@@ -157,13 +162,13 @@ class _IndexVaccineState extends State<IndexVaccine> {
                     decoration: InputDecoration(
                       hintText: "\t\tCari Lokasi Faskes",
                       suffixIcon: Padding(
-                        padding: EdgeInsets.only(right: 20),
+                        padding: const EdgeInsets.only(right: 20),
                         child: GestureDetector(
                           onTap: () {
                             print('Search ${searchController.text}');
                             searchMedical();
                           },
-                          child: Image(
+                          child: const Image(
                             width: 3,
                             height: 3,
                             image: AssetImage(
@@ -174,11 +179,11 @@ class _IndexVaccineState extends State<IndexVaccine> {
                       ),
                       filled: true,
                       fillColor: Colors.white,
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         fontSize: 16,
                         color: Color(0xff888888),
                       ),
-                      border: OutlineInputBorder(
+                      border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
                         ),
@@ -195,31 +200,116 @@ class _IndexVaccineState extends State<IndexVaccine> {
                           context: context,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(32),
-                            ),
+                                top: Radius.circular(25.0)),
                           ),
-                          builder: (context) => Padding(
-                              padding: const EdgeInsets.all(10),
+                          builder: (BuildContext context) {
+                            // return your layout
+                            return SizedBox(
+                              height: 260,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    "Sort",
-                                    style: TextStyle(fontSize: 24),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 15),
+                                    child: Center(
+                                      child: Image.asset(
+                                        'assets/png/draghandle.png',
+                                        cacheHeight: 6,
+                                        cacheWidth: 45,
+                                      ),
+                                    ),
                                   ),
-                                  RadioListTile(
-                                    value: "Dosis Pertama",
-                                    title: const Text("Dosis Pertama"),
-                                    groupValue: _valueSort,
-                                    onChanged: (dosis) {},
+                                  const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 30, top: 30, bottom: 8),
+                                    child: Text(
+                                      'Sort By',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700),
+                                    ),
                                   ),
-                                  RadioListTile(
-                                    value: "Dosis Kedua",
-                                    title: const Text("Dosis Kedua"),
-                                    groupValue: _valueSort,
-                                    onChanged: (dosis) {},
+                                  const Divider(thickness: 2),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(left: 30, right: 30),
+                                    child: Row(
+                                      children: [
+                                        const Text(
+                                          'Dosis Pertama',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        const Spacer(),
+                                        ValueListenableBuilder(
+                                          valueListenable: _dosisOne,
+                                          builder: ((context, value, child) =>
+                                              IconButton(
+                                                onPressed: () {
+                                                  _dosisOne.value =
+                                                      !_dosisOne.value;
+                                                },
+                                                icon: (_dosisOne.value)
+                                                    ? const Icon(
+                                                        Icons
+                                                            .radio_button_checked,
+                                                        size: 35,
+                                                        color: Colors.blue,
+                                                      )
+                                                    : const Icon(
+                                                        Icons
+                                                            .radio_button_off_outlined,
+                                                        size: 35,
+                                                        color: Colors.blue,
+                                                      ),
+                                              )),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(left: 30, right: 30),
+                                    child: Row(
+                                      children: [
+                                        const Text(
+                                          'Dosis Kedua',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        const Spacer(),
+                                        ValueListenableBuilder(
+                                          valueListenable: _dosisTwo,
+                                          builder: ((context, value, child) =>
+                                              IconButton(
+                                                onPressed: () {
+                                                  _dosisTwo.value =
+                                                      !_dosisTwo.value;
+                                                },
+                                                icon: (_dosisTwo.value)
+                                                    ? const Icon(
+                                                        Icons
+                                                            .radio_button_checked,
+                                                        size: 35,
+                                                        color: Colors.blue,
+                                                      )
+                                                    : const Icon(
+                                                        Icons
+                                                            .radio_button_off_outlined,
+                                                        size: 35,
+                                                        color: Colors.blue,
+                                                      ),
+                                              )),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
-                              )),
+                              ),
+                            );
+                          },
                         );
                       },
                       icon: Image.asset(
@@ -268,7 +358,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
             const SizedBox(height: 8),
             Expanded(
               child: _daftarFaskes(context),
-            ),
+            )
           ],
         ),
       ),

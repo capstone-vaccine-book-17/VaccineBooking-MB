@@ -12,7 +12,8 @@ class LoadingPageBookingVaccine extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 250),
-              const Text("Tunggu Sebentar"),
+              Text("Tunggu Sebentar",
+                  style: Theme.of(context).textTheme.headline6),
               Container(
                 width: double.infinity,
                 height: 150,
@@ -22,8 +23,8 @@ class LoadingPageBookingVaccine extends StatelessWidget {
                   ),
                 ),
                 child: SizedBox(
-                  height: 5,
-                  width: 5,
+                  height: 9,
+                  width: 9,
                   child: Lottie.asset("assets/vaccine/loading.json"),
                 ),
               ),

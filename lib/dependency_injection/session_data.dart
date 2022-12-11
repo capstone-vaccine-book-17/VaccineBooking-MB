@@ -30,7 +30,7 @@ class SessionData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> SessionData = new Map<String, dynamic>();
+    final Map<String, dynamic> SessionData =  Map<String, dynamic>();
     SessionData['session_id'] = this.sessionId;
     SessionData['vaccine'] = this.vaccine;
     SessionData['name'] = this.name;

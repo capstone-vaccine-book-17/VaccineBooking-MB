@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
-import 'package:w_vaccine/features/vaccine/loading_page.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
+import 'package:w_vaccine/widgets/button_form_custom.dart';
 
 class FaskesPage extends StatefulWidget {
   const FaskesPage({
@@ -61,9 +61,12 @@ class _FaskesPageState extends State<FaskesPage> {
           itemBuilder: (context, index) {
             final session = data[index];
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Card(
                 elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -149,7 +152,9 @@ class _FaskesPageState extends State<FaskesPage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              showBottomSheet(context, session.sessionId!);
+                            },
                             child: const Text(
                               "Pilih",
                               style: TextStyle(
@@ -261,7 +266,7 @@ class _FaskesPageState extends State<FaskesPage> {
                 children: [
                   Text(
                     widget.data.name!,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.w600,
                     ),
@@ -278,7 +283,7 @@ class _FaskesPageState extends State<FaskesPage> {
                       Expanded(
                         child: Text(
                           '${widget.data.address!} ${widget.data.city!} ${widget.data.province} ${widget.data.medicalFacilitysId}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                               color: Colors.black54),
@@ -330,7 +335,7 @@ class _FaskesPageState extends State<FaskesPage> {
               ),
             ),
             _daftarVaksin(context),
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
           ],
         ),
       ),
@@ -347,109 +352,7 @@ class _FaskesPageState extends State<FaskesPage> {
           padding: const EdgeInsets.all(16),
           child: ElevatedButton(
             onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(32),
-                  ),
-                ),
-                builder: (context) => Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  "Pilih Anggota",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Image.asset(
-                                  "assets/vaccine/ic_down.png",
-                                  width: 25,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        _daftarAnggota(context),
-                        const SizedBox(height: 21),
-                        const SizedBox(
-                          width: double.infinity,
-                          child: TextField(
-                            readOnly: true,
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              hintText: "\t\t(Fitur tidak tersedia hehe)",
-                              suffixIcon: Padding(
-                                padding: EdgeInsets.only(right: 20),
-                                child: Image(
-                                  width: 20,
-                                  height: 20,
-                                  image: AssetImage(
-                                    "assets/vaccine/ic_add_person.png",
-                                  ),
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintStyle: TextStyle(
-                                fontSize: 16,
-                                color: Color(0xff888888),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 100),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const LoadingPageBookingVaccine(),
-                                ),
-                              );
-                            },
-                            child: const Text("Pesan Vaksin"),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
+              // showBottomSheet(context);
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -461,7 +364,7 @@ class _FaskesPageState extends State<FaskesPage> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
                   Image.asset(
@@ -475,6 +378,106 @@ class _FaskesPageState extends State<FaskesPage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+
+  Future<dynamic> showBottomSheet(BuildContext context, int sessionId) {
+    final vm = Provider.of<SessionViewModel>(context, listen: false);
+    return showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(32),
+        ),
+      ),
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Pilih Anggota",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Image.asset(
+                          "assets/vaccine/ic_down.png",
+                          width: 25,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                _daftarAnggota(context),
+                const SizedBox(height: 21),
+                const SizedBox(
+                  width: double.infinity,
+                  child: TextField(
+                    readOnly: true,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      hintText: "\t\t(Fitur tidak tersedia hehe)",
+                      suffixIcon: Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child: Image(
+                          width: 20,
+                          height: 20,
+                          image: AssetImage(
+                            "assets/vaccine/ic_add_person.png",
+                          ),
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintStyle: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xff888888),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                SizedBox(
+                  width: double.infinity,
+                  child: ButtonFormCustom(
+                      text: 'Pesan Vaksin',
+                      onPressed: () {
+                        print(sessionId);
+                        vm.booking(context: context, sessionId: sessionId);
+                        Navigator.pop(context);
+                      }),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -50,10 +50,31 @@ class VaccineApi {
   }) async {
     try {
       final Response res = await _dioClient.get(
-        '${ConstantApi.sessionVaccine}/$id',
+        '${ConstantApi.sessionVaccineEndpoint}/$id',
         options: Options(
           headers: {"Authorization": 'Bearer $token'},
         ),
+      );
+      return res;
+    } on DioError catch (e) {
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
+
+  Future<Response> postBookvaccine({
+    required String token,
+    required int sessionId,
+  }) async {
+    try {
+      final Response res = await _dioClient.post(
+        '${ConstantApi.bookingVaccineEndpoint}/',
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+        data: {
+          'session_id': sessionId,
+        },
       );
       return res;
     } on DioError catch (e) {

@@ -3,7 +3,6 @@ import 'package:w_vaccine/data/repository/vaccine_repository.dart';
 import 'package:w_vaccine/data/service/local/shared_pref.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
-import 'package:w_vaccine/styles/nofication.dart';
 
 class VaccineViewModel extends ChangeNotifier {
   final _vaccineRepository = getIt.get<VaccineRepository>();
@@ -11,22 +10,18 @@ class VaccineViewModel extends ChangeNotifier {
 
   List<VaccineData> _vaccine = [];
   List<VaccineData> get vaccine => _vaccine;
-  bool isLoading = false;
 
   Future<void> getMedFacilitys() async {
-    isLoading = true;
     notifyListeners();
     String? token = await storage.readToken();
 
-    final data = await _vaccineRepository.getMedFac(token: token!);
+    final data = await _vaccineRepository.medicalFac(token: token!);
     _vaccine = data;
 
-    isLoading = false;
     notifyListeners();
   }
 
   Future<void> searchMedFacilitys({required String searchtxt, context}) async {
-    isLoading = true;
     notifyListeners();
     String? token = await storage.readToken();
 
@@ -36,7 +31,6 @@ class VaccineViewModel extends ChangeNotifier {
     _vaccine = dataSearch;
     print('ambil api');
 
-    isLoading = false;
     notifyListeners();
   }
 }
