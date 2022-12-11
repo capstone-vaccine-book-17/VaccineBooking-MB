@@ -26,7 +26,7 @@ class DetailFamilyMemberViewModel with ChangeNotifier {
       id: id,
       token: token,
 
-      /// Navigator pop action on the page becacuse using bottom sheet
+      /// Navigator pop action on the page because using bottom sheet
       onSuccess: (msg) {
         snackbarMessage(context, msg);
       },

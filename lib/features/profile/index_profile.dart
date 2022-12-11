@@ -154,7 +154,7 @@ class _IndexProfileState extends State<IndexProfile> {
               ListMenu(
                 icon: WvaccineIcons.exit_app,
                 name: 'Keluar Akun',
-                func: (() {}),
+                func: (() => vm.logout(context)),
               ),
             ],
           ),
