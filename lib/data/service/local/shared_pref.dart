@@ -26,7 +26,7 @@ class SharedPref {
 
   Future<String?> readToken() async {
     String? token = await _storage.read(key: _keyToken);
-    print(token);
+    print('Read Token: $token');
     return token;
   }
 }

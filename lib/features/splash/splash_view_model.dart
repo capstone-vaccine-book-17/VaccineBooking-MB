@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/data/repository/family_repository.dart';
 import 'package:w_vaccine/data/repository/profile_repository.dart';
 import 'package:w_vaccine/data/service/local/shared_pref.dart';
+import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/dependency_injection/profile_data.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/page/login_page.dart';
@@ -10,10 +12,11 @@ import 'package:w_vaccine/styles/nofication.dart';
 
 class SplashViewModel with ChangeNotifier {
   final _profileRepo = getIt.get<ProfileRepository>();
+  final _familyRepo = getIt.get<FamilyRepository>();
   Future<void> initialLoad(context) async {
     print('MASUK INITIAL LOAD');
     final SharedPref storage = getIt.get<SharedPref>();
-    String? token = await storage.readToken();
+    final String? token = await storage.readToken();
 
     /// Do not have a token
     if (token == null) {
@@ -50,6 +53,14 @@ class SplashViewModel with ChangeNotifier {
         city: temp1['city'],
         postalCode: temp1['postalCode'],
       );
+
+      /// Assign All Data Family to Global Object
+      final familyData = getIt.get<FamilyData>();
+      final List<FamilyMember> family =
+          await _familyRepo.familyMember(token: token);
+      familyData.family = family;
+
+      /// Navigate To Index Navigation After All Initial Fetch Success
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const IndexNavigation(),
       ));
@@ -61,7 +72,6 @@ class SplashViewModel with ChangeNotifier {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const LoginPage(),
       ));
-      return;
     }
   }
 }

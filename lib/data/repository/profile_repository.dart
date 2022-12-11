@@ -100,4 +100,28 @@ class ProfileRepository {
       onError!(e.toString());
     }
   }
+
+  Future<void> changePassword({
+    required String token,
+    required String oldPass,
+    required String newPass,
+    required String confirmNewPass,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
+  }) async {
+    try {
+      final res = await _profileApi.putChangePassword(
+        token: token,
+        oldPass: oldPass,
+        newPass: newPass,
+        confirmNewPass: confirmNewPass,
+      );
+      final String msg = res.data['message'];
+      onSuccess!(msg);
+    } catch (e) {
+      print('Change Email Error - ${e.toString()}');
+      // return {'message': e.toString()};
+      onError!(e.toString());
+    }
+  }
 }
