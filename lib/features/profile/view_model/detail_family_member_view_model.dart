@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/data/repository/family_repository.dart';
 import 'package:w_vaccine/data/service/local/shared_pref.dart';
-import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/splash/onboarding_screen.dart';
 import 'package:w_vaccine/styles/nofication.dart';
 
-class AddFamilyMemberViewModel with ChangeNotifier {
-  List<String> get genders => List.unmodifiable(['laki-laki', 'perempuan']);
-
-  List<String> get relationships => List.unmodifiable(['ayah', 'ibu', 'anak']);
-
-  final _familyRepo = getIt.get<FamilyRepository>();
-
-  void submit({
+class DetailFamilyMemberViewModel with ChangeNotifier {
+  Future<bool> deleteFamilyMember({
     required context,
-    required FamilyMember familyMember,
+    required int id,
   }) async {
-    final SharedPref storage = getIt.get<SharedPref>();
+    final familyRepo = getIt.get<FamilyRepository>();
+    final storage = getIt.get<SharedPref>();
     final String? token = await storage.readToken();
 
     /// Do not have a token
@@ -26,19 +20,20 @@ class AddFamilyMemberViewModel with ChangeNotifier {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const OnboardingScreen()),
       );
-      return;
+      return false;
     }
-    _familyRepo.addFamilyMember(
+    bool isDeleteComplete = await familyRepo.deleteFamilyMember(
+      id: id,
       token: token,
-      familyMember: familyMember,
+
+      /// Navigator pop action on the page becacuse using bottom sheet
       onSuccess: (msg) {
         snackbarMessage(context, msg);
-        Navigator.pop(context);
       },
       onError: (msg) {
         snackbarMessage(context, msg);
-        Navigator.pop(context);
       },
     );
+    return isDeleteComplete;
   }
 }
