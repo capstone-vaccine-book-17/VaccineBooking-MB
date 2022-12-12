@@ -152,7 +152,7 @@ class _TicketCompletedState extends State<TicketCompleted> {
                             children: [
                               Image.asset(
                                 data.iconlocation,
-                                width: 20,
+                                width: 21,
                               ),
                               const SizedBox(width: 10),
                               Text(
