@@ -15,14 +15,14 @@ class TicketCompleted extends StatefulWidget {
 class _TicketCompletedState extends State<TicketCompleted> {
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<TicketViewModel>(context, listen: false);
+    final tv = Provider.of<TicketViewModel>(context, listen: false);
     return Scaffold(
         body: SafeArea(
             child: SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
-          children: [for (var data in vm.tickets) _cardTicketAll(data)],
+          children: [for (var data in tv.tickets) _cardTicketAll(data)],
         ),
       ),
     )));
