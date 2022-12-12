@@ -27,7 +27,7 @@ class _FaskesPageState extends State<FaskesPage> {
   void initState() {
     vm = Provider.of<SessionViewModel>(context, listen: false);
 
-    vm.getSession(id: widget.id);
+    vm.getSession(id: widget.id, context: context);
     print(widget.id);
     super.initState();
   }
@@ -252,7 +252,8 @@ class _FaskesPageState extends State<FaskesPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
               widget.data.image!,
@@ -470,7 +471,6 @@ class _FaskesPageState extends State<FaskesPage> {
                       onPressed: () {
                         print(sessionId);
                         vm.booking(context: context, sessionId: sessionId);
-                        Navigator.pop(context);
                       }),
                 ),
               ],

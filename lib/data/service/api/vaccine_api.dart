@@ -28,6 +28,7 @@ class VaccineApi {
   Future<Response> searchMedicalFacilitys({
     required String token,
     required String searchTxt,
+    required String dosis,
   }) async {
     try {
       final Response res = await _dioClient.get(
@@ -35,7 +36,10 @@ class VaccineApi {
         options: Options(
           headers: {"Authorization": 'Bearer $token'},
         ),
-        queryParameters: {'s': searchTxt},
+        queryParameters: {
+          's': searchTxt,
+          'q': dosis,
+        },
       );
       return res;
     } on DioError catch (e) {

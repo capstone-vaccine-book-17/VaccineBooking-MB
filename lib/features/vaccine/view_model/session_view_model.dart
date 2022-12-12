@@ -9,20 +9,37 @@ import 'package:w_vaccine/styles/nofication.dart';
 
 class SessionViewModel with ChangeNotifier {
   final SharedPref storage = getIt.get<SharedPref>();
+
   final _vaccineRepository = getIt.get<VaccineRepository>();
   List<SessionData> _vaccineSession = [];
 
   List<SessionData> get vaccineSession => _vaccineSession;
 
-  Future<void> getSession({required int id}) async {
+  Future<void> getSession({required int id, context}) async {
     String? token = await storage.readToken();
+    if (token == null) {
+      snackbarMessage(context, 'Debug Mode - Do not have token');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+      );
+    }
+    final dataSession = await _vaccineRepository.sessionVaccine(
+      token: token!,
+      id: id,
+      onSuccess: (msg) {
+        snackbarMessage(context, msg);
+      },
 
-    final dataSession =
-        await _vaccineRepository.sessionVaccine(token: token!, id: id);
-
+      /// Token Expire : Unauthorized
+      onError: (msg) {
+        snackbarMessage(context, msg);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const LoginPage()),
+        );
+      },
+    );
     _vaccineSession = dataSession;
     print('ambil session');
-
     notifyListeners();
   }
 
@@ -30,7 +47,6 @@ class SessionViewModel with ChangeNotifier {
     required context,
     required int sessionId,
   }) async {
-    final SharedPref storage = getIt.get<SharedPref>();
     String? token = await storage.readToken();
     if (token == null) {
       snackbarMessage(context, 'Debug Mode - Do not have token');
@@ -43,7 +59,7 @@ class SessionViewModel with ChangeNotifier {
       sessionId: sessionId,
       onSuccess: (msg) {
         snackbarMessage(context, msg);
-        Navigator.of(context).pop();
+        Navigator.pop(context);
       },
 
       /// Token Expire : Unauthorized

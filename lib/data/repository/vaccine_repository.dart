@@ -26,17 +26,22 @@ class VaccineRepository {
   Future<List<VaccineData>> searchMedFac({
     required String token,
     required String searchTxt,
+    required String dosis,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
   }) async {
     try {
       final res = await _vaccineApi.searchMedicalFacilitys(
-          token: token, searchTxt: searchTxt);
-      final medfac = (res.data['data'] as List)
+          token: token, searchTxt: searchTxt, dosis: dosis);
+      final medfac = ((res.data['data'] ?? []) as List)
           .map((e) => VaccineData.fromJson(e))
           .toList();
+      print('Medical ${medfac}');
+      onSuccess!('Search ${searchTxt}');
       return medfac;
     } catch (e) {
       print('Medical Facilitys - ${e.toString()}');
-      // return e.toString();
+      void Function(String msg)? onError;
       rethrow;
     }
   }
@@ -44,16 +49,19 @@ class VaccineRepository {
   Future<List<SessionData>> sessionVaccine({
     required String token,
     required int id,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
   }) async {
     try {
       final res = await _vaccineApi.getVaccineSession(token: token, id: id);
       final session = (res.data['data'] as List)
           .map((e) => SessionData.fromJson(e))
           .toList();
+      onSuccess!('Session Vaksin');
       return session;
     } catch (e) {
       print('Session Vaccine - ${e.toString()}');
-      // return e.toString();
+      onError!(e.toString());
       rethrow;
     }
   }

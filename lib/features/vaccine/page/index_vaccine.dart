@@ -14,7 +14,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
   final searchController = TextEditingController();
   late VaccineViewModel vm;
 
-  final ValueNotifier<bool> _dosisOne = ValueNotifier(false);
+  final ValueNotifier<bool> _dosisOne = ValueNotifier(true);
   final ValueNotifier<bool> _dosisTwo = ValueNotifier(false);
 
   @override
@@ -28,12 +28,26 @@ class _IndexVaccineState extends State<IndexVaccine> {
   }
 
   void searchMedical() {
-    vm.searchMedFacilitys(searchtxt: searchController.text.trim());
+    vm.searchMedFacilitys(
+        searchtxt: searchController.text.trim(),
+        dosis: getDosis(_dosisOne.value, _dosisTwo.value),
+        context: context);
+  }
+
+  String getDosis(bool a, bool b) {
+    String? temp;
+    if (a) {
+      String a = 'pertama';
+      temp = a;
+    }
+    if (b) {
+      String b = 'kedua';
+      temp = b;
+    }
+    return temp!;
   }
 
   Widget _daftarFaskes(BuildContext context) {
-    /// Later will be replaced with model within this view model
-
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Consumer<VaccineViewModel>(
@@ -166,6 +180,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
                         child: GestureDetector(
                           onTap: () {
                             print('Search ${searchController.text}');
+                            FocusScope.of(context).unfocus();
                             searchMedical();
                           },
                           child: const Image(
@@ -231,8 +246,8 @@ class _IndexVaccineState extends State<IndexVaccine> {
                                   ),
                                   const Divider(thickness: 2),
                                   Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 30, right: 30),
+                                    padding: const EdgeInsets.only(
+                                        left: 30, right: 30),
                                     child: Row(
                                       children: [
                                         const Text(
@@ -249,6 +264,8 @@ class _IndexVaccineState extends State<IndexVaccine> {
                                                 onPressed: () {
                                                   _dosisOne.value =
                                                       !_dosisOne.value;
+                                                  _dosisTwo.value =
+                                                      !_dosisTwo.value;
                                                 },
                                                 icon: (_dosisOne.value)
                                                     ? const Icon(
@@ -269,8 +286,8 @@ class _IndexVaccineState extends State<IndexVaccine> {
                                     ),
                                   ),
                                   Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 30, right: 30),
+                                    padding: const EdgeInsets.only(
+                                        left: 30, right: 30),
                                     child: Row(
                                       children: [
                                         const Text(
@@ -285,6 +302,8 @@ class _IndexVaccineState extends State<IndexVaccine> {
                                           builder: ((context, value, child) =>
                                               IconButton(
                                                 onPressed: () {
+                                                  _dosisOne.value =
+                                                      !_dosisOne.value;
                                                   _dosisTwo.value =
                                                       !_dosisTwo.value;
                                                 },
@@ -338,8 +357,8 @@ class _IndexVaccineState extends State<IndexVaccine> {
                   height: 30,
                 ),
                 const SizedBox(width: 12),
-                const Text(
-                  "Jl. Yanuar akbar, Jawa barat",
+                Text(
+                  'Jalan di dekat rumahmu ',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,

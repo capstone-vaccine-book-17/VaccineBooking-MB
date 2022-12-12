@@ -27,7 +27,7 @@ class VaccineData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> VaccineData = Map<String, dynamic>();
+    final Map<String, dynamic> VaccineData = <String, dynamic>{};
     VaccineData['medical_facilitys_id'] = medicalFacilitysId;
     VaccineData['name'] = name;
     VaccineData['image'] = image;

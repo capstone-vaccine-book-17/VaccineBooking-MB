@@ -35,4 +35,5 @@ Future<void> setup() async {
   getIt.registerSingleton(FamilyData());
   getIt.registerSingleton(VaccineData());
   getIt.registerSingleton(SessionData());
+  getIt.registerSingleton(AddressData());
 }
