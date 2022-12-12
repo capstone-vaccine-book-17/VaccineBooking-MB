@@ -35,9 +35,10 @@ class _AddFamilyMemberPageState extends State<AddFamilyMemberPage> {
     vm.submit(
       context: context,
       familyMember: FamilyMember(
+        id: 0, // Generated ID by Server actually
         name: _fullNameCtl.text.trim(),
         nik: _nikCtl.text.trim(),
-        age: _ageCtl.text.trim(),
+        age: int.parse(_ageCtl.text),
         gender: _selectedGender.value,
         relationship: _selectedRelationship.value,
       ),

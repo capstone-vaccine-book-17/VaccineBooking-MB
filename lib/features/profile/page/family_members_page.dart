@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/dependency_injection/family_data.dart';
 import 'package:w_vaccine/features/profile/page/add_family_member_page.dart';
-import 'package:w_vaccine/features/profile/page/detail_family_member.dart';
+import 'package:w_vaccine/features/profile/page/detail_family_member_page.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/profile/view_model/family_member_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
@@ -33,26 +33,33 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: 20),
+          child: Consumer<FamilyMemberViewModel>(
+            builder: (context, value, child) {
+              return Column(
+                children: <Widget>[
+                  const SizedBox(height: 20),
 
-              for (var data in vm.family) _cardFamilyMember(data),
+                  for (var data in value.family) _cardFamilyMember(data),
 
-              /// Add Button
-              const SizedBox(height: 30),
-              ButtonFormCustom(
-                text: 'Tambah',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AddFamilyMemberPage(),
-                    ),
-                  );
-                },
-              ),
-            ],
+                  /// Add Button
+                  const SizedBox(height: 30),
+                  child!,
+                ],
+              );
+            },
+            child: ButtonFormCustom(
+              text: 'Tambah',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddFamilyMemberPage(),
+                  ),
+                ).whenComplete(
+                  () => vm.getFamilyMemberAgain(context: context),
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -60,15 +67,18 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
   }
 
   Widget _cardFamilyMember(FamilyMember data) {
+    print(data.id);
     return Card(
       elevation: 6,
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) {
-              return DetailFamily(data: data);
+              return DetailFamilyMemberPage(data: data);
             },
-          ));
+          )).whenComplete(
+            () => vm.getFamilyMemberAgain(context: context),
+          );
         },
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -98,7 +108,7 @@ class _FamilyMembersPageState extends State<FamilyMembersPage> {
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
-                    Text(data.age)
+                    Text(data.age.toString())
                   ],
                 ),
               )

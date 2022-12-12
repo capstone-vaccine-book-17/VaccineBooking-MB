@@ -104,4 +104,32 @@ class ProfileApi {
       throw errorMsg;
     }
   }
+
+  Future<Response> putChangePassword({
+    required String token,
+    required String oldPass,
+    required String newPass,
+    required String confirmNewPass,
+  }) async {
+    try {
+      final Response res = await _dioClient.put(
+        '${ConstantApi.profileEndpoint}/passwordUpdate',
+        data: {
+          'old_password': oldPass,
+          'new_password': newPass,
+          'confirm_new_password': confirmNewPass,
+        },
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+      );
+      return res;
+    } on DioError catch (e) {
+      if (e.response!.statusCode == 400) {
+        throw 'Old password incorrect';
+      }
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
 }

@@ -156,17 +156,7 @@ class _IndexProfileState extends State<IndexProfile> {
               ListMenu(
                 icon: WvaccineIcons.exit_app,
                 name: 'Keluar Akun',
-                func: (() async {
-                  //temporary logout
-
-                  SharedPref token = SharedPref();
-                  await token.deleteToken();
-
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => SplashScreen()),
-                      (route) => false);
-                }),
+                func: (() => vm.logout(context)),
               ),
             ],
           ),

@@ -27,11 +27,12 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   final _initialFocus = FocusNode();
 
-  void save() {
+  void save(context) {
     if (!_formKey.currentState!.validate()) {
       return;
     }
     vm.submit(
+      context: context,
       oldPass: _oldPass.text.trim(),
       newPass: _newPass.text.trim(),
       confirmNewPass: _confirmNewPass.text.trim(),
@@ -69,7 +70,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: _form(),
+                child: _form(context),
               ),
             ],
           ),
@@ -78,7 +79,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     );
   }
 
-  Widget _form() {
+  Widget _form(context) {
     return Form(
       key: _formKey,
       child: Container(
@@ -160,7 +161,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   hintText: 'Masukan password lagi',
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
-                  onFieldSubmitted: (_) => save(),
+                  onFieldSubmitted: (_) => save(context),
                   validator: (value) {
                     if (value == null || value.length < 6) {
                       return "Silahkan masukan password min 6 digit";
@@ -176,7 +177,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             const SizedBox(height: 12.0),
 
             /// Save Button
-            ButtonFormCustom(text: 'Simpan', onPressed: () => save())
+            ButtonFormCustom(text: 'Simpan', onPressed: () => save(context))
           ],
         ),
       ),
