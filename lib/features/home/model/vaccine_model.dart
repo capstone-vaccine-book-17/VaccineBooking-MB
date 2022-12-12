@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class VaccineModel {
+class VaccineVarietyModel {
   final String name;
   final String type;
   final String image;
@@ -7,7 +7,7 @@ class VaccineModel {
   final String description2;
   final String description3;
 
-  VaccineModel({
+  VaccineVarietyModel({
     required this.name,
     required this.type,
     required this.image,

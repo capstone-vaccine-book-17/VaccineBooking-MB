@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:w_vaccine/features/home/model/vaccine_model.dart';
 
 class VaccineVaritiesViewModel with ChangeNotifier {
-  List<VaccineModel> get vaccines {
+  List<VaccineVarietyModel> get vaccines {
     return [
-      VaccineModel(
+      VaccineVarietyModel(
         name: 'Corona Vac',
         type: 'Vaccine Covid-19',
         image: 'assets/images/coronavac.jpg',
@@ -15,8 +15,8 @@ class VaccineVaritiesViewModel with ChangeNotifier {
         description3:
             'Di Indonesia sendiri tepatnya dibandung, vaksin Coronavac ini telah diuji coba sebanyak 2 kali yang pertama di ikuti oleh sekitar 1620 dan yang kedua di uji coba sebanyak 1603 peserta, namun dalam perjalanannya masih terjadi banyak misd komunikasi terkait perizinan percobaan penyuntikan vaksin ini. Hal ini akhirnya membuat para relawan yang mengikuti uji coba ini merasa bingung dan merasa seolah-olah menjadi kelinci percobaan.',
       ),
-      VaccineModel(
-        name: 'COVID-19 Bio Farma',
+      VaccineVarietyModel(
+        name: 'Bio Farma',
         type: 'Booster',
         image: 'assets/images/biofarma.jpeg',
         description1:
@@ -25,7 +25,7 @@ class VaccineVaritiesViewModel with ChangeNotifier {
             'Di Indonesia sendiri tepatnya dibandung, vaksin Coronavac ini telah diuji coba sebanyak 2 kali yang pertama di ikuti oleh sekitar 1620 dan yang kedua di uji coba sebanyak 1603 peserta, namun dalam perjalanannya masih terjadi banyak misd komunikasi terkait perizinan percobaan penyuntikan vaksin ini. Hal ini akhirnya membuat para relawan yang mengikuti uji coba ini merasa bingung dan merasa seolah-olah menjadi kelinci percobaan.',
         description3: '',
       ),
-      VaccineModel(
+      VaccineVarietyModel(
         name: 'AstraZeneca',
         type: 'Vaccine Covid-19',
         image: 'assets/images/astra.jpg',
@@ -36,7 +36,7 @@ class VaccineVaritiesViewModel with ChangeNotifier {
         description3:
             'Di Indonesia sendiri tepatnya dibandung, vaksin Coronavac ini telah diuji coba sebanyak 2 kali yang pertama di ikuti oleh sekitar 1620 dan yang kedua di uji coba sebanyak 1603 peserta, namun dalam perjalanannya masih terjadi banyak misd komunikasi terkait perizinan percobaan penyuntikan vaksin ini. Hal ini akhirnya membuat para relawan yang mengikuti uji coba ini merasa bingung dan merasa seolah-olah menjadi kelinci percobaan.',
       ),
-      VaccineModel(
+      VaccineVarietyModel(
         name: 'Moderna',
         type: 'Vaccine Covid-19',
         image: 'assets/images/moderna.jpg',
@@ -47,7 +47,7 @@ class VaccineVaritiesViewModel with ChangeNotifier {
         description3:
             'Di Indonesia sendiri tepatnya dibandung, vaksin Coronavac ini telah diuji coba sebanyak 2 kali yang pertama di ikuti oleh sekitar 1620 dan yang kedua di uji coba sebanyak 1603 peserta, namun dalam perjalanannya masih terjadi banyak misd komunikasi terkait perizinan percobaan penyuntikan vaksin ini. Hal ini akhirnya membuat para relawan yang mengikuti uji coba ini merasa bingung dan merasa seolah-olah menjadi kelinci percobaan.',
       ),
-      VaccineModel(
+      VaccineVarietyModel(
         name: 'Pfizer',
         type: 'Vaccine Covid-19',
         image: 'assets/images/pfi.jpeg',

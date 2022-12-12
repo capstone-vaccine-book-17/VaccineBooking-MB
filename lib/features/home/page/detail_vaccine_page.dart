@@ -4,7 +4,7 @@ import 'package:w_vaccine/features/home/model/vaccine_model.dart';
 class DetailVaccinePage extends StatelessWidget {
   const DetailVaccinePage({super.key, required this.data});
 
-  final VaccineModel data;
+  final VaccineVarietyModel data;
   @override
   Widget build(BuildContext context) {
   
