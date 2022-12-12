@@ -16,7 +16,7 @@ class VaccineVaritiesViewModel with ChangeNotifier {
             'Di Indonesia sendiri tepatnya dibandung, vaksin Coronavac ini telah diuji coba sebanyak 2 kali yang pertama di ikuti oleh sekitar 1620 dan yang kedua di uji coba sebanyak 1603 peserta, namun dalam perjalanannya masih terjadi banyak misd komunikasi terkait perizinan percobaan penyuntikan vaksin ini. Hal ini akhirnya membuat para relawan yang mengikuti uji coba ini merasa bingung dan merasa seolah-olah menjadi kelinci percobaan.',
       ),
       VaccineVarietyModel(
-        name: 'COVID-19 Bio Farma',
+        name: 'Bio Farma',
         type: 'Booster',
         image: 'assets/images/biofarma.jpeg',
         description1:
