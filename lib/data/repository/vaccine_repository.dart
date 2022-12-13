@@ -12,7 +12,7 @@ class VaccineRepository {
   }) async {
     try {
       final res = await _vaccineApi.getMedicalFacilitys(token: token);
-      final medfac = (res.data['data'] as List)
+      final medfac = ((res.data['data'] ?? []) as List)
           .map((e) => VaccineData.fromJson(e))
           .toList();
       return medfac;
@@ -36,12 +36,12 @@ class VaccineRepository {
       final medfac = ((res.data['data'] ?? []) as List)
           .map((e) => VaccineData.fromJson(e))
           .toList();
-      print('Medical ${medfac}');
-      onSuccess!('Search ${searchTxt}');
+      print('Medical $medfac');
+      onSuccess!('Search $searchTxt');
       return medfac;
     } catch (e) {
       print('Medical Facilitys - ${e.toString()}');
-      void Function(String msg)? onError;
+      onError!(e.toString());
       rethrow;
     }
   }
@@ -79,6 +79,8 @@ class VaccineRepository {
       );
       print(sessionId);
       onSuccess!('Booking Vaccine Successfully');
+      // return res;
+
     } catch (e) {
       print(e.toString());
       onError!(e.toString());
