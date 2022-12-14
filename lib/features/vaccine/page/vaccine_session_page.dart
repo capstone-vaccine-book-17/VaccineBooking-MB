@@ -1,10 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
+import 'package:w_vaccine/widgets/text_form_custom.dart';
 
 class FaskesPage extends StatefulWidget {
   const FaskesPage({
@@ -22,38 +24,43 @@ class FaskesPage extends StatefulWidget {
 
 class _FaskesPageState extends State<FaskesPage> {
   late SessionViewModel vm;
+  final selectDate = TextEditingController();
+  String searchDate = DateFormat('y-MM-d').format(DateTime.now());
 
   @override
   void initState() {
-    vm = Provider.of<SessionViewModel>(context, listen: false);
-
-    vm.getSession(id: widget.id, context: context);
-    print(widget.id);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      vm = Provider.of<SessionViewModel>(context, listen: false);
+      print(searchDate);
+      vm.getSession(id: widget.id, context: context);
+      vm.searchses(searchDate);
+      print(widget.id);
+    });
     super.initState();
   }
 
-  Widget _daftarVaksin(BuildContext context) {
-    /// Later will be replaced with model within this view model
-    // List<Map<String?, String?>> datas = [
-    //   {
-    //     'dosis': 'Dosis Pertama',
-    //     'nama': 'Corona Vac',
-    //     'waktu': '08:00 - 10:00',
-    //     'kuota': '200 Kuota',
-    //     'sisaKuota': 'Tersisa 70',
-    //   },
-    //   {
-    //     'dosis': 'Dosis Kedua',
-    //     'nama': 'AstraZaneca',
-    //     'waktu': '08:00 - 10:00',
-    //     'kuota': '200 Kuota',
-    //     'sisaKuota': 'Tersisa 70',
-    //   },
-    // ];
+  Future _selectDate() async {
+    DateTime? date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1980),
+      lastDate: DateTime(2024),
+    );
+    if (date == null) {
+      selectDate.text = DateFormat('\t\td MMMM y').format(DateTime.now());
+      searchDate = DateFormat('y-MM-d').format(DateTime.now());
+      print(searchDate);
+      return;
+    }
+    selectDate.text = DateFormat('\t\td MMMM y').format(date);
+    searchDate = DateFormat('y-MM-d').format(date);
+    print(searchDate);
+  }
 
+  Widget _daftarVaksin(BuildContext context) {
     return Consumer<SessionViewModel>(
       builder: ((context, value, child) {
-        final data = value.vaccineSession;
+        final data = value.vaccineSessionDisplay;
         return ListView.builder(
           primary: false,
           shrinkWrap: true,
@@ -301,14 +308,20 @@ class _FaskesPageState extends State<FaskesPage> {
                     ),
                   ),
                   const SizedBox(height: 13),
-                  const SizedBox(
+                  SizedBox(
                     width: double.infinity,
                     child: TextField(
+                      // onSubmitted: ((searchDate) => vm.searchses(searchDate)),
                       readOnly: true,
-                      keyboardType: TextInputType.text,
+                      onTap: () async {
+                        await _selectDate();
+                        vm.searchses(searchDate);
+                      },
+                      controller: selectDate,
                       decoration: InputDecoration(
-                        hintText: "\t\tFitur belum tersedia hehe",
-                        suffixIcon: Padding(
+                        hintText:
+                            DateFormat('\t\td MMMM y').format(DateTime.now()),
+                        suffixIcon: const Padding(
                           padding: EdgeInsets.only(right: 20),
                           child: Image(
                             width: 3,
@@ -320,11 +333,11 @@ class _FaskesPageState extends State<FaskesPage> {
                         ),
                         filled: true,
                         fillColor: Colors.white,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 16,
                           color: Color(0xff888888),
                         ),
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(15),
                           ),
@@ -436,9 +449,8 @@ class _FaskesPageState extends State<FaskesPage> {
                   width: double.infinity,
                   child: TextField(
                     readOnly: true,
-                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      hintText: "\t\t(Fitur tidak tersedia hehe)",
+                      hintText: 'Tambahkan Anggota Keluarga',
                       suffixIcon: Padding(
                         padding: EdgeInsets.only(right: 20),
                         child: Image(

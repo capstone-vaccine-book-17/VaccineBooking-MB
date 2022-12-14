@@ -63,7 +63,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
               final medfac = data[index];
 
               return Padding(
-                padding: EdgeInsets.only(top: 6),
+                padding: const EdgeInsets.only(top: 6),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -90,7 +90,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(3),
+                                    padding: const EdgeInsets.all(3),
                                     child: Image.network(
                                       medfac.image!,
                                       fit: BoxFit.cover,
@@ -368,7 +368,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
                 const SizedBox(width: 12),
                 Text(
                   profileData.address!.address!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),

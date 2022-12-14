@@ -11,9 +11,19 @@ class SessionViewModel with ChangeNotifier {
   final SharedPref storage = getIt.get<SharedPref>();
 
   final _vaccineRepository = getIt.get<VaccineRepository>();
-  List<SessionData> _vaccineSession = [];
+  static List<SessionData> _vaccineSession = [];
+  List<SessionData> _vaccineSessionDisplay = List.from(_vaccineSession);
 
   List<SessionData> get vaccineSession => _vaccineSession;
+
+  List<SessionData> get vaccineSessionDisplay => _vaccineSessionDisplay;
+
+  void searchses(String date) {
+    _vaccineSessionDisplay = vaccineSession
+        .where((element) => element.date!.contains(date))
+        .toList();
+    notifyListeners();
+  }
 
   Future<void> getSession({required int id, context}) async {
     String? token = await storage.readToken();
