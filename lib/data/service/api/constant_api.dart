@@ -18,4 +18,6 @@ class ConstantApi {
   static const String medfacEndpoint = '/v2/medical';
   static const String sessionVaccineEndpoint = '/v2/session';
   static const String bookingVaccineEndpoint = '/v2/booking';
+  static const String sessionTicketEndpoint = '/v2/session';
+  static const String ticketVaccineEndpoint = '/v2/ticket';
 }

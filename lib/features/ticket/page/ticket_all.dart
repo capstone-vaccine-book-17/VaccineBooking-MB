@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/details_vaccine_process.dart';
-import 'package:w_vaccine/features/ticket/details_vaccine_completed.dart';
+import 'package:provider/provider.dart';
+import 'package:w_vaccine/features/ticket/model/ticket_model.dart';
+import 'package:w_vaccine/features/ticket/page/details_ticket_completed.dart';
+import 'package:w_vaccine/features/ticket/page/details_ticket_process.dart';
+import 'package:w_vaccine/features/ticket/view_model/ticket_all_view_model.dart';
+import 'package:w_vaccine/features/ticket/view_model/detail_ticket_complete_view_model.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
 class TicketAll extends StatefulWidget {
   const TicketAll({super.key});
+
+  get id => null;
 
   @override
   State<TicketAll> createState() => _TicketAllState();
 }
 
 class _TicketAllState extends State<TicketAll> {
+  late TicketAllViewModel vm;
   @override
+  // void initState() {
+  // vm = Provider.of<TicketAllViewModel>(context, listen: false);
+
+  //   vm.getTicketAll(id: widget.id, context: context);
+  //   print(widget.id);
+  //   super.initState();
+  // }
+
+  // final tv = Provider.of<TicketAllViewModel>(context, listen: false);
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -106,7 +122,7 @@ class _TicketAllState extends State<TicketAll> {
                                 Row(
                                   children: [
                                     Image.asset(
-                                      "assets/1.png",
+                                      "assets/images/iconvaccine.png",
                                       width: 20,
                                     ),
                                     const Padding(
@@ -134,7 +150,7 @@ class _TicketAllState extends State<TicketAll> {
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/2.png",
+                                  "assets/images/iconlocation.png",
                                   width: 20,
                                 ),
                                 const SizedBox(width: 10),
@@ -262,7 +278,7 @@ class _TicketAllState extends State<TicketAll> {
                                 Row(
                                   children: [
                                     Image.asset(
-                                      "assets/1.png",
+                                      "assets/images/iconvaccine.png",
                                       width: 20,
                                     ),
                                     const Padding(
@@ -290,7 +306,7 @@ class _TicketAllState extends State<TicketAll> {
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/2.png",
+                                  "assets/images/iconlocation.png",
                                   width: 20,
                                 ),
                                 const SizedBox(width: 10),

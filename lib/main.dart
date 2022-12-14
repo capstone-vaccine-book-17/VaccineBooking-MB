@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/view_model/login_view_model.dart';
 import 'package:w_vaccine/features/auth/view_model/register_view_model.dart';
+import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
@@ -12,6 +13,10 @@ import 'package:w_vaccine/features/profile/view_model/family_member_view_model.d
 import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
 import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
+import 'package:w_vaccine/features/ticket/page/index_ticket.dart';
+import 'package:w_vaccine/features/ticket/view_model/detail_ticket_complete_view_model.dart';
+import 'package:w_vaccine/features/ticket/view_model/ticket_all_view_model.dart';
+import 'package:w_vaccine/features/ticket/view_model/ticket_waiting_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 import 'package:w_vaccine/styles/theme.dart';
@@ -49,7 +54,12 @@ void main() {
 
         ///vaccine
         ChangeNotifierProvider(create: (_) => VaccineViewModel()),
-        ChangeNotifierProvider(create: (_) => SessionViewModel()),      
+        ChangeNotifierProvider(create: (_) => SessionViewModel()),
+
+        ///Ticket
+        ChangeNotifierProvider(create: (_) => TicketAllViewModel()),
+        ChangeNotifierProvider(create: (_) => DetailTicketViewModel()),
+        ChangeNotifierProvider(create: (_) => TicketViewModel()),
       ],
       child: const MyApp(),
     ),

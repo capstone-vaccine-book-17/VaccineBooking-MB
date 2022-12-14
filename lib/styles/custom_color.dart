@@ -20,3 +20,7 @@ Color fntcolordone = HexColor("#1939B7");
 Color bgfntcolordone = HexColor("#D6E4FF");
 Color fntcolorprs = HexColor("#934314");
 Color bgfntcolorprs = HexColor("#FFF3D8");
+Color btnprocess = HexColor("#FFF3D8");
+Color btntxt = HexColor("#7A2F0C");
+Color btndone = HexColor("#D6E4FF");
+Color btndonetxt = HexColor("#1939B7");

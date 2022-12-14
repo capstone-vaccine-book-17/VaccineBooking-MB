@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/ticket_waiting_queue.dart';
-import 'package:w_vaccine/features/ticket/ticket_complated.dart';
-import 'package:w_vaccine/features/ticket/ticket_all.dart';
+import 'package:w_vaccine/features/ticket/page/ticket_all.dart';
+import 'package:w_vaccine/features/ticket/page/ticket_complated.dart';
+import 'package:w_vaccine/features/ticket/page/ticket_waiting_queue.dart';
 import 'package:w_vaccine/styles/theme.dart';
 
 class IndexTicket extends StatefulWidget {
