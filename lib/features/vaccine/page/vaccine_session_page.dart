@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
-import 'package:w_vaccine/widgets/text_form_custom.dart';
 
 class FaskesPage extends StatefulWidget {
   const FaskesPage({
@@ -68,7 +67,7 @@ class _FaskesPageState extends State<FaskesPage> {
           itemBuilder: (context, index) {
             final session = data[index];
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Card(
                 elevation: 3,
                 shape: RoundedRectangleBorder(
@@ -307,7 +306,7 @@ class _FaskesPageState extends State<FaskesPage> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  const SizedBox(height: 13),
+                  const SizedBox(height: 10),
                   SizedBox(
                     width: double.infinity,
                     child: TextField(
@@ -404,7 +403,7 @@ class _FaskesPageState extends State<FaskesPage> {
           top: Radius.circular(32),
         ),
       ),
-      builder: (context) => Container(
+      builder: (context) => SizedBox(
         height: MediaQuery.of(context).size.height * 0.5,
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -483,6 +482,7 @@ class _FaskesPageState extends State<FaskesPage> {
                       onPressed: () {
                         print(sessionId);
                         vm.booking(context: context, sessionId: sessionId);
+                        
                       }),
                 ),
               ],

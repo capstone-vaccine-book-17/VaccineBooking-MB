@@ -1,5 +1,7 @@
 import 'package:w_vaccine/data/service/api/vaccine_api.dart';
+import 'package:w_vaccine/dependency_injection/book_data.dart';
 import 'package:w_vaccine/dependency_injection/session_data.dart';
+import 'dart:convert';
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
 
 class VaccineRepository {
@@ -84,6 +86,37 @@ class VaccineRepository {
     } catch (e) {
       print(e.toString());
       onError!(e.toString());
+    }
+  }
+
+  Future<Map<String, String>> bookTicketData({
+    required String token,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
+  }) async {
+    try {
+      final res = await _vaccineApi.getBookTicket(token: token);
+      print('Ngecek njir');
+      print(res);
+      final dataraw = res.data['data'];
+      Map<String, String> bookdata = {
+        'queue': dataraw['queue'],
+        'name': dataraw['name'],
+        'nik': dataraw['nik'],
+        'gender': dataraw['gender'],
+        'vaccine': dataraw['vaccine'],
+        'dosis': dataraw['dosis'],
+        'date': dataraw['date'],
+        'convDate': dataraw['conv_date'],
+        'startTime': dataraw['start_time'],
+        'endTime': dataraw['end_time'],
+        'rsName': dataraw['rs_name'],
+      };
+      return bookdata;
+    } catch (e) {
+      print('Session Vaccine - ${e.toString()}');
+      onError!(e.toString());
+      rethrow;
     }
   }
 }

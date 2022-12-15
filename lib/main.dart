@@ -13,6 +13,8 @@ import 'package:w_vaccine/features/profile/view_model/family_member_view_model.d
 import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
 import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
+import 'package:w_vaccine/features/vaccine/view_model/detail_book_view_model.dart';
+import 'package:w_vaccine/features/vaccine/view_model/loading_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 import 'package:w_vaccine/styles/theme.dart';
@@ -52,6 +54,8 @@ void main() {
         ///vaccine
         ChangeNotifierProvider(create: (_) => VaccineViewModel()),
         ChangeNotifierProvider(create: (_) => SessionViewModel()),
+        ChangeNotifierProvider(create: (_) => DetailBookViewModel()),
+        ChangeNotifierProvider(create: (_) => LoadBookViewModel()),
       ],
       child: const MyApp(),
     ),

@@ -8,6 +8,7 @@ class SessionData {
   String? startTime;
   String? endTime;
 
+  BookData? bookData;
   SessionData(
       {this.sessionId,
       this.vaccine,
@@ -16,7 +17,8 @@ class SessionData {
       this.dosis,
       this.date,
       this.startTime,
-      this.endTime});
+      this.endTime,
+      this.bookData});
 
   SessionData.fromJson(Map<String, dynamic> json) {
     sessionId = json['session_id'];
@@ -30,7 +32,7 @@ class SessionData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> SessionData =  <String, dynamic>{};
+    final Map<String, dynamic> SessionData = <String, dynamic>{};
     SessionData['session_id'] = sessionId;
     SessionData['vaccine'] = vaccine;
     SessionData['name'] = name;
@@ -41,4 +43,31 @@ class SessionData {
     SessionData['end_time'] = endTime;
     return SessionData;
   }
+}
+
+class BookData {
+  String? queue;
+  String? name;
+  String? nik;
+  String? gender;
+  String? vaccine;
+  String? dosis;
+  String? date;
+  String? convDate;
+  String? startTime;
+  String? endTime;
+  String? rsName;
+
+  BookData(
+      {this.queue,
+      this.name,
+      this.nik,
+      this.gender,
+      this.vaccine,
+      this.dosis,
+      this.date,
+      this.convDate,
+      this.startTime,
+      this.endTime,
+      this.rsName});
 }

@@ -29,7 +29,7 @@ class LoginViewModel with ChangeNotifier {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => const IndexNavigation(),
           ));
-        } catch (e) {
+        } catch (e) { 
           /// Failed fetch all initial data
           snackbarMessage(context, e.toString());
         }

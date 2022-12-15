@@ -86,4 +86,21 @@ class VaccineApi {
       throw errorMsg;
     }
   }
+
+  Future<Response> getBookTicket({
+    required String token,
+  }) async {
+    try {
+      final Response res = await _dioClient.get(
+        '${ConstantApi.bookingVaccineEndpoint}/',
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+      );
+      return res;
+    } on DioError catch (e) {
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
 }
