@@ -15,6 +15,7 @@ import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
 import 'package:w_vaccine/features/ticket/page/index_ticket.dart';
 import 'package:w_vaccine/features/ticket/view_model/detail_ticket_complete_view_model.dart';
+import 'package:w_vaccine/features/ticket/view_model/detail_ticket_process_view_model.dart';
 import 'package:w_vaccine/features/ticket/view_model/ticket_all_view_model.dart';
 import 'package:w_vaccine/features/ticket/view_model/ticket_waiting_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
@@ -58,7 +59,8 @@ void main() {
 
         ///Ticket
         ChangeNotifierProvider(create: (_) => TicketAllViewModel()),
-        ChangeNotifierProvider(create: (_) => DetailTicketViewModel()),
+        ChangeNotifierProvider(create: (_) => DetailTicketCompleteViewModel()),
+        ChangeNotifierProvider(create: (_) => DetailTicketProcessViewModel()),
         ChangeNotifierProvider(create: (_) => TicketViewModel()),
       ],
       child: const MyApp(),

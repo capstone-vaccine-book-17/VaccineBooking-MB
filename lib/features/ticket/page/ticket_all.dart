@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/dependency_injection/service_locator.dart';
+import 'package:w_vaccine/dependency_injection/ticket_data.dart';
 import 'package:w_vaccine/features/ticket/model/ticket_model.dart';
 import 'package:w_vaccine/features/ticket/page/details_ticket_completed.dart';
 import 'package:w_vaccine/features/ticket/page/details_ticket_process.dart';
@@ -10,24 +12,21 @@ import 'package:w_vaccine/styles/custom_color.dart';
 class TicketAll extends StatefulWidget {
   const TicketAll({super.key});
 
-  get id => null;
-
   @override
   State<TicketAll> createState() => _TicketAllState();
 }
 
 class _TicketAllState extends State<TicketAll> {
-  late TicketAllViewModel vm;
+  late TicketAllViewModel tv;
+  final ticketData = getIt.get<TicketData>();
   @override
-  // void initState() {
-  // vm = Provider.of<TicketAllViewModel>(context, listen: false);
+  void initState() {
+    State<TicketAll> createState() => _TicketAllState();
+    tv = Provider.of<TicketAllViewModel>(context, listen: false);
+    super.initState();
+  }
 
-  //   vm.getTicketAll(id: widget.id, context: context);
-  //   print(widget.id);
-  //   super.initState();
-  // }
-
-  // final tv = Provider.of<TicketAllViewModel>(context, listen: false);
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -51,23 +50,21 @@ class _TicketAllState extends State<TicketAll> {
                     child: Card(
                       elevation: 2,
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  children: const [
-                                    Text(
-                                      "Afifah",
+                                Row(children: [
+                                  
+                                  // ini kok error mas Rucci??
+                                  Text(ticketData.name,
                                       style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                      )),
+                                ]),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: bgfntcolorprs,
@@ -82,7 +79,7 @@ class _TicketAllState extends State<TicketAll> {
                                   ),
                                   onPressed: () {},
                                   child: Text(
-                                    "Proses",
+                                    ticketData.status,
                                     style: TextStyle(
                                         fontSize: 16, color: fntcolorprs),
                                   ),
@@ -94,9 +91,9 @@ class _TicketAllState extends State<TicketAll> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
-                                  children: const [
+                                  children: [
                                     Text(
-                                      "No Antrian : 100",
+                                      ticketData.startTime,
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
@@ -125,10 +122,10 @@ class _TicketAllState extends State<TicketAll> {
                                       "assets/images/iconvaccine.png",
                                       width: 20,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(left: 9),
                                       child: Text(
-                                        "Sinovac",
+                                        ticketData.vaccine,
                                         style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
@@ -137,8 +134,8 @@ class _TicketAllState extends State<TicketAll> {
                                     ),
                                   ],
                                 ),
-                                const Text(
-                                  "Dosis Pertama",
+                                Text(
+                                  ticketData.queue,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -154,8 +151,8 @@ class _TicketAllState extends State<TicketAll> {
                                   width: 20,
                                 ),
                                 const SizedBox(width: 10),
-                                const Text(
-                                  "RS Abdi Waluyo",
+                                Text(
+                                  ticketData.rsName,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
@@ -169,10 +166,10 @@ class _TicketAllState extends State<TicketAll> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   Center(
                                     child: Text(
-                                      "17 Desember 2022",
+                                      ticketData.date,
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
@@ -212,9 +209,9 @@ class _TicketAllState extends State<TicketAll> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
-                                  children: const [
+                                  children: [
                                     Text(
-                                      "Afifah",
+                                      ticketData.name,
                                       style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
@@ -236,7 +233,7 @@ class _TicketAllState extends State<TicketAll> {
                                   ),
                                   onPressed: () {},
                                   child: Text(
-                                    "Selesai",
+                      ticketData.status
                                     style: TextStyle(
                                       color: fntcolordone,
                                       fontSize: 16,
@@ -250,9 +247,9 @@ class _TicketAllState extends State<TicketAll> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
-                                  children: const [
+                                  children:  [
                                     Text(
-                                      "No Antrian : 100",
+                                ticketData.queue,
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
@@ -260,8 +257,8 @@ class _TicketAllState extends State<TicketAll> {
                                     ),
                                   ],
                                 ),
-                                const Text(
-                                  "08.00 - 10.00",
+                                 Text(
+                     ticketData.startTime, ticketData.endTime,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -281,10 +278,10 @@ class _TicketAllState extends State<TicketAll> {
                                       "assets/images/iconvaccine.png",
                                       width: 20,
                                     ),
-                                    const Padding(
+                          Padding(
                                       padding: EdgeInsets.only(left: 9),
                                       child: Text(
-                                        "Sinovac",
+                                      ticketData.vaccine,
                                         style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
@@ -293,8 +290,8 @@ class _TicketAllState extends State<TicketAll> {
                                     ),
                                   ],
                                 ),
-                                const Text(
-                                  "Dosis Pertama",
+                               Text(
+                         ticketData.queue,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -310,8 +307,8 @@ class _TicketAllState extends State<TicketAll> {
                                   width: 20,
                                 ),
                                 const SizedBox(width: 10),
-                                const Text(
-                                  "RS Abdi Waluyo",
+                               Text(
+                        ticketData.rsName
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
@@ -325,10 +322,10 @@ class _TicketAllState extends State<TicketAll> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children:  [
                                   Center(
                                     child: Text(
-                                      "17 Desember 2022",
+                       ticketData.date,
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,

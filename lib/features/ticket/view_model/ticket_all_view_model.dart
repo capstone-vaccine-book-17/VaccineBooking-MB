@@ -15,29 +15,23 @@ class TicketAllViewModel with ChangeNotifier {
   final SharedPref storage = getIt.get<SharedPref>();
   final _ticketRepository = getIt.get<TicketRepository>();
 
-  void getTicketAll({required id, required BuildContext context}) {}
-}
+  List<TicketData> _ticketSession = [];
+  List<TicketData> get ticketSession => _ticketSession;
 
-final SharedPref storage = getIt.get<SharedPref>();
+  Future<void> getSession({required int id, context}) async {
+    String? token = await storage.readToken();
+    if (token == null) {
+      snackbarMessage(context, 'Debug Mode - Do not have token');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+      );
+    }
+    final TicketData = await _ticketRepository.allTicket(
+      token: token!,
 
-final _ticketRepository = getIt.get<TicketRepository>();
-List<TicketData> _ticketSession = [];
-
-List<TicketData> get ticketSession => _ticketSession;
-
-Future<void> getSession({required int id, context}) async {
-  String? token = await storage.readToken();
-  if (token == null) {
-    snackbarMessage(context, 'Debug Mode - Do not have token');
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+      /// Token Expire : Unauthorized
     );
+    _ticketSession = TicketData;
+    print('ticket');
   }
-  final TicketData = await _ticketRepository.allTicket(
-    token: token!,
-
-    /// Token Expire : Unauthorized
-  );
-  _ticketSession = TicketData;
-  print('ticket');
 }

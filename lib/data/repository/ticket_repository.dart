@@ -37,7 +37,7 @@ class TicketRepository {
           .toList();
       return tv;
     } catch (e) {
-      print('Tickdt Process - ${e.toString()}');
+      print('Ticket Process - ${e.toString()}');
 
       rethrow;
     }
@@ -48,11 +48,11 @@ class TicketRepository {
   }) async {
     try {
       final res = await _ticketApi.getTicketFinish(token: token);
-      final session = (res.data['data'] as List)
+      final finish = (res.data['data'] as List)
           .map((e) => SessionData.fromJson(e))
           .toList();
 
-      return session;
+      return finish;
     } catch (e) {
       rethrow;
     }
