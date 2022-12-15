@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:w_vaccine/dependency_injection/profile_data.dart';
+import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/vaccine/page/vaccine_session_page.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 
@@ -13,6 +15,7 @@ class IndexVaccine extends StatefulWidget {
 class _IndexVaccineState extends State<IndexVaccine> {
   final searchController = TextEditingController();
   late VaccineViewModel vm;
+  final profileData = getIt.get<ProfileData>();
 
   final ValueNotifier<bool> _dosisOne = ValueNotifier(true);
   final ValueNotifier<bool> _dosisTwo = ValueNotifier(false);
@@ -21,7 +24,7 @@ class _IndexVaccineState extends State<IndexVaccine> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       vm = Provider.of<VaccineViewModel>(context, listen: false);
-      vm.getMedFacilitys();
+      vm.getMedFacilitys(context);
     });
 
     super.initState();
@@ -59,89 +62,95 @@ class _IndexVaccineState extends State<IndexVaccine> {
             itemBuilder: (context, index) {
               final medfac = data[index];
 
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FaskesPage(
-                                data: medfac,
-                                id: medfac.medicalFacilitysId!,
-                              )));
-                },
-                child: Card(
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Image.network(
-                                medfac.image!,
-                                width: 100,
-                              ),
-                            ),
-                            const SizedBox(width: 8.0),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    medfac.name!,
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
+              return Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FaskesPage(
+                                  data: medfac,
+                                  id: medfac.medicalFacilitysId!,
+                                )));
+                  },
+                  child: Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  Text(
-                                    '${medfac.address} ${medfac.city} ${medfac.province}',
-                                    softWrap: false,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(3),
+                                    child: Image.network(
+                                      medfac.image!,
+                                      fit: BoxFit.cover,
+                                      width: 100,
+                                    ),
+                                  )),
+                              const SizedBox(width: 8.0),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      medfac.name!,
+                                      style:
+                                          Theme.of(context).textTheme.headline6,
+                                    ),
+                                    Text(
+                                      '${medfac.address} ${medfac.city} ${medfac.province}',
+                                      softWrap: false,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Dosis ${medfac.dosis!}',
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            const Text('Tersedia',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green)),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.location_city,
-                              color: Colors.grey,
-                            ),
-                            const SizedBox(width: 6),
-                            Text(
-                              '${medfac.city}, ${medfac.province}',
-                              style: const TextStyle(color: Colors.black54),
-                            )
-                          ],
-                        )
-                      ],
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Dosis ${medfac.dosis!}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const Text('Tersedia',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green)),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.location_city,
+                                color: Colors.grey,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                '${medfac.city}, ${medfac.province}',
+                                style: const TextStyle(color: Colors.black54),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -358,8 +367,8 @@ class _IndexVaccineState extends State<IndexVaccine> {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Jalan di dekat rumahmu ',
-                  style: TextStyle(
+                  profileData.address!.address!,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),

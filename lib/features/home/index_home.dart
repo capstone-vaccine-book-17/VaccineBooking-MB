@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/home/page/detail_news_page.dart';
 import 'package:w_vaccine/features/home/page/notification_page.dart';
 import 'package:w_vaccine/features/home/page/vaccine_varieties_page.dart';
+import 'package:w_vaccine/features/home/view_model/home_view_model.dart';
 import 'package:w_vaccine/features/home/view_model/news_view_model.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
+import 'package:w_vaccine/styles/nofication.dart';
 import 'package:w_vaccine/styles/wvaccine_icons.dart';
 
 class IndexHome extends StatelessWidget {
@@ -72,7 +74,7 @@ class IndexHome extends StatelessWidget {
 
   /// Custom App bar
   Widget _customAppBar(BuildContext context) {
-    String temp1 = 'Namamu';
+    final vm = Provider.of<HomeViewModel>(context);
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -87,7 +89,7 @@ class IndexHome extends StatelessWidget {
                 ),
               ),
               Text(
-                'Hai, $temp1',
+                'Hai, ${vm.name}',
                 style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
               const Spacer(),
@@ -208,11 +210,15 @@ class IndexHome extends StatelessWidget {
                           ),
                     ),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const VaccineVarietiesPage()));
+                      if (data['label'] == 'Varietas Vaksin') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const VaccineVarietiesPage()));
+                        return;
+                      }
+                      snackbarMessage(context, 'Fitur Belum Tersedia hehe');
                     },
                   ),
                   const SizedBox(height: 8),

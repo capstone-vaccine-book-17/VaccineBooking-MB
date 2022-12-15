@@ -5,15 +5,26 @@ import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/dependency_injection/session_data.dart';
 import 'package:w_vaccine/features/auth/page/login_page.dart';
 import 'package:w_vaccine/features/splash/onboarding_screen.dart';
+import 'package:w_vaccine/features/vaccine/page/loading_page.dart';
 import 'package:w_vaccine/styles/nofication.dart';
 
 class SessionViewModel with ChangeNotifier {
   final SharedPref storage = getIt.get<SharedPref>();
 
   final _vaccineRepository = getIt.get<VaccineRepository>();
-  List<SessionData> _vaccineSession = [];
+  static List<SessionData> _vaccineSession = [];
+  List<SessionData> _vaccineSessionDisplay = List.from(_vaccineSession);
 
   List<SessionData> get vaccineSession => _vaccineSession;
+
+  List<SessionData> get vaccineSessionDisplay => _vaccineSessionDisplay;
+
+  void searchses(String date) {
+    _vaccineSessionDisplay = vaccineSession
+        .where((element) => element.date!.contains(date))
+        .toList();
+    notifyListeners();
+  }
 
   Future<void> getSession({required int id, context}) async {
     String? token = await storage.readToken();
@@ -58,8 +69,12 @@ class SessionViewModel with ChangeNotifier {
       token: token!,
       sessionId: sessionId,
       onSuccess: (msg) {
-        snackbarMessage(context, msg);
-        Navigator.pop(context);
+        // snackbarMessage(context, msg);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const LoadingPageBookingVaccine()),
+            (route) => false);
       },
 
       /// Token Expire : Unauthorized

@@ -1,8 +1,27 @@
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
+import 'package:w_vaccine/features/vaccine/view_model/loading_view_model.dart';
 
-class LoadingPageBookingVaccine extends StatelessWidget {
+class LoadingPageBookingVaccine extends StatefulWidget {
   const LoadingPageBookingVaccine({super.key});
+
+  @override
+  State<LoadingPageBookingVaccine> createState() =>
+      _LoadingPageBookingVaccineState();
+}
+
+class _LoadingPageBookingVaccineState extends State<LoadingPageBookingVaccine> {
+  @override
+  void initState() {
+    final vm = Provider.of<LoadBookViewModel>(context, listen: false);
+    final data = vm.getBookTicket(context);
+    print(data);
+    
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

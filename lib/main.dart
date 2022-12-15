@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/view_model/login_view_model.dart';
 import 'package:w_vaccine/features/auth/view_model/register_view_model.dart';
+import 'package:w_vaccine/features/home/view_model/home_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
@@ -12,6 +13,8 @@ import 'package:w_vaccine/features/profile/view_model/family_member_view_model.d
 import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
 import 'package:w_vaccine/features/splash/splash_screen.dart';
 import 'package:w_vaccine/features/splash/splash_view_model.dart';
+import 'package:w_vaccine/features/vaccine/view_model/detail_book_view_model.dart';
+import 'package:w_vaccine/features/vaccine/view_model/loading_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 import 'package:w_vaccine/styles/theme.dart';
@@ -33,6 +36,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => VaccineVaritiesViewModel()),
         ChangeNotifierProvider(create: (_) => NewsViewModel()),
         ChangeNotifierProvider(create: (_) => NotificationViewModel()),
+        ChangeNotifierProvider(create: (_) => HomeViewModel()),
 
         /// Auth
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
@@ -49,7 +53,9 @@ void main() {
 
         ///vaccine
         ChangeNotifierProvider(create: (_) => VaccineViewModel()),
-        ChangeNotifierProvider(create: (_) => SessionViewModel()),      
+        ChangeNotifierProvider(create: (_) => SessionViewModel()),
+        ChangeNotifierProvider(create: (_) => DetailBookViewModel()),
+        ChangeNotifierProvider(create: (_) => LoadBookViewModel()),
       ],
       child: const MyApp(),
     ),

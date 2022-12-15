@@ -15,12 +15,17 @@ class VaccineViewModel extends ChangeNotifier {
 
   List<VaccineData> _vaccine = [];
   List<VaccineData> get vaccine => _vaccine;
-  String get addres => profiledata.address ?? '';
+  String get addres => profiledata.address!;
 
-  Future<void> getMedFacilitys() async {
+  Future<void> getMedFacilitys(context) async {
     notifyListeners();
     String? token = await storage.readToken();
-
+    if (token == null) {
+      snackbarMessage(context, 'Debug Mode - Do not have token');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+      );
+    }
     final data = await _vaccineRepository.medicalFac(token: token!);
     _vaccine = data;
 
