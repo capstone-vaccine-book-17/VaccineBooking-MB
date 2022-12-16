@@ -1,7 +1,5 @@
 import 'package:w_vaccine/data/service/api/vaccine_api.dart';
-import 'package:w_vaccine/dependency_injection/book_data.dart';
 import 'package:w_vaccine/dependency_injection/session_data.dart';
-import 'dart:convert';
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
 
 class VaccineRepository {
@@ -19,7 +17,7 @@ class VaccineRepository {
           .toList();
       return medfac;
     } catch (e) {
-      print('Medical Facilitys - ${e.toString()}');
+      print('Error Medical Facilitys - ${e.toString()}');
       // return e.toString();
       rethrow;
     }
@@ -42,7 +40,7 @@ class VaccineRepository {
       onSuccess!('Search $searchTxt');
       return medfac;
     } catch (e) {
-      print('Medical Facilitys - ${e.toString()}');
+      print('Error Medical Facilitys - ${e.toString()}');
       onError!(e.toString());
       rethrow;
     }
@@ -62,7 +60,7 @@ class VaccineRepository {
       onSuccess!('Session Vaksin');
       return session;
     } catch (e) {
-      print('Session Vaccine - ${e.toString()}');
+      print('Error Session Vaccine - ${e.toString()}');
       onError!(e.toString());
       rethrow;
     }
@@ -96,7 +94,6 @@ class VaccineRepository {
   }) async {
     try {
       final res = await _vaccineApi.getBookTicket(token: token);
-      print('Ngecek njir');
       print(res);
       final dataraw = res.data['data'];
       Map<String, String> bookdata = {
@@ -114,7 +111,7 @@ class VaccineRepository {
       };
       return bookdata;
     } catch (e) {
-      print('Session Vaccine - ${e.toString()}');
+      print('Error Session Vaccine - ${e.toString()}');
       onError!(e.toString());
       rethrow;
     }

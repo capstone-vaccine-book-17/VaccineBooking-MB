@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:w_vaccine/features/ticket/ticket_waiting_queue.dart';
-import 'package:w_vaccine/features/ticket/ticket_complated.dart';
-import 'package:w_vaccine/features/ticket/ticket_all.dart';
-import 'package:w_vaccine/styles/theme.dart';
+import 'package:w_vaccine/features/ticket/tab_bar_view/ticket_all.dart';
+import 'package:w_vaccine/features/ticket/tab_bar_view/ticket_completed.dart';
+import 'package:w_vaccine/features/ticket/tab_bar_view/ticket_waiting_queue.dart';
+import 'package:w_vaccine/features/ticket/view_model/index_ticket_view_model.dart';
+import 'package:provider/provider.dart';
 
 class IndexTicket extends StatefulWidget {
   const IndexTicket({Key? key}) : super(key: key);
@@ -12,67 +13,60 @@ class IndexTicket extends StatefulWidget {
 }
 
 class _IndexticketState extends State<IndexTicket> {
+  late IndexTicketViewModel vm;
+
+  @override
+  void initState() {
+    vm = Provider.of<IndexTicketViewModel>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      vm.initialLoad(context);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: testTheme,
-      debugShowCheckedModeBanner: false,
-      debugShowMaterialGrid: false,
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(120),
-            child: AppBar(
-              title: const Text(
-                'Tiket Vaksin',
-              ),
-              bottom: const TabBar(
-                isScrollable: true,
-                labelColor: Colors.black,
-                unselectedLabelColor: Color.fromRGBO(96, 140, 206, 0.5),
-                indicatorColor: Colors.blue,
-                tabs: [
-                  Tab(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'Semua',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Tab(
+    print("Ticket Index");
+
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(120),
+          child: AppBar(
+            title: const Text('Tiket Vaksin'),
+            bottom: TabBar(
+              isScrollable: true,
+              labelColor: Colors.black,
+              unselectedLabelColor: const Color.fromRGBO(96, 140, 206, 0.5),
+              indicatorColor: Colors.blue,
+              tabs: ['Semua', 'Menunggu Antrian', ' Selesai'].map((e) {
+                return Tab(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      'Menunggu Antrian',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      maxLines: 1,
-                      softWrap: true,
-                    ),
-                  ),
-                  Tab(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'Selesai',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                      e,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ],
-              ),
+                );
+              }).toList(),
             ),
           ),
-          body: const TabBarView(
-            children: [
-              TicketAll(),
-              WaitingQueue(),
-              TicketCompleted(),
-            ],
-          ),
+        ),
+        body: Consumer<IndexTicketViewModel>(
+          builder: (_, value, __) {
+            return TabBarView(
+              children: [
+                TicketAll(tickets: value.ticketsAll),
+                TicketWaitingQueue(tickets: value.ticketsWaitingQueue),
+                TicketCompleted(tickets: value.ticketsCompleted),
+              ],
+            );
+          },
         ),
       ),
     );

@@ -7,14 +7,15 @@ class VaccineData {
   String? city;
   String? dosis;
 
-  VaccineData(
-      {this.medicalFacilitysId,
-      this.name,
-      this.image,
-      this.address,
-      this.province,
-      this.city,
-      this.dosis});
+  VaccineData({
+    this.medicalFacilitysId,
+    this.name,
+    this.image,
+    this.address,
+    this.province,
+    this.city,
+    this.dosis,
+  });
 
   VaccineData.fromJson(Map<String, dynamic> json) {
     medicalFacilitysId = json['medical_facilitys_id'];
@@ -27,16 +28,14 @@ class VaccineData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> VaccineData = <String, dynamic>{};
-    VaccineData['medical_facilitys_id'] = medicalFacilitysId;
-    VaccineData['name'] = name;
-    VaccineData['image'] = image;
-    VaccineData['address'] = address;
-    VaccineData['province'] = province;
-    VaccineData['city'] = city;
-    VaccineData['dosis'] = dosis;
-    return VaccineData;
+    final Map<String, dynamic> vaccineData = <String, dynamic>{};
+    vaccineData['medical_facilitys_id'] = medicalFacilitysId;
+    vaccineData['name'] = name;
+    vaccineData['image'] = image;
+    vaccineData['address'] = address;
+    vaccineData['province'] = province;
+    vaccineData['city'] = city;
+    vaccineData['dosis'] = dosis;
+    return vaccineData;
   }
 }
-
-

@@ -9,16 +9,17 @@ class SessionData {
   String? endTime;
 
   BookData? bookData;
-  SessionData(
-      {this.sessionId,
-      this.vaccine,
-      this.name,
-      this.kuota,
-      this.dosis,
-      this.date,
-      this.startTime,
-      this.endTime,
-      this.bookData});
+  SessionData({
+    this.sessionId,
+    this.vaccine,
+    this.name,
+    this.kuota,
+    this.dosis,
+    this.date,
+    this.startTime,
+    this.endTime,
+    this.bookData,
+  });
 
   SessionData.fromJson(Map<String, dynamic> json) {
     sessionId = json['session_id'];
@@ -32,16 +33,16 @@ class SessionData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> SessionData = <String, dynamic>{};
-    SessionData['session_id'] = sessionId;
-    SessionData['vaccine'] = vaccine;
-    SessionData['name'] = name;
-    SessionData['kuota'] = kuota;
-    SessionData['dosis'] = dosis;
-    SessionData['date'] = date;
-    SessionData['start_time'] = startTime;
-    SessionData['end_time'] = endTime;
-    return SessionData;
+    final Map<String, dynamic> sessionData = <String, dynamic>{};
+    sessionData['session_id'] = sessionId;
+    sessionData['vaccine'] = vaccine;
+    sessionData['name'] = name;
+    sessionData['kuota'] = kuota;
+    sessionData['dosis'] = dosis;
+    sessionData['date'] = date;
+    sessionData['start_time'] = startTime;
+    sessionData['end_time'] = endTime;
+    return sessionData;
   }
 }
 
@@ -58,16 +59,17 @@ class BookData {
   String? endTime;
   String? rsName;
 
-  BookData(
-      {this.queue,
-      this.name,
-      this.nik,
-      this.gender,
-      this.vaccine,
-      this.dosis,
-      this.date,
-      this.convDate,
-      this.startTime,
-      this.endTime,
-      this.rsName});
+  BookData({
+    this.queue,
+    this.name,
+    this.nik,
+    this.gender,
+    this.vaccine,
+    this.dosis,
+    this.date,
+    this.convDate,
+    this.startTime,
+    this.endTime,
+    this.rsName,
+  });
 }

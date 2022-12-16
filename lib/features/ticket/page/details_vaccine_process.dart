@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 
-class TicketVaccineProcess extends StatefulWidget {
+class TicketVaccineProcess extends StatelessWidget {
   const TicketVaccineProcess({super.key});
 
-  @override
-  State<TicketVaccineProcess> createState() => _TicketVaccineProcessState();
-}
-
-class _TicketVaccineProcessState extends State<TicketVaccineProcess> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
