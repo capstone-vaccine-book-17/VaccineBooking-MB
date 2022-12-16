@@ -11,7 +11,7 @@ class FamilyRepository {
   }) async {
     try {
       final res = await _familyApi.getFamilyMember(token: token);
-      final dataRaw = res.data['data'] as List;
+      final dataRaw = ((res.data['data'] ?? []) as List);
       return dataRaw.map((e) => FamilyMember.fromJson(e)).toList();
     } catch (e) {
       print('Family Error - ${e.toString()}');

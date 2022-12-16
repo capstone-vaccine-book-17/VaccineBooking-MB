@@ -5,7 +5,9 @@ import 'package:w_vaccine/dependency_injection/profile_data.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/page/login_page.dart';
 import 'package:w_vaccine/features/splash/onboarding_screen.dart';
+import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 import 'package:w_vaccine/styles/nofication.dart';
+import 'package:provider/provider.dart';
 
 class ChangeAddressViewModel with ChangeNotifier {
   final profileData = getIt.get<ProfileData>();
@@ -41,6 +43,12 @@ class ChangeAddressViewModel with ChangeNotifier {
       addressData: addressData,
       onSuccess: (msg) {
         profileData.address = addressData;
+
+        /// Refresh Medical Facility
+        Provider.of<VaccineViewModel>(
+          context,
+          listen: false,
+        ).getMedFacilitys(context);
         snackbarMessage(context, msg);
         Navigator.of(context).pop();
       },

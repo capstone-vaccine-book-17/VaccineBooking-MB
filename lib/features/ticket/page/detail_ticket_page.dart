@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:w_vaccine/dependency_injection/ticket_data.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 
-class TicketVaccineCompleted extends StatelessWidget {
-  const TicketVaccineCompleted({super.key});
+class DetailTicketPage extends StatelessWidget {
+  const DetailTicketPage({super.key, required this.td});
+
+  final TicketDetail td;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,6 @@ class TicketVaccineCompleted extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 20),
                 Card(
@@ -52,10 +54,12 @@ class TicketVaccineCompleted extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 10),
                                   Column(
-                                    children: const [
+                                    children: [
                                       Text(
-                                        "Selesai",
-                                        style: TextStyle(
+                                        (td.status == 'proses'
+                                            ? 'No Antrian : ${td.queue}'
+                                            : 'Selesai'),
+                                        style: const TextStyle(
                                           color: Colors.blue,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w400,
@@ -77,10 +81,10 @@ class TicketVaccineCompleted extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5),
                                   Row(
-                                    children: const [
+                                    children: [
                                       Text(
-                                        "Afifah",
-                                        style: TextStyle(
+                                        td.name ?? 'Unknown',
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -101,10 +105,10 @@ class TicketVaccineCompleted extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5),
                                   Row(
-                                    children: const [
+                                    children: [
                                       Text(
-                                        "157102170201011",
-                                        style: TextStyle(
+                                        td.nik ?? 'Unknown',
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -125,10 +129,10 @@ class TicketVaccineCompleted extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5),
                                   Row(
-                                    children: const [
+                                    children: [
                                       Text(
-                                        "Perempuan",
-                                        style: TextStyle(
+                                        td.gender ?? 'Unkown',
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -165,18 +169,18 @@ class TicketVaccineCompleted extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
-                                            "Sinovac",
-                                            style: TextStyle(
+                                            td.vaccine ?? 'Unknown',
+                                            style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
-                                          SizedBox(width: 185),
+                                          const SizedBox(width: 185),
                                           Text(
-                                            "Pertama",
-                                            style: TextStyle(
+                                            td.dosis ?? 'Unknown',
+                                            style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -216,18 +220,18 @@ class TicketVaccineCompleted extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(children: const [
+                                      Row(children: [
                                         Text(
-                                          "17 November 2022",
-                                          style: TextStyle(
+                                          td.convertDate ?? 'Unknown',
+                                          style: const TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                        SizedBox(width: 108),
+                                        const SizedBox(width: 108),
                                         Text(
-                                          "08.00 - 10.00",
-                                          style: TextStyle(
+                                          "${td.startTime} - ${td.endTime}",
+                                          style: const TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -257,10 +261,10 @@ class TicketVaccineCompleted extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
-                                            "Rs. Abdi Waluyo",
-                                            style: TextStyle(
+                                            td.hospitalName ?? 'Unknown',
+                                            style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -296,30 +300,12 @@ class TicketVaccineCompleted extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // ElevatedButton(
-                //   style: ElevatedButton.styleFrom(
-                //     shape: RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(8),
-                //     ),
-                //     padding: const EdgeInsets.symmetric(
-                //         horizontal: 15, vertical: 10),
-                //     textStyle: const TextStyle(
-                //         fontSize: 16, fontWeight: FontWeight.w500),
-                //   ),
-                //   onPressed: () {},
-                //   child: const Text(
-                //     "Proses",
-                //     style: TextStyle(
-                //       color: Color.fromARGB(255, 255, 255, 255),
-                //       fontSize: 16,
-                //     ),
-                //   ),
-                // ),
                 ButtonFormCustom(
-                    text: 'Kembali',
-                    onPressed: () {
-                      Navigator.pop(context);
-                    })
+                  text: 'Kembali',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
               ],
             ),
           ),

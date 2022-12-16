@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/dependency_injection/ticket_data.dart';
+import 'package:w_vaccine/features/ticket/page/detail_ticket_page.dart';
+import 'package:w_vaccine/features/ticket/page/details_vaccine_completed.dart';
+import 'package:w_vaccine/features/ticket/page/details_vaccine_process.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
 class CardTicket extends StatelessWidget {
@@ -16,7 +19,15 @@ class CardTicket extends StatelessWidget {
     return Card(
       elevation: 5,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return DetailTicketPage(td: td);
+              // return TicketVaccineCompleted();
+              // return TicketVaccineProcess();
+            },
+          ));
+        },
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
