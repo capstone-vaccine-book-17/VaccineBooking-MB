@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   /// Obsure Password hide and show
   final ValueNotifier<bool> _isShowPass = ValueNotifier(true);
 
-  void login(BuildContext context) {
+  void login(context) {
     if (!_loginFormKey.currentState!.validate()) {
       return;
     }
