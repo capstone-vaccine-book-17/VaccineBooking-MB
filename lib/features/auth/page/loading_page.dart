@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 import 'package:w_vaccine/features/index_navigation.dart';
-import 'package:w_vaccine/features/vaccine/view_model/loading_view_model.dart';
 
 class LoadingToHome extends StatefulWidget {
   const LoadingToHome({super.key});
@@ -17,9 +15,11 @@ class _LoadingToHomeState extends State<LoadingToHome> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Timer(
-          Duration(seconds: 4),
-          () => Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => IndexNavigation())));
+          const Duration(seconds: 4),
+          () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const IndexNavigation())));
     });
 
     super.initState();

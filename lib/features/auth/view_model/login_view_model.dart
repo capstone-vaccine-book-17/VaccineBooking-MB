@@ -27,6 +27,7 @@ class LoginViewModel with ChangeNotifier {
         final SharedPref storage = getIt.get<SharedPref>();
         storage.saveToken(token: token);
         try {
+          await initialLoad(context: context, token: token);
           isLoading = false;
           notifyListeners();
 
@@ -34,7 +35,6 @@ class LoginViewModel with ChangeNotifier {
               context,
               MaterialPageRoute(builder: (context) => const LoadingToHome()),
               (route) => false);
-          await initialLoad(context: context, token: token);
           snackbarMessage(context, msg);
         } catch (e) {
           /// Failed fetch all initial data

@@ -52,6 +52,8 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     _emailCtl.dispose();
     _passwordCtl.dispose();
+    _isShowPass.dispose();
+    _initialFocus.dispose();
     super.dispose();
   }
 
@@ -155,14 +157,14 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                           width: 20,
                           child: CircularProgressIndicator(
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
                           'Loading',
                           style: Theme.of(context).textTheme.headline5,
