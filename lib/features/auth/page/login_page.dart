@@ -141,12 +141,45 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             const SizedBox(height: 12.0),
+            Consumer<LoginViewModel>(
+              builder: (context, provider, _) {
+                if (provider.isLoading) {
+                  return ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'Loading',
+                          style: Theme.of(context).textTheme.headline5,
+                        )
+                      ],
+                    ),
+                  );
+                }
+                return ButtonFormCustom(
+                  text: 'Login',
+                  onPressed: () => login(context),
+                );
+              },
+            ),
 
             /// Login Button
-            ButtonFormCustom(
-              text: 'Login',
-              onPressed: () => login(context),
-            ),
+
             const SizedBox(height: 12.0),
 
             /// Go to Register

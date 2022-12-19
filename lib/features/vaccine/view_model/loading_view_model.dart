@@ -24,6 +24,14 @@ class LoadBookViewModel with ChangeNotifier {
       );
     }
     try {
+      Timer(
+          const Duration(seconds: 3),
+          () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const DetailBook(
+                      // data: data,
+                      ))));
       final bookTicket = await _vaccinerepository.bookTicketData(token: token!);
       print(bookTicket);
       bookData.bookData = BookData(
@@ -39,16 +47,7 @@ class LoadBookViewModel with ChangeNotifier {
         endTime: bookTicket['endTime'],
         rsName: bookTicket['rsName'],
       );
-      Timer(
-          const Duration(seconds: 3),
-          () => Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const DetailBook(
-                      // data: data,
-                      ))));
     } catch (e) {
-      
       (msg) {
         snackbarMessage(context, msg);
         Navigator.of(context).pushReplacement(

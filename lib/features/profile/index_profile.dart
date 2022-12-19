@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:w_vaccine/features/profile/page/family_members_page.dart';
 import 'package:w_vaccine/features/profile/page/personal_data_page.dart';
 import 'package:w_vaccine/features/profile/page/change_password_page.dart';
@@ -61,17 +62,51 @@ class _IndexProfileState extends State<IndexProfile> {
                         padding: const EdgeInsets.only(left: 16),
                         child: Stack(
                           children: [
-                            Consumer(
-                              builder: (context, proider, _) {
-                                if (vm.image == null) {
+                            Consumer<IndexProfileViewModel>(
+                              builder: (context, provider, _) {
+                                if (provider.imageURL == '' ) {
                                   return const CircleAvatar(
                                     radius: 55,
                                     backgroundColor: Colors.blue,
                                   );
                                 }
+                                if (provider.imageURL == '' && provider.isLoading) {
+                                  return const CircleAvatar(
+                                    radius: 55,
+                                    backgroundColor: Colors.blue,
+                                    child: Center(
+                                          child: CircularProgressIndicator(
+                                            backgroundColor: Colors.white,
+                                          ),
+                                        ),
+                                  );
+                                }
+                                if (provider.isLoading) {
+                                  return Stack(
+                                    children: [
+                                      ClipOval(
+                                        child: Image.network(
+                                          provider.imageURL!,
+                                          width: 110,
+                                          height: 110,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      const Positioned(
+                                        left: 37,
+                                        bottom: 36,
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            backgroundColor: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
                                 return ClipOval(
-                                  child: Image.file(
-                                    vm.image!,
+                                  child: Image.network(
+                                    provider.imageURL!,
                                     width: 110,
                                     height: 110,
                                     fit: BoxFit.cover,
@@ -86,7 +121,8 @@ class _IndexProfileState extends State<IndexProfile> {
                                 height: 65,
                                 width: 65,
                                 child: GestureDetector(
-                                  onTap: () => vm.openGallery(),
+                                  onTap: () => vm.uploadImage(
+                                      ImageSource.gallery, context),
                                   child: Image.asset('assets/png/addimage.png'),
                                 ),
                               ),

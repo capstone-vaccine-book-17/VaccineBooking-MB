@@ -62,7 +62,7 @@ class _VaccineVarietiesPageState extends State<VaccineVarietiesPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 11),
+                    padding: const EdgeInsets.only(top: 11),
                     child: Text(
                       data.name,
                       style: const TextStyle(

@@ -2,8 +2,7 @@ class ConstantApi {
   ConstantApi._();
 
   /// Base Url
-  static const String baseUrl =
-      'http://ec2-100-26-203-215.compute-1.amazonaws.com';
+  static const String baseUrl = 'https://wvac.cf';
 
   /// Receive Timeout
   static const int receiveTimeout = 15000;

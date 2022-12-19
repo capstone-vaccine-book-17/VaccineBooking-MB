@@ -132,4 +132,26 @@ class ProfileApi {
       throw errorMsg;
     }
   }
+
+  Future<Response> putUploadImage({
+    required String token,
+    required filePath,
+  }) async {
+    try {
+      FormData formData = FormData.fromMap(
+          {"image": await MultipartFile.fromFile(filePath, filename: "bene")});
+
+      final Response res = await _dioClient.put(
+        '${ConstantApi.profileEndpoint}/image',
+        data: formData,
+        options: Options(
+          headers: {"Authorization": 'Bearer $token'},
+        ),
+      );
+      return res;
+    } on DioError catch (e) {
+      final String errorMsg = DioException.fromDioError(e).toString();
+      throw errorMsg;
+    }
+  }
 }

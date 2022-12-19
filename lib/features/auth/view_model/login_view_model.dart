@@ -4,19 +4,22 @@ import 'package:w_vaccine/data/repository/profile_repository.dart';
 import 'package:w_vaccine/data/service/local/shared_pref.dart';
 import 'package:w_vaccine/dependency_injection/profile_data.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
+import 'package:w_vaccine/features/auth/page/loading_page.dart';
 import 'package:w_vaccine/features/auth/page/login_page.dart';
-import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/styles/nofication.dart';
 
 class LoginViewModel with ChangeNotifier {
   final _authRepo = getIt.get<AuthRepository>();
   final _profileRepo = getIt.get<ProfileRepository>();
+  bool isLoading = false;
 
   void submit({
     required context,
     required String email,
     required String pass,
   }) {
+    isLoading = true;
+    notifyListeners();
     _authRepo.login(
       email: email,
       password: pass,
@@ -24,19 +27,30 @@ class LoginViewModel with ChangeNotifier {
         final SharedPref storage = getIt.get<SharedPref>();
         storage.saveToken(token: token);
         try {
+          isLoading = false;
+          notifyListeners();
+
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const LoadingToHome()),
+              (route) => false);
           await initialLoad(context: context, token: token);
           snackbarMessage(context, msg);
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const IndexNavigation(),
-          ));
-        } catch (e) { 
+        } catch (e) {
           /// Failed fetch all initial data
+          ///
+          print('gagal login');
           snackbarMessage(context, e.toString());
         }
       },
 
       /// Failed Login
-      onError: (msg) => snackbarMessage(context, msg),
+      onError: (msg) {
+        print('salah pswrd');
+        isLoading = false;
+        notifyListeners();
+        return snackbarMessage(context, msg);
+      },
     );
   }
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_vaccine/dependency_injection/ticket_data.dart';
 import 'package:w_vaccine/features/ticket/page/detail_ticket_page.dart';
-import 'package:w_vaccine/features/ticket/page/details_vaccine_completed.dart';
-import 'package:w_vaccine/features/ticket/page/details_vaccine_process.dart';
 import 'package:w_vaccine/styles/custom_color.dart';
 
 class CardTicket extends StatelessWidget {

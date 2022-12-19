@@ -124,4 +124,26 @@ class ProfileRepository {
       onError!(e.toString());
     }
   }
+
+  Future<dynamic> uploadImage({
+    required String token,
+    required filePath,
+    void Function(String msg)? onSuccess,
+    void Function(String msg)? onError,
+  }) async {
+    try {
+      final res = await _profileApi.putUploadImage(
+        token: token,
+        filePath: filePath,
+      );
+      final String msg = res.data['message'];
+      print(msg);
+      // onSuccess!(msg);
+      return res;
+    } catch (e) {
+      print('Upload Image Error - ${e.toString()}');
+      // return {'message': e.toString()};
+      onError!(e.toString());
+    }
+  }
 }
