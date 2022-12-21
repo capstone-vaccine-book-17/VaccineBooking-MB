@@ -40,7 +40,7 @@ class _FaskesPageState extends State<FaskesPage> {
     DateTime? date = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(1980),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2024),
     );
     if (date == null) {
@@ -365,6 +365,7 @@ class _FaskesPageState extends State<FaskesPage> {
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
               _daftarVaksin(context),
               const SizedBox(height: 100),
             ],
