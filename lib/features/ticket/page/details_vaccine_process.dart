@@ -172,7 +172,7 @@ class TicketVaccineProcess extends StatelessWidget {
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                        SizedBox(width: 185),
+                                        SizedBox(width: 160),
                                         Text(
                                           "Kedua",
                                           style: TextStyle(

@@ -177,7 +177,7 @@ class DetailTicketPage extends StatelessWidget {
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
-                                          const SizedBox(width: 185),
+                                          const SizedBox(width: 155),
                                           Text(
                                             td.dosis ?? 'Unknown',
                                             style: const TextStyle(
@@ -228,7 +228,7 @@ class DetailTicketPage extends StatelessWidget {
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                        const SizedBox(width: 108),
+                                        const SizedBox(width: 104),
                                         Text(
                                           "${td.startTime} - ${td.endTime}",
                                           style: const TextStyle(

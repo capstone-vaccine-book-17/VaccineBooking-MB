@@ -1,8 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
@@ -133,7 +131,7 @@ class _FaskesPageState extends State<FaskesPage> {
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            '${session.kuota!} Kuota',
+                            '${session.name}',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -146,11 +144,11 @@ class _FaskesPageState extends State<FaskesPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Tersisa ${session.sessionId}',
+                            'Tersisa ${session.kuota}',
                             style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.red),
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -256,100 +254,121 @@ class _FaskesPageState extends State<FaskesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.network(
-              widget.data.image!,
-              width: double.infinity,
-            ),
-            const SizedBox(height: 14),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
                 children: [
-                  Text(
-                    widget.data.name!,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    children: [
-                      Image.asset(
-                        "assets/vaccine/ic_loc.png",
-                        width: 25,
-                        height: 25,
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          '${widget.data.address!} ${widget.data.city!} ${widget.data.province} ${widget.data.medicalFacilitysId}',
-                          style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black54),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 13),
-                  const Text(
-                    "Jadwal",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
+                  Image.network(
+                    widget.data.image!,
                     width: double.infinity,
-                    child: TextField(
-                      // onSubmitted: ((searchDate) => vm.searchses(searchDate)),
-                      readOnly: true,
-                      onTap: () async {
-                        await _selectDate();
-                        vm.searchses(searchDate);
+                  ),
+                  Positioned(
+                    left: 2,
+                    top: 8,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
                       },
-                      controller: selectDate,
-                      decoration: InputDecoration(
-                        hintText:
-                            DateFormat('\t\td MMMM y').format(DateTime.now()),
-                        suffixIcon: const Padding(
-                          padding: EdgeInsets.only(right: 20),
-                          child: Image(
-                            width: 3,
-                            height: 3,
-                            image: AssetImage(
-                              "assets/vaccine/ic_date.png",
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(10),
+                        backgroundColor: Colors.white.withOpacity(0.4),
+                      ),
+                      child: const Icon(Icons.arrow_back, color: Colors.black),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 14),
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.data.name!,
+                      style: const TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Image.asset(
+                          "assets/vaccine/ic_loc.png",
+                          width: 25,
+                          height: 25,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            '${widget.data.address!} ${widget.data.city!} ${widget.data.province} ${widget.data.medicalFacilitysId}',
+                            style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black54),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 13),
+                    const Text(
+                      "Jadwal",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextField(
+                        // onSubmitted: ((searchDate) => vm.searchses(searchDate)),
+                        readOnly: true,
+                        onTap: () async {
+                          await _selectDate();
+                          vm.searchses(searchDate);
+                        },
+                        controller: selectDate,
+                        decoration: InputDecoration(
+                          hintText:
+                              DateFormat('\t\td MMMM y').format(DateTime.now()),
+                          suffixIcon: const Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child: Image(
+                              width: 3,
+                              height: 3,
+                              image: AssetImage(
+                                "assets/vaccine/ic_date.png",
+                              ),
+                            ),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintStyle: const TextStyle(
+                            fontSize: 16,
+                            color: Color(0xff888888),
+                          ),
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
                             ),
                           ),
                         ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintStyle: const TextStyle(
-                          fontSize: 16,
-                          color: Color(0xff888888),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            _daftarVaksin(context),
-            const SizedBox(height: 100),
-          ],
+              _daftarVaksin(context),
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
       ),
       floatingActionButton: Container(
@@ -482,7 +501,6 @@ class _FaskesPageState extends State<FaskesPage> {
                       onPressed: () {
                         print(sessionId);
                         vm.booking(context: context, sessionId: sessionId);
-                        
                       }),
                 ),
               ],
