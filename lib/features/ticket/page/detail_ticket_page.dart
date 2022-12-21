@@ -56,7 +56,7 @@ class DetailTicketPage extends StatelessWidget {
                                   Column(
                                     children: [
                                       Text(
-                                        (td.status == 'proses'
+                                        (td.status == 'process'
                                             ? 'No Antrian : ${td.queue}'
                                             : 'Selesai'),
                                         style: const TextStyle(
