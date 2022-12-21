@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.w_vaccine">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="w_vaccine"
         android:name="${applicationName}"

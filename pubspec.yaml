@@ -37,6 +37,17 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   provider: ^6.0.4
+  email_validator: ^2.1.17
+  intl: ^0.17.0
+  image_picker: ^0.8.6
+  google_fonts: ^3.0.1
+  dio: ^4.0.6
+  flutter_secure_storage: ^6.1.0
+  get_it: ^7.2.0
+  lottie: ^2.0.0
+  flutter_typeahead: ^4.1.1
+
+
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +59,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -61,8 +73,12 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/vaccine/
+    - assets/vaccine/loading.json
+    - assets/images/
+    - assets/png/
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -76,10 +92,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Wvaccine
+      fonts:
+        - asset: assets/icons/Wvaccine.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
