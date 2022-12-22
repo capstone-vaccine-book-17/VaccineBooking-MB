@@ -6,7 +6,7 @@ class NewsViewModel with ChangeNotifier {
     return [
       NewsModel(
         image: 'assets/images/vaccine.jpg',
-        title: 'Ini tanggapan lesti tentang flutter',
+        title: 'Antisipasi pemerintah indonesia terkait Covid-19',
         author: 'Kobo Kanaeru',
         date: '12/09/2022 09:31',
         views: '23',
@@ -15,7 +15,7 @@ class NewsViewModel with ChangeNotifier {
       ),
       NewsModel(
         image: 'assets/images/vaccine.jpg',
-        title: 'Ini hal penting yang tidak penting',
+        title: 'Hal yang harus dipersiapkan sebelum melakukan vaksinasi',
         author: 'Kobo Kanaeru',
         date: '12/09/2022 09:31',
         views: '23',

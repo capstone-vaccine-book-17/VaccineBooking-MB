@@ -4,6 +4,7 @@ import 'package:w_vaccine/dependency_injection/service_locator.dart';
 import 'package:w_vaccine/features/auth/view_model/login_view_model.dart';
 import 'package:w_vaccine/features/auth/view_model/register_view_model.dart';
 import 'package:w_vaccine/features/home/view_model/home_view_model.dart';
+import 'package:w_vaccine/features/index_navigation.dart';
 import 'package:w_vaccine/features/profile/view_model/add_family_member_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
 import 'package:w_vaccine/features/profile/view_model/change_email_view_model.dart';
