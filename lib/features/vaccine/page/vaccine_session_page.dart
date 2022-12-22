@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/dependency_injection/vaccine_data.dart';
+import 'package:w_vaccine/features/profile/view_model/index_profile_view_model.dart';
 import 'package:w_vaccine/features/vaccine/view_model/session_view_model.dart';
 import 'package:w_vaccine/widgets/button_form_custom.dart';
 
@@ -208,20 +209,17 @@ class _FaskesPageState extends State<FaskesPage> {
                         "assets/vaccine/ic_person.png",
                         width: 25,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(data['name'].toString()),
-                              const SizedBox(width: 5),
-                              Text(data['hubunganKeluarga'].toString()),
-                            ],
-                          ),
-                          Text(
-                            "NIK : ${data['nik'].toString()}",
-                          ),
-                        ],
+                      Consumer<IndexProfileViewModel>(
+                        builder: (context, value, _) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(value.name!),
+                            const SizedBox(width: 5),
+                            Text(
+                              "NIK : ${value.nik}",
+                            ),
+                          ],
+                        ),
                       ),
                       Row(
                         children: [
