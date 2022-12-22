@@ -177,7 +177,7 @@ class DetailTicketPage extends StatelessWidget {
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
-                                          const SizedBox(width: 155),
+                                          const SizedBox(width: 178),
                                           Text(
                                             td.dosis ?? 'Unknown',
                                             style: const TextStyle(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:w_vaccine/dependency_injection/profile_data.dart';
 import 'package:w_vaccine/dependency_injection/service_locator.dart';
+import 'package:w_vaccine/features/profile/view_model/change_address_view_model.dart';
 import 'package:w_vaccine/features/vaccine/page/vaccine_session_page.dart';
 import 'package:w_vaccine/features/vaccine/view_model/vaccine_view_model.dart';
 
@@ -366,12 +367,14 @@ class _IndexVaccineState extends State<IndexVaccine> {
                   height: 30,
                 ),
                 const SizedBox(width: 12),
-                Text(
-                  profileData.address!.address!,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                Consumer<ChangeAddressViewModel>(
+                  builder: ((context, value, _) => Text(
+                        value.address,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )),
                 ),
               ],
             ),
